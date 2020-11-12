@@ -2,6 +2,7 @@
 #include <stdbool.h>
 
 #include "main.h"
+#include "triangleSolver.h"
 
 int side = 0;
 
@@ -18,11 +19,9 @@ int main() {
 			printf("Triangle selected.\n");
 			int triangleSides[3] = { 0, 0, 0 };
 			int* triangleSidesPtr = getTriangleSides(triangleSides);
-			for (int i = 0; i < 3; i++)
-			{
-				printf("%d", triangleSides[i]);
-			}
-			int test = 0;
+			//printf_s("! %d\n", triangleSidesPtr[0]);
+			char* result = analyzeTriangle(triangleSidesPtr[0], triangleSidesPtr[1], triangleSidesPtr[2]);
+			printf_s("%s\n", result);
 			break;
 		case 0:
 			continueProgram = false;

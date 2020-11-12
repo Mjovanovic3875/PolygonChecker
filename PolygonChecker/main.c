@@ -16,7 +16,7 @@ int main() {
 		switch (shapeChoice)
 		{
 		case 1:
-			printf("Triangle selected.\n");
+			printf_s("Triangle selected.\n");
 			int triangleSides[3] = { 0, 0, 0 };
 			int* triangleSidesPtr = getTriangleSides(triangleSides);
 			//printf_s("! %d\n", triangleSidesPtr[0]);
@@ -27,7 +27,7 @@ int main() {
 			continueProgram = false;
 			break;
 		default:
-			printf("Invalid value entered.\n");
+			printf_s("Invalid value entered.\n");
 			break;
 		}
 	}
@@ -35,26 +35,27 @@ int main() {
 }
 
 void printWelcome() {
-	printf(" **********************\n");
-	printf("**     Welcome to     **\n");
-	printf("**   Polygon Checker  **\n");
-	printf(" **********************\n");
+	printf_s("\n");
+	printf_s(" **********************\n");
+	printf_s("**     Welcome to     **\n");
+	printf_s("**   Polygon Checker  **\n");
+	printf_s(" **********************\n");
 }
 
 int printShapeMenu() {
-	printf("1. Triangle\n");
-	printf("0. Exit\n");
+	printf_s("1. Triangle\n");
+	printf_s("0. Exit\n");
 
 	int shapeChoice;
 
-	printf("Enter number: ");
+	printf_s("Enter number: ");
 	scanf_s("%1o", &shapeChoice);
 
 	return shapeChoice;
 }
 
 int* getTriangleSides(int* triangleSides) {
-	printf("Enter the three sides of the triangle: ");
+	printf_s("Enter the three sides of the triangle: ");
 	for (int i = 0; i < 3; i++)
 	{
 		scanf_s("%d", &triangleSides[i]);

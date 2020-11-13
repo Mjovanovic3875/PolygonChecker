@@ -7,7 +7,7 @@
 int side = 0;
 
 int main() {
-	bool continueProgram = true;
+	bool continueProgram = true; // for while loop
 	while (continueProgram) {
 		printWelcome();
 
@@ -21,7 +21,7 @@ int main() {
 			int* triangleSidesPtr = getTriangleSides(triangleSides);
 			//printf_s("! %d\n", triangleSidesPtr[0]);
 			char* result = analyzeTriangle(triangleSidesPtr[0], triangleSidesPtr[1], triangleSidesPtr[2]);
-			printf_s("%s\n", result);
+			printf_s("\n%s\n", result);
 			break;
 		case 0:
 			continueProgram = false;
@@ -30,11 +30,11 @@ int main() {
 			printf_s("Invalid value entered.\n");
 			break;
 		}
-	}
+	} // while
 	return 0;
 }
 
-void printWelcome() {
+void printWelcome() { // prints welcome to screen
 	printf_s("\n");
 	printf_s(" **********************\n");
 	printf_s("**     Welcome to     **\n");
@@ -42,23 +42,24 @@ void printWelcome() {
 	printf_s(" **********************\n");
 }
 
-int printShapeMenu() {
+int printShapeMenu() { // print options to screen returns users choice
 	printf_s("1. Triangle\n");
 	printf_s("0. Exit\n");
 
 	int shapeChoice;
-
-	printf_s("Enter number: ");
-	scanf_s("%1o", &shapeChoice);
+	scanf_s("%d", &shapeChoice);
 
 	return shapeChoice;
-}
 
-int* getTriangleSides(int* triangleSides) {
-	printf_s("Enter the three sides of the triangle: ");
+	}
+
+
+int* getTriangleSides(int* triangleSides) { // get sides of triangle from user
+	printf_s("Enter the three sides of the triangle: \n");
 	for (int i = 0; i < 3; i++)
 	{
-		scanf_s("%d", &triangleSides[i]);
+		printf_s("\nEnter the %d sides of the triangle: ", (i+1));
+		scanf_s("%d", &triangleSides[i]); // very poor UI | Fixed
 	}
 	return triangleSides;
 }

@@ -15,15 +15,19 @@ int main() {
 
 		switch (shapeChoice)
 		{
-		case 1:
+		case 1: // user selected a triangle
+
+
 			printf_s("Triangle selected.\n");
 			int triangleSides[3] = { 0, 0, 0 };
-			int* triangleSidesPtr = getTriangleSides(triangleSides);
+			int* triangleSidesPtr = getTriangleSides(triangleSides); // get triangle sides from user
 			//printf_s("! %d\n", triangleSidesPtr[0]);
-			char* result = analyzeTriangle(triangleSidesPtr[0], triangleSidesPtr[1], triangleSidesPtr[2]);
+			char* result = analyzeTriangle(triangleSidesPtr[0], triangleSidesPtr[1], triangleSidesPtr[2]); // what kind of triangle
 			printf_s("\n%s\n", result);
 			break;
-		case 0:
+
+
+		case 0: // user selected exit
 			continueProgram = false;
 			break;
 		default:
@@ -34,6 +38,8 @@ int main() {
 	return 0;
 }
 
+
+
 void printWelcome() { // prints welcome to screen
 	printf_s("\n");
 	printf_s(" **********************\n");
@@ -41,6 +47,8 @@ void printWelcome() { // prints welcome to screen
 	printf_s("**   Polygon Checker  **\n");
 	printf_s(" **********************\n");
 }
+
+
 
 int printShapeMenu() { // print options to screen returns users choice
 	printf_s("1. Triangle\n");

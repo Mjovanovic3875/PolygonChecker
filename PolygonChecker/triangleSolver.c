@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <stdlib.h>
 #include <math.h>
 #include <stdbool.h>
 
@@ -37,6 +38,13 @@ double* insideAngles(int side1, int side2, int side3)
 {
 	// See https://www.calculator.net/triangle-calculator.html#:~:text=The%20interior%20angles%20of%20a,of%20interest%20from%20180%C2%B0.
 	double* result = (double*)malloc(sizeof(double) * 3);
+
+	if (result == NULL)
+	{
+		fprintf(stderr, "Error allocating memory for insideAngles return!\n");
+		exit(1);
+	}
+
 	result[0] = findAngle(side1, side2, side3);
 	result[1] = findAngle(side2, side1, side3);
 	result[2] = findAngle(side3, side1, side2);

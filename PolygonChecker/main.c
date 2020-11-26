@@ -23,7 +23,8 @@ int main() {
 			int* triangleSidesPtr = getTriangleSides(triangleSides); // get triangle sides from user
 			//printf_s("! %d\n", triangleSidesPtr[0]);
 			char* result = analyzeTriangle(triangleSidesPtr[0], triangleSidesPtr[1], triangleSidesPtr[2]); // what kind of triangle
-			printf_s("\n%s\n", result);
+			double* angles = insideAngles(triangleSidesPtr[0], triangleSidesPtr[1], triangleSidesPtr[2]); // store angles of given sides
+			printf_s("\n%s\nThe angles are : %f, %f, %f", result, angles[0],angles[1],angles[2]);
 			break;
 
 

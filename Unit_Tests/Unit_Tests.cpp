@@ -14,6 +14,122 @@ namespace UnitTests
 	{
 	public:
 	
+		TEST_METHOD(get_Area_Valid)
+		{
+			
+		}
+		TEST_METHOD(get_Area_One_Negitive)
+		{
+			
+		}
+
+		TEST_METHOD(get_Area_All_Negitive)
+		{
+			
+		}
+		TEST_METHOD(get_Area_char_Input)
+		{
+		
+		}
+
+		TEST_METHOD(get_Perimiter_Valid)
+		{
+
+		}
+		TEST_METHOD(get_Perimiter_One_Negitive)
+		{
+
+		}
+
+		TEST_METHOD(get_Perimiter_All_Negitive)
+		{
+			
+		}
+		TEST_METHOD(get_Perimiter_char_Input)
+		{
+			
+		}
+		TEST_METHOD(is_Rectangle_Invalid)
+		{
+			COORDINATE SquareSides;
+			SquareSides.x[0] = 3;
+			SquareSides.x[1] = 1;
+			SquareSides.x[2] = 0;
+			SquareSides.x[3] = 1;
+			SquareSides.y[0] = 1;
+			SquareSides.y[1] = 2;
+			SquareSides.y[2] = 1;
+			SquareSides.y[3] = 2;
+			Assert::AreEqual(isRectangle(&SquareSides), false);
+		}
+		TEST_METHOD(is_Rectangle_Pass)
+		{
+			COORDINATE SquareSides;
+			SquareSides.x[0] = 0;
+			SquareSides.x[1] = 1;
+			SquareSides.x[2] = 0;
+			SquareSides.x[3] = 1;
+			SquareSides.y[0] = 1;
+			SquareSides.y[1] = 2;
+			SquareSides.y[2] = 1;
+			SquareSides.y[3] = 2;
+			Assert::AreEqual(isRectangle(&SquareSides), true);
+		}
+
+		TEST_METHOD(Is_Rectangle_char_input)
+		{
+			COORDINATE SquareSides;
+			SquareSides.x[0] = 'a';
+			SquareSides.x[1] = 2;
+			SquareSides.x[2] = 1;
+			SquareSides.x[3] = 2;
+			SquareSides.y[0] = -1;
+			SquareSides.y[1] = 2;
+			SquareSides.y[2] = 1;
+			SquareSides.y[3] = 2;
+			Assert::AreEqual(isRectangle(&SquareSides), false);
+		}
+		TEST_METHOD(is_Rectangle_Single_Negitive_Invalid)
+		{
+			COORDINATE SquareSides;
+			SquareSides.x[0] = -1;
+			SquareSides.x[1] = 2;
+			SquareSides.x[2] = 1;
+			SquareSides.x[3] = 2;
+			SquareSides.y[0] = -1;
+			SquareSides.y[1] = 2;
+			SquareSides.y[2] = 1;
+			SquareSides.y[3] = 2;
+			Assert::AreEqual(isRectangle(&SquareSides), false);
+		}
+		TEST_METHOD(is_Rectangle_All_Negitive_Valid)
+		{
+			COORDINATE SquareSides;
+			SquareSides.x[0] = -1;
+			SquareSides.x[1] = -2;
+			SquareSides.x[2] = -1;
+			SquareSides.x[3] = -2;
+			SquareSides.y[0] = -1;
+			SquareSides.y[1] = -2;
+			SquareSides.y[2] = -1;
+			SquareSides.y[3] = -2;
+			Assert::AreEqual(isRectangle(&SquareSides), true);
+		}
+		TEST_METHOD(is_Rectangle_Too_Few_Points)
+		{
+			COORDINATE SquareSides;
+			SquareSides.x[0] = 3;
+			SquareSides.x[1] = 4;
+			SquareSides.x[2] = 1;
+			SquareSides.y[0] = 3;
+			SquareSides.y[1] = 4;
+			SquareSides.y[2] = 1;
+		    Assert::AreEqual(isRectangle(&SquareSides),false);
+		}
+
+
+
+
 		TEST_METHOD(INVALID_TRAINGLE_ALL_NEGITIVE)
 		{
 			Assert::AreEqual(analyzeTriangle(-1, -1, -1), "Not a triangle");

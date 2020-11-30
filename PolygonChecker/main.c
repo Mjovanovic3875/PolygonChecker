@@ -3,6 +3,7 @@
 
 #include "main.h"
 #include "triangleSolver.h"
+#include "SquareSolver.h"
 
 int side = 0;
 
@@ -26,8 +27,23 @@ int main() {
 			double* angles = insideAngles(triangleSidesPtr[0], triangleSidesPtr[1], triangleSidesPtr[2]); // store angles of given sides
 			printf_s("\n%s\nThe angles are : %f, %f, %f", result, angles[0],angles[1],angles[2]);
 			break;
-
-
+		case 2: // user selects rectangle
+			printf_s("Square selected.\n");
+			
+			COORDINATE SquareSides = { .x = {0,0,0,0},.y = {0,0,0,0} };
+			SquareSides = getSquareSides(SquareSides); // get Square coordinates from user
+			if (isRectangle) {
+				int perimiter = 0;
+				perimiter = getPerimiter(SquareSides);
+				int area = 0;
+				area = getArea(SquareSides);
+				printf_s("The perimiter is %d\nThe Area is : %d\n",perimiter,area);
+			}
+			else {
+				printf_s("This is not a rectangle...");
+			}
+			break;
+		
 		case 0: // user selected exit
 			continueProgram = false;
 			break;
@@ -53,6 +69,7 @@ void printWelcome() { // prints welcome to screen
 
 int printShapeMenu() { // print options to screen returns users choice
 	printf_s("1. Triangle\n");
+	printf_s("2. Square\n");
 	printf_s("0. Exit\n");
 
 	int shapeChoice;

@@ -102,7 +102,7 @@
     <Link>
       <SubSystem>Windows</SubSystem>
       <AdditionalLibraryDirectories>$(SolutionDir)PolygonChecker\$(Configuration);$(VCInstallDir)UnitTest\lib;C:\Users\User\source\repos\day_day_group_project\PolygonChecker\x64\Debug;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>main.obj;triangleSolver.obj;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>main.obj;triangleSolver.obj;SquareSolver.obj;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">

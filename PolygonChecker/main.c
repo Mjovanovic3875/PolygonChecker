@@ -27,23 +27,26 @@ int main() {
 			double* angles = insideAngles(triangleSidesPtr[0], triangleSidesPtr[1], triangleSidesPtr[2]); // store angles of given sides
 			printf_s("\n%s\nThe angles are : %f, %f, %f", result, angles[0],angles[1],angles[2]);
 			break;
+
 		case 2: // user selects rectangle
-			printf_s("Square selected.\n");
+			printf_s("\nSquare selected.\n");
 			
-			COORDINATE SquareSides = { .x = {0,0,0,0},.y = {0,0,0,0} };
+			COORDINATE SquareSides = { .x = {0,0,0,0},.y = {0,0,0,0}, .side1 = 0,.side2 = 0 };
 			SquareSides = getSquareSides(SquareSides); // get Square coordinates from user
-			if (isRectangle) {
+			if (isRectangle(&SquareSides)) { // if user does enter a valid rectangle
 				int perimiter = 0;
-				perimiter = getPerimiter(SquareSides);
+				printf_s("%d", SquareSides.side1);
+				perimiter = getPerimiter(SquareSides.side1,SquareSides.side2); // get perimiter
 				int area = 0;
-				area = getArea(SquareSides);
-				printf_s("The perimiter is %d\nThe Area is : %d\n",perimiter,area);
+				area = getArea(SquareSides.side1, SquareSides.side2); // get area
+				printf_s("The perimiter is %d\nThe Area is : %d\n",perimiter,area); //print data
 			}
 			else {
-				printf_s("This is not a rectangle...");
+				printf_s("\nThis is not a rectangle..."); // was not a rectangle
 			}
 			break;
 		
+
 		case 0: // user selected exit
 			continueProgram = false;
 			break;

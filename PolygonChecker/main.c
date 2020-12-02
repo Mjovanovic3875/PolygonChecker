@@ -21,6 +21,8 @@ int main() {
 			TRIANGLE* triangle = triangle_wizard();
 			print_triangle_information(triangle);
 			free_triangle(triangle);
+
+			// Old code
 			/*
 			int triangleSides[3] = { 0, 0, 0 };
 			int* triangleSidesPtr = getTriangleSides(triangleSides); // get triangle sides from user
@@ -29,6 +31,7 @@ int main() {
 			double* angles = inside_angles_radians(triangleSidesPtr[0], triangleSidesPtr[1], triangleSidesPtr[2]); // store angles of given sides
 			printf_s("\n%s\nThe angles are : %f, %f, %f", result, angles[0],angles[1],angles[2]);
 			*/
+
 			break;
 
 		case 2: // user selects rectangle

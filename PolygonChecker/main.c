@@ -37,12 +37,12 @@ int main() {
 			COORDINATE SquareSides = { .x = {0,0,0,0},.y = {0,0,0,0}, .side1 = 0,.side2 = 0 };
 			SquareSides = getSquareSides(SquareSides); // get Square coordinates from user
 			if (isRectangle(&SquareSides)) { // if user does enter a valid rectangle
-				int perimiter = 0;
+				int perimeter = 0;
 				printf_s("%d", SquareSides.side1);
-				perimiter = getPerimiter(SquareSides.side1,SquareSides.side2); // get perimiter
+				perimeter = getPerimiter(SquareSides.side1,SquareSides.side2); // get perimeter
 				int area = 0;
 				area = getArea(SquareSides.side1, SquareSides.side2); // get area
-				printf_s("The perimiter is %d\nThe Area is : %d\n",perimiter,area); //print data
+				printf_s("The perimeter is %d\nThe Area is : %d\n",perimeter,area); //print data
 			}
 			else {
 				printf_s("\nThis is not a rectangle..."); // was not a rectangle

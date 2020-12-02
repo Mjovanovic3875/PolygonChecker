@@ -114,7 +114,7 @@ bool is_sum_greater(int one, int two, int three) {
 // Revision history
 // - Danny fixed bug
 // - Emil rewrote for readability
-char* analyze_triangle(int sideOne, int sideTwo, int sideThree) {
+const char* analyze_triangle(int sideOne, int sideTwo, int sideThree) {
 	// Define possible returns as static constants
 	// This allows us to avoid memory allocation while letting the
 	// strings to persist beyond the function call

@@ -9,7 +9,7 @@ int main() {
 	bool continueProgram = true; // for while loop
 	while (continueProgram) {
 		printWelcome();
-
+		
 		int shapeChoice = printShapeMenu();
 
 		switch (shapeChoice)
@@ -75,7 +75,7 @@ int printShapeMenu() { // print options to screen returns users choice
 
 	int shapeChoice;
 	scanf_s("%d", &shapeChoice);
-
+	int c; while ((c = getchar()) != '\n' && c != EOF) {}// clears the get char buffer
 	return shapeChoice;
 
 	}

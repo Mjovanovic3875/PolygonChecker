@@ -1,7 +1,7 @@
 #pragma once
 # include <stdbool.h>
 #include <stdio.h>
-
+#include "triangleSolver.h"
 
 typedef struct coordinate { // this is a coordinate struct it contains x and y coordinates for up to 4 points and carries 2 side lengths
 	int x [5];

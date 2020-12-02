@@ -1,7 +1,7 @@
 #include "SquareSolver.h"
 
 
-
+#include <math.h>
 
 COORDINATE getSquareSides(COORDINATE points) { // retrieve user input for the 4 coordinate points
 	
@@ -103,5 +103,9 @@ bool isRectangle(COORDINATE* points) { // says i need to generate 4 lines but 2 
 		
 	}
 	points->side2 = (max - min); // save side length of height
+	double c;
+
+
+
 	return true; // everything passed
 }

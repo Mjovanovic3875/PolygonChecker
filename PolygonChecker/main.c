@@ -18,12 +18,17 @@ int main() {
 
 
 			printf_s("Triangle selected.\n");
+			TRIANGLE* triangle = triangle_wizard();
+			print_triangle_information(triangle);
+			free_triangle(triangle);
+			/*
 			int triangleSides[3] = { 0, 0, 0 };
 			int* triangleSidesPtr = getTriangleSides(triangleSides); // get triangle sides from user
 			//printf_s("! %d\n", triangleSidesPtr[0]);
 			char* result = analyze_triangle(triangleSidesPtr[0], triangleSidesPtr[1], triangleSidesPtr[2]); // what kind of triangle
 			double* angles = inside_angles_radians(triangleSidesPtr[0], triangleSidesPtr[1], triangleSidesPtr[2]); // store angles of given sides
 			printf_s("\n%s\nThe angles are : %f, %f, %f", result, angles[0],angles[1],angles[2]);
+			*/
 			break;
 
 		case 2: // user selects rectangle

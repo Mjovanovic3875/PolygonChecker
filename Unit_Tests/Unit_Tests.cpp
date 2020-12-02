@@ -129,106 +129,337 @@ namespace UnitTests
 
 
 
+		TEST_METHOD(analyzeTriangle_negOneallsides_NotATriangle)
+		{
+			//arrange
+			int side1 = -1;
+			int side2 = -1;
+			int side3 = -1;
 
-		TEST_METHOD(INVALID_TRAINGLE_ALL_NEGITIVE)
-		{
-			Assert::AreEqual(analyze_triangle(-1, -1, -1), "Not a triangle");
-		}
+			//act
+			const char* answer = analyze_triangle(side1, side2, side3);
 
-		TEST_METHOD(INVALID_TRAINGLE_FIRST_ZERO)
-		{
-			Assert::AreEqual(analyze_triangle(0, 1, 1), "Not a triangle");
-		}
-		TEST_METHOD(INVALID_TRAINGLE_SECOND_ZERO)
-		{
-			Assert::AreEqual(analyze_triangle(1, 0, 1), "Not a triangle");
-		}
-		TEST_METHOD(INVALID_TRAINGLE_THIRD_ZERO)
-		{
-			Assert::AreEqual(analyze_triangle(1, 1, 0), "Not a triangle");
-		}
-		TEST_METHOD(INVALID_TRAINGLE_FIRST_SECOND_ZERO)
-		{
-			Assert::AreEqual(analyze_triangle(0, 0, 1), "Not a triangle");
+			//assert
+
+			Assert::AreEqual(answer, "Not a triangle");
 		}
 
-		TEST_METHOD(INVALID_TRAINGLE_FIRST_THIRD_ZERO)
+		TEST_METHOD(analyzeTriangle_zeroOneOne_NotATriangle)
 		{
-			Assert::AreEqual(analyze_triangle(0, 1, 0), "Not a triangle");
+			//arrange
+			int side1 = 0;
+			int side2 = 1;
+			int side3 = 1;
+
+			//act
+			const char* answer = analyze_triangle(side1, side2, side3);
+
+			//assert
+
+			Assert::AreEqual(answer, "Not a triangle");
 		}
-		TEST_METHOD(INVALID_TRAINGLE_SECOND_THIRD_ZERO)
+		TEST_METHOD(analyzeTriangle_OneZeroOne_NotATriangle)
 		{
-			Assert::AreEqual(analyze_triangle(1, 0, 0), "Not a triangle");
+			//arrange
+			int side1 = 1;
+			int side2 = 0;
+			int side3 = 1;
+
+			//act
+			const char* answer = analyze_triangle(side1, side2, side3);
+
+			//assert
+			Assert::AreEqual(answer, "Not a triangle");
 		}
-		TEST_METHOD(INVALID_TRAINGLE_ALL_ZERO)
+		TEST_METHOD(analyzeTriangle_OneOneZero_NotATriangle)
 		{
-			Assert::AreEqual(analyze_triangle(0, 0, 0), "Not a triangle");
+			//arrange
+			int side1 = 1;
+			int side2 = 1;
+			int side3 = 0;
+
+			//act
+			const char* answer = analyze_triangle(side1, side2, side3);
+
+			//assert
+			Assert::AreEqual(answer, "Not a triangle");
+		}
+		TEST_METHOD(analyzeTriangle_ZeroZeroOne_NotATriangle)
+		{
+			//arrange
+			int side1 = 0;
+			int side2 = 0;
+			int side3 = 1;
+
+			//act
+			const char* answer = analyze_triangle(side1, side2, side3);
+
+			//assert
+			Assert::AreEqual(answer, "Not a triangle");
 		}
 
-		TEST_METHOD(INVALID_TRAINGLE_FIRST_NEGITIVE)
+		TEST_METHOD(analyzeTriangle_ZeroOneZero_NotATriangle)
 		{
-			Assert::AreEqual(analyze_triangle(-1, 1, 1), "Not a triangle");
+			//arrange
+			int side1 = 0;
+			int side2 = 1;
+			int side3 = 0;
+
+			//act
+			const char* answer = analyze_triangle(side1, side2, side3);
+
+			//assert
+			Assert::AreEqual(answer, "Not a triangle");
 		}
-		TEST_METHOD(INVALID_TRAINGLE_SECOND_NEGITIVE)
+		TEST_METHOD(analyzeTriangle_OneZeroZero_NotATriangle)
 		{
-			Assert::AreEqual(analyze_triangle(1, -1, 1), "Not a triangle");
+			//arrange
+			int side1 = 1;
+			int side2 = 0;
+			int side3 = 0;
+
+			//act
+			const char* answer = analyze_triangle(side1, side2, side3);
+
+			//assert
+			Assert::AreEqual(answer, "Not a triangle");
 		}
-		TEST_METHOD(INVALID_TRAINGLE_THIRD_NEGITIVE)
+		TEST_METHOD(analyzeTriangle_ZeroZeroZero_NotATriangle)
 		{
-			Assert::AreEqual(analyze_triangle(1, 1, -1), "Not a triangle");
-		}
-		TEST_METHOD(INVALID_TRAINGLE_FIRST_SECOND_NEGITIVE)
-		{
-			Assert::AreEqual(analyze_triangle(-1, -1, 1), "Not a triangle");
+			//arrange
+			int side1 = 0;
+			int side2 = 0;
+			int side3 = 0;
+
+			//act
+			const char* answer = analyze_triangle(side1, side2, side3);
+
+			//assert
+			Assert::AreEqual(answer, "Not a triangle");
 		}
 
-		TEST_METHOD(INVALID_TRAINGLE_FIRST_THIRD_NEGITIVE)
+		TEST_METHOD(analyzeTriangle_negOneOneOne_NotATriangle)
 		{
-			Assert::AreEqual(analyze_triangle(-1, 1, -1), "Not a triangle");
+			//arrange
+			int side1 = -1;
+			int side2 = 1;
+			int side3 = 1;
+
+			//act
+			const char* answer = analyze_triangle(side1, side2, side3);
+
+			//assert
+			Assert::AreEqual(answer, "Not a triangle");
 		}
-		TEST_METHOD(INVALID_TRAINGLE_SECOND_THIRD_NEGITIVE)
+		TEST_METHOD(analyzeTriangle_OneNegOneOne_NotATriangle)
 		{
-			Assert::AreEqual(analyze_triangle(1, -1, -1), "Not a triangle");
+			//arrange
+			int side1 = 1;
+			int side2 = -1;
+			int side3 = 1;
+
+			//act
+			const char* answer = analyze_triangle(side1, side2, side3);
+
+			//assert
+			Assert::AreEqual(answer, "Not a triangle");
 		}
-		TEST_METHOD(INVALID_TRAINGLE_SUM_LESS_THAN)
+		TEST_METHOD(analyzeTriangle_OneOneNegOne_NotATriangle)
 		{
-			Assert::AreEqual(analyze_triangle(2, 3, 1), "Not a triangle");
+			//arrange
+			int side1 = 1;
+			int side2 = 1;
+			int side3 = -1;
+
+			//act
+			const char* answer = analyze_triangle(side1, side2, side3);
+
+			//assert
+			Assert::AreEqual(answer, "Not a triangle");
 		}
-		TEST_METHOD(VALID_TRAINGLE_SUM_GREATER_THAN)
+		TEST_METHOD(analyzeTriangle_NegOneNegOneOne_NotATriangle)
 		{
-			Assert::AreEqual(analyze_triangle(3, 4, 2), "Scalene triangle");
+			//arrange
+			int side1 = -1;
+			int side2 = -1;
+			int side3 = 1;
+
+			//act
+			const char* answer = analyze_triangle(side1, side2, side3);
+
+			//assert
+			Assert::AreEqual(answer, "Not a triangle");
 		}
 
-		TEST_METHOD(INVALID_TRIANGLE_CHAR_side_1) {
-			Assert::AreEqual(analyze_triangle('c', 1, 1), "Not a triangle");
+		TEST_METHOD(analyzeTriangle_NegOneOneNegOne_NotATriangle)
+		{
+			//arrange
+			int side1 = -1;
+			int side2 = 1;
+			int side3 = -1;
+
+			//act
+			const char* answer = analyze_triangle(side1, side2, side3);
+
+			//assert
+			Assert::AreEqual(answer, "Not a triangle");
+			
 		}
-		TEST_METHOD(INVALID_TRIANGLE_CHAR_side_2) {
+		TEST_METHOD(analyzeTriangle_OneNegOneNegOne_NotATriangle)
+		{
+			//arrange
+			int side1 = 1;
+			int side2 = -1;
+			int side3 = -1;
+
+			//act
+			const char* answer = analyze_triangle(side1, side2, side3);
+
+			//assert
+			Assert::AreEqual(answer, "Not a triangle");
+		}
+		TEST_METHOD(analyzeTriangle_TwoThreeOne_NotATriangle)
+		{
+			//arrange
+			int side1 = 2;
+			int side2 = 3;
+			int side3 = 1;
+
+			//act
+			const char* answer = analyze_triangle(side1, side2, side3);
+
+			//assert
+			Assert::AreEqual(answer, "Not a triangle");
+		}
+		TEST_METHOD(analyzeTriangle_TwoThreeOne_ScaleneTriangle)
+		{
+			//arrange
+			int side1 = 3;
+			int side2 = 4;
+			int side3 = 2;
+
+			//act
+			const char* answer = analyze_triangle(side1, side2, side3);
+
+			//assert
+			Assert::AreEqual(answer, "Scalene triangle");
+		}
+
+		TEST_METHOD(analyzeTriangle_CharThreeOne_NotATriangle) 
+		{
+			//arrange
+			char side1 = 'c';
+			int side2 = 1;
+			int side3 = 1;
+
+			//act
+			const char* answer = analyze_triangle(side1, side2, side3);
+
+			//assert
+
+			Assert::AreEqual(answer, "Not a triangle");
+		}
+		TEST_METHOD(analyzeTriangle_OneCharOne_NotATriangle) 
+		{
+			//arrange
+			int side1 = 1;
+			char side2 = 'c';
+			int side3 = 1;
+
+			//act
+			const char* answer = analyze_triangle(side1, side2, side3);
+
+			//assert
 			Assert::AreEqual(analyze_triangle(1, 'b', 1), "Not a triangle");
 		}
-		TEST_METHOD(INVALID_TRIANGLE_CHAR_side_3) {
-			Assert::AreEqual(analyze_triangle(1, 1, 'a'), "Not a triangle");
+		TEST_METHOD(analyzeTriangle_OneOneChar_NotATriangle)
+		{
+			//arrange
+			int side1 = 1;
+			int side2 = 1;
+			char side3 = 'c';
+
+			//act
+			const char* answer = analyze_triangle(side1, side2, side3);
+
+			//assert
+			Assert::AreEqual(answer, "Not a triangle");
 		}
-		TEST_METHOD(INVALID_TRIANGLE_CHAR_side_all) {
-			Assert::AreEqual(analyze_triangle('c', 'b', 'a'), "Not a triangle");
+		TEST_METHOD(analyzeTriangle_CharCharChar_NotATriangle)
+		{
+			//arrange
+			char side1 = 'a';
+			char side2 = 'z';
+			char side3 = 'c';
+
+			//act
+			const char* answer = analyze_triangle(side1, side2, side3);
+
+			//assert
+			Assert::AreEqual(answer, "Not a triangle");
 		}
 
-		TEST_METHOD(ISOSCELES_one_two) {
-			Assert::AreEqual(analyze_triangle(2, 2, 3), "Isosceles triangle");
+		TEST_METHOD(analyzeTriangle_TwoTwoThree_IsoscelesTriangle) 
+		{
+			//arrange
+			char side1 = 2;
+			char side2 = 2;
+			char side3 = 3;
+
+			//act
+			const char* answer = analyze_triangle(side1, side2, side3);
+
+			//assert
+			Assert::AreEqual(answer, "Isosceles triangle");
 		}
-		TEST_METHOD(ISOSCELES_one_three) {
-			Assert::AreEqual(analyze_triangle(2, 3, 2), "Isosceles triangle");
+		TEST_METHOD(analyzeTriangle_TwoThreeTwo_IsoscelesTriangle) 
+		{
+			//arrange
+			char side1 = 2;
+			char side2 = 3;
+			char side3 = 2;
+
+			//act
+			const char* answer = analyze_triangle(side1, side2, side3);
+
+			//assert
+			Assert::AreEqual(answer, "Isosceles triangle");
 		}
-		TEST_METHOD(ISOSCELES_two_three) {
-			Assert::AreEqual(analyze_triangle(3, 2, 2), "Isosceles triangle");
+		TEST_METHOD(analyzeTriangle_ThreeTwoTwo_IsoscelesTriangle)
+		{
+			//arrange
+			char side1 = 3;
+			char side2 = 2;
+			char side3 = 2;
+
+			//act
+			const char* answer = analyze_triangle(side1, side2, side3);
+
+			//assert
+			Assert::AreEqual(answer, "Isosceles triangle");
 
 		}
-		TEST_METHOD(EQUALATERAL) {
-			for (int i = 1; i < 200; i++) {
+		TEST_METHOD(analyzeTriangle_OnetoTwoHundred_EquilateralTriangle)
+		{
+			//arrange 
+			int i = 1;
+
+			// act
+			for (int i = 1; i < 200; i++)
+			{
+				//assert
 				Assert::AreEqual(analyze_triangle(i, i, i), "Equilateral triangle");
 			}
 		}
-		TEST_METHOD(SCALENE) {
-			for (int i = 1; i < 200; i++) {
+		TEST_METHOD(analyzeTriangle_OnetoTwoHundred_ScaleneTriangle) {
+			
+			//arrange
+			int i = 1;
+
+			//act
+			for (int i = 1; i < 200; i++)
+			{
+				//assert
 				Assert::AreEqual(analyze_triangle(i+2, i + 3, i + 4), "Scalene triangle");
 			}
 		}

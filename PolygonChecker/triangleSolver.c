@@ -54,7 +54,7 @@ bool is_triangle(int sideOne, int sideTwo, int sideThree)
 
 bool is_equaliteral(int sideOne, int sideTwo, int sideThree)
 {
-	return (sideOne == sideTwo) && (sideOne = sideThree);
+	return (sideOne == sideTwo) && (sideOne == sideThree);
 }
 
 

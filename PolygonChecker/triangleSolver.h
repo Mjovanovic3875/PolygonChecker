@@ -6,6 +6,7 @@
 #define IS_SCALENE "Scalene triangle"
 
 const char* analyze_triangle(int side1, int side2, int side3);
+double radians_to_degrees(double radians);
 double* inside_angles(int one, int two, int three);
 double find_angle(int one, int two, int three);
 bool is_sum_greater(int one, int two, int three);

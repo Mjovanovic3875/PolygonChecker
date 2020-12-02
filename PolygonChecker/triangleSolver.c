@@ -70,6 +70,7 @@ void free_triangle(TRIANGLE* triangle)
 {
 	free(triangle->insideAnglesDegrees);
 	free(triangle->insideAnglesRadians);
+	free(triangle);
 }
 
 

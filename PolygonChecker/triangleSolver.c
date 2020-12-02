@@ -11,16 +11,6 @@
 #define TRIANGLE_NUMBER_OF_SIDES 3
 
 
-struct triangle
-{
-	double sideA;
-	double sideB;
-	double sideC;
-	bool isTriangle;
-	char* typeOfTriangle;
-	double *insideAnglesRadians;
-	double *insideAnglesDegrees;
-};
 
 
 TRIANGLE* create_triangle(double sideA, double sideB, double sideC)

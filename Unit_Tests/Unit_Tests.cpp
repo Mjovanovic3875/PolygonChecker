@@ -51,7 +51,7 @@ namespace UnitTests
 		}
 		TEST_METHOD(is_Rectangle_Invalid)
 		{
-			COORDINATE SquareSides;
+			EQUILATERAL SquareSides;
 			SquareSides.x[0] = 3;
 			SquareSides.x[1] = 1;
 			SquareSides.x[2] = 0;
@@ -64,7 +64,7 @@ namespace UnitTests
 		}
 		TEST_METHOD(is_Rectangle_Pass)
 		{
-			COORDINATE SquareSides;
+			EQUILATERAL SquareSides;
 			SquareSides.x[0] = 0;
 			SquareSides.x[1] = 1;
 			SquareSides.x[2] = 0;
@@ -78,7 +78,7 @@ namespace UnitTests
 
 		TEST_METHOD(Is_Rectangle_char_input)
 		{
-			COORDINATE SquareSides;
+			EQUILATERAL SquareSides;
 			SquareSides.x[0] = 'a';
 			SquareSides.x[1] = 2;
 			SquareSides.x[2] = 1;
@@ -91,7 +91,7 @@ namespace UnitTests
 		}
 		TEST_METHOD(is_Rectangle_Single_Negitive_Invalid)
 		{
-			COORDINATE SquareSides;
+			EQUILATERAL SquareSides;
 			SquareSides.x[0] = -1;
 			SquareSides.x[1] = 2;
 			SquareSides.x[2] = 1;
@@ -104,7 +104,7 @@ namespace UnitTests
 		}
 		TEST_METHOD(is_Rectangle_All_Negitive_Valid)
 		{
-			COORDINATE SquareSides;
+			EQUILATERAL SquareSides;
 			SquareSides.x[0] = -1;
 			SquareSides.x[1] = -2;
 			SquareSides.x[2] = -1;
@@ -117,7 +117,7 @@ namespace UnitTests
 		}
 		TEST_METHOD(is_Rectangle_Too_Few_Points)
 		{
-			COORDINATE SquareSides;
+			EQUILATERAL SquareSides;
 			SquareSides.x[0] = 3;
 			SquareSides.x[1] = 4;
 			SquareSides.x[2] = 1;

@@ -3,7 +3,7 @@
 #include <math.h>
 #include <stdbool.h>
 
-#include "triangleSolver.h"
+#include "TriangleSolver.h"
 
 
 int get_largest_side(int sideOne, int sideTwo, int sideThree)

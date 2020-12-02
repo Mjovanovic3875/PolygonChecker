@@ -2,7 +2,7 @@
 #include <stdbool.h>
 
 #include "main.h"
-#include "triangleSolver.h"
+#include "TriangleSolver.h"
 #include "SquareSolver.h"
 
 int side = 0;

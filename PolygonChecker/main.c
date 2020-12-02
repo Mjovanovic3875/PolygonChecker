@@ -18,12 +18,20 @@ int main() {
 
 
 			printf_s("Triangle selected.\n");
+			TRIANGLE* triangle = triangle_wizard();
+			print_triangle_information(triangle);
+			free_triangle(triangle);
+
+			// Old code
+			/*
 			int triangleSides[3] = { 0, 0, 0 };
 			int* triangleSidesPtr = getTriangleSides(triangleSides); // get triangle sides from user
 			//printf_s("! %d\n", triangleSidesPtr[0]);
 			char* result = analyze_triangle(triangleSidesPtr[0], triangleSidesPtr[1], triangleSidesPtr[2]); // what kind of triangle
-			double* angles = inside_angles(triangleSidesPtr[0], triangleSidesPtr[1], triangleSidesPtr[2]); // store angles of given sides
+			double* angles = inside_angles_radians(triangleSidesPtr[0], triangleSidesPtr[1], triangleSidesPtr[2]); // store angles of given sides
 			printf_s("\n%s\nThe angles are : %f, %f, %f", result, angles[0],angles[1],angles[2]);
+			*/
+
 			break;
 
 		case 2: // user selects rectangle
@@ -32,12 +40,12 @@ int main() {
 			COORDINATE SquareSides = { .x = {0,0,0,0},.y = {0,0,0,0}, .side1 = 0,.side2 = 0 };
 			SquareSides = getSquareSides(SquareSides); // get Square coordinates from user
 			if (isRectangle(&SquareSides)) { // if user does enter a valid rectangle
-				int perimiter = 0;
+				int perimeter = 0;
 				printf_s("%d", SquareSides.side1);
-				perimiter = getPerimiter(SquareSides.side1,SquareSides.side2); // get perimiter
+				perimeter = getPerimiter(SquareSides.side1,SquareSides.side2); // get perimeter
 				int area = 0;
 				area = getArea(SquareSides.side1, SquareSides.side2); // get area
-				printf_s("The perimiter is %d\nThe Area is : %d\n",perimiter,area); //print data
+				printf_s("The perimeter is %d\nThe Area is : %d\n",perimeter,area); //print data
 			}
 			else {
 				printf_s("\nThis is not a rectangle..."); // was not a rectangle

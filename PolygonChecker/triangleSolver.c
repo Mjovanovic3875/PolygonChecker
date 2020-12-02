@@ -8,6 +8,69 @@
 #include "TriangleSolver.h"
 
 
+#define TRIANGLE_NUMBER_OF_SIDES 3
+
+
+struct triangle
+{
+	double sideA;
+	double sideB;
+	double sideC;
+	char* typeOfTriangle;
+	double *insideAnglesRadians;
+	double *insideAngleDegrees;
+};
+
+
+TRIANGLE* create_triangle(double sideA, double sideB, double sideC)
+{
+	TRIANGLE* result = (TRIANGLE*)malloc(sizeof(TRIANGLE));
+
+	if (result == NULL)
+	{
+		exit(1);
+	}
+
+	result->sideA = sideA;
+	result->sideB = sideB;
+	result->sideC = sideC;
+	result->typeOfTriangle = analyze_triangle(result->sideA, result->sideB, result->sideC);
+	result->insideAnglesRadians = inside_angles_radians(result->sideA, result->sideB, result->sideC);
+	result->insideAngleDegrees = inside_angles_degrees(result->sideA, result->sideB, result->sideC);
+
+	return result;
+}
+
+
+TRIANGLE* triangle_wizard()
+{
+	printf_s("Enter the three sides of the triangle\n");
+
+	double sideA;
+	printf("Enter the 1st side: ");
+	scanf_s("%lf", &sideA);
+
+	double sideB;
+	printf("Enter the 2nd side: ");
+	scanf_s("%lf", &sideB);
+
+
+	double sideC;
+	printf("Enter the 3rd side: ");
+	scanf_s("%lf", &sideC);
+
+
+	return create_triangle(sideA, sideB, sideC);
+}
+
+
+void free_triangle(TRIANGLE* triangle)
+{
+	free(triangle->insideAngleDegrees);
+	free(triangle->insideAnglesRadians);
+}
+
+
 int get_largest_side(int sideOne, int sideTwo, int sideThree)
 {
 	if (sideOne > sideTwo)
@@ -171,7 +234,7 @@ double find_angle(int a, int b, int c)
 
 // Revision history
 // - Emil created
-double* inside_angles(int sideOne, int sideTwo, int sideThree)
+double* inside_angles_radians(int sideOne, int sideTwo, int sideThree)
 {
 	// See https://www.calculator.net/triangle-calculator.html#:~:text=The%20interior%20angles%20of%20a,of%20interest%20from%20180%C2%B0.
 	double* result = (double*)malloc(sizeof(double) * 3);
@@ -187,4 +250,19 @@ double* inside_angles(int sideOne, int sideTwo, int sideThree)
 	result[2] = find_angle(sideThree, sideOne, sideTwo);
 
 	return result;
+}
+
+
+double* inside_angles_degrees(int sideOne, int sideTwo, int sideThree)
+{
+	double* angles_radians = inside_angles_radians(sideOne, sideTwo, sideThree);
+	double* angles_degrees = (double*)malloc(sizeof(double));
+
+	for (int i = 0; i < TRIANGLE_NUMBER_OF_SIDES; i++)
+	{
+		angles_degrees[i] = radians_to_degrees(angles_radians[i]);
+	}
+	free(angles_radians);
+
+	return angles_degrees;
 }

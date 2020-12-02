@@ -5,60 +5,104 @@
 
 #include "triangleSolver.h"
 
-char* analyzeTriangle(int side1, int side2, int side3) {
-	char* result = "";
-	if (side1 <= 0 || side2 <= 0 || side3 <= 0) { // any sides less then or equal to zero and not a triangle | seems correct
-		result = "Not a triangle";
-	}
-	else if (side1 == side2 && side1 == side3) { // all three are equal its an equilateral | seems correct
-		result = "Equilateral triangle";
-	}
-	else if (!is_Sum_Greater(side1, side2, side3)) { // must be placed after equilateral check
-		result = "Not a triangle";
-	}
-	else if ((side1 == side2 && side1 != side3) || // was missing if side 2 and 3 are equal 
-		(side1 == side3 && side1 != side2) || (side2 == side3 && side2 != side1))
-	{
-		result = "Isosceles triangle";
-	}
-	else {
-		result = "Scalene triangle";
-	}
 
-	return result;
-}
-
-
-double findAngle(int a, int b, int c)
+int get_largest_side(int sideOne, int sideTwo, int sideThree)
 {
-	double numerator = pow(b, (double)2) + pow(c, (double)2) - pow(a, (double)2);
-	double denominator = (double)2 * (double)b * (double)c; // explicit cast upwards to avoid  overflow (hopefully)
-	return acos(numerator / denominator);
+	if (sideOne > sideTwo)
+	{
+		if (sideOne > sideThree)
+		{
+			return 1;
+		}
+		else
+		{
+			return 3;
+		}
+	}
+	else
+	{
+		if (sideTwo > sideThree)
+		{
+			return 2;
+		}
+		else
+		{
+			return 3;
+		}
+	}
 }
-bool is_Sum_Greater(int one, int two, int three) {
 
-	int largest_Index = -1;
-	if (one > two && one > three) {
-		largest_Index = 1;
+
+bool is_triangle(int sideOne, int sideTwo, int sideThree)
+{
+	int largestSide = get_largest_side(sideOne, sideTwo, sideThree);
+
+	if (largestSide == 1)
+	{
+		return (sideTwo + sideThree) > sideOne;
 	}
-	else if (two > one && two > three) {
-		largest_Index = 2;
+	else if (largestSide == 2)
+	{
+		return (sideOne + sideThree) > sideTwo;
 	}
-	else if (three > one && three > two) {
-		largest_Index = 3;
+	else
+	{
+		return (sideOne + sideTwo) > sideThree;
 	}
-	
-	if (largest_Index == 1) {
+}
+
+
+bool is_equaliteral(int sideOne, int sideTwo, int sideThree)
+{
+	return (sideOne == sideTwo) && (sideOne = sideThree);
+}
+
+
+bool is_isosceles(int sideOne, int sideTwo, int sideThree)
+{
+	if (sideOne == sideTwo)
+	{
+		return (sideOne != sideThree);
+	}
+	else if (sideOne == sideThree)
+	{
+		// We know that sideOne != sideTwo, so triangle is isosceles
+		return true;
+	}
+	else if (sideTwo == sideThree)
+	{
+		// We know that sideOne != sideTwo, so triangle is isosceles
+		return true;
+	}
+	else
+	{
+		// All sides are different
+		return false;
+	}
+}
+
+
+bool is_scalene(int sideOne, int sideTwo, int sideThree)
+{
+	return (sideOne != sideTwo) && (sideTwo != sideThree) && (sideOne != sideThree);
+}
+
+
+bool is_sum_greater(int one, int two, int three) {
+
+	int largestSide = get_largest_side(one, two, three);
+
+	if (largestSide == 1) {
 		if ((two + three) > one) {
 			return true;
 		}
 	}
-	else if (largest_Index == 2) {
+	else if (largestSide == 2) {
 		if ((one + three) > two) {
 			return true;
 		}
 	}
-	else if (largest_Index == 3) {
+	else if (largestSide == 3) {
 		if ((two + one) > three) {
 			return true;
 		}
@@ -66,7 +110,53 @@ bool is_Sum_Greater(int one, int two, int three) {
 	return false;
 }
 
-double* insideAngles(int side1, int side2, int side3)
+
+// Revision history
+// - Danny fixed bug
+// - Emil rewrote for readability
+char* analyze_triangle(int sideOne, int sideTwo, int sideThree) {
+	// Define possible returns as static constants
+	// This allows us to avoid memory allocation while letting the
+	// strings to persist beyond the function call
+	static const char* NOT_A_TRIANGLE_RETURN = NOT_A_TRIANGLE;
+	static const char* IS_EQUILATERAL_RETURN = IS_EQUILATERAL;
+	static const char* IS_ISOSCELES_RETURN = IS_ISOSCELES;
+	static const char* IS_SCALENE_RETURN = IS_SCALENE;
+
+
+	if (!is_triangle(sideOne, sideTwo, sideThree))
+	{
+		return NOT_A_TRIANGLE_RETURN;
+	}
+	else if (is_equaliteral(sideOne, sideTwo, sideThree))
+	{
+		return IS_EQUILATERAL_RETURN;
+	}
+	else if (is_isosceles(sideOne, sideTwo, sideThree))
+	{
+		return IS_ISOSCELES_RETURN;
+	}
+	else if (is_scalene(sideOne, sideTwo, sideThree))
+	{
+		return IS_SCALENE_RETURN;
+	}
+	// The function should NOT ever go here
+	// TODO: Write a nice error message
+	exit(1);
+}
+
+// Revision history
+// - Emil created
+double find_angle(int a, int b, int c)
+{
+	double numerator = pow(b, (double)2) + pow(c, (double)2) - pow(a, (double)2);
+	double denominator = (double)2 * (double)b * (double)c; // explicit cast upwards to avoid  overflow (hopefully)
+	return acos(numerator / denominator);
+}
+
+// Revision history
+// - Emil created
+double* inside_angles(int sideOne, int sideTwo, int sideThree)
 {
 	// See https://www.calculator.net/triangle-calculator.html#:~:text=The%20interior%20angles%20of%20a,of%20interest%20from%20180%C2%B0.
 	double* result = (double*)malloc(sizeof(double) * 3);
@@ -77,9 +167,9 @@ double* insideAngles(int side1, int side2, int side3)
 		exit(1);
 	}
 
-	result[0] = findAngle(side1, side2, side3);
-	result[1] = findAngle(side2, side1, side3);
-	result[2] = findAngle(side3, side1, side2);
+	result[0] = find_angle(sideOne, sideTwo, sideThree);
+	result[1] = find_angle(sideTwo, sideOne, sideThree);
+	result[2] = find_angle(sideThree, sideOne, sideTwo);
 
 	return result;
 }

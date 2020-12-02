@@ -37,8 +37,18 @@ TRIANGLE* create_triangle(double sideA, double sideB, double sideC)
 	result->sideC = sideC;
 	result->isTriangle = is_triangle(result->sideA, result->sideB, result->sideC);
 	result->typeOfTriangle = analyze_triangle(result->sideA, result->sideB, result->sideC);
-	result->insideAnglesRadians = inside_angles_radians(result->sideA, result->sideB, result->sideC);
-	result->insideAnglesDegrees = inside_angles_degrees(result->sideA, result->sideB, result->sideC);
+
+	if (result->isTriangle)
+	{
+		result->insideAnglesRadians = inside_angles_radians(result->sideA, result->sideB, result->sideC);
+		result->insideAnglesDegrees = inside_angles_degrees(result->sideA, result->sideB, result->sideC);
+	}
+	else
+	{
+		result->insideAnglesRadians = NULL;
+		result->insideAnglesDegrees = NULL;
+	}
+	
 
 	return result;
 }
@@ -121,7 +131,12 @@ bool is_triangle(double sideOne, double sideTwo, double sideThree)
 {
 	int largestSide = get_largest_side(sideOne, sideTwo, sideThree);
 
-	if (largestSide == 1)
+	// First, check if any of the sides are negative. If so, this is definitely not a triangle
+	if ((sideOne < 0) || (sideTwo < 0) || (sideThree < 0))
+	{
+		return false;
+	}
+	else if (largestSide == 1)
 	{
 		return (sideTwo + sideThree) > sideOne;
 	}
@@ -256,7 +271,7 @@ double find_angle(double a, double b, double c)
 double* inside_angles_radians(double sideOne, double sideTwo, double sideThree)
 {
 	// See https://www.calculator.net/triangle-calculator.html#:~:text=The%20interior%20angles%20of%20a,of%20interest%20from%20180%C2%B0.
-	double* result = (double*)malloc(sizeof(double) * 3);
+	double* result = (double*)malloc(sizeof(double) * TRIANGLE_NUMBER_OF_SIDES);
 
 	if (result == NULL)
 	{
@@ -275,7 +290,7 @@ double* inside_angles_radians(double sideOne, double sideTwo, double sideThree)
 double* inside_angles_degrees(double sideOne, double sideTwo, double sideThree)
 {
 	double* angles_radians = inside_angles_radians(sideOne, sideTwo, sideThree);
-	double* angles_degrees = (double*)malloc(sizeof(double));
+	double* angles_degrees = (double*)malloc(sizeof(double) * TRIANGLE_NUMBER_OF_SIDES);
 
 	if (angles_degrees == NULL)
 	{

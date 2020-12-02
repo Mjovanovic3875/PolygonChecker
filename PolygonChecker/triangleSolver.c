@@ -157,12 +157,16 @@ double radians_to_degrees(double radians)
 // - Emil created
 double find_angle(int a, int b, int c)
 {
+	// b^2 + c^2 - a^2
 	double numerator = pow(b, (double)2) + pow(c, (double)2) - pow(a, (double)2);
+	// 2bc
 	double denominator = (double)2 * (double)b * (double)c; // explicit cast upwards to avoid  overflow (hopefully)
+	
+	//arcos
 	double angleInRadians = acos(numerator / denominator);
 
 
-	return radians_to_degrees(angleInRadians);
+	return angleInRadians;
 }
 
 // Revision history

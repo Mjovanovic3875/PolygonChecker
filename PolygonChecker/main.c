@@ -5,8 +5,6 @@
 #include "TriangleSolver.h"
 #include "SquareSolver.h"
 
-int side = 0;
-
 int main() {
 	bool continueProgram = true; // for while loop
 	while (continueProgram) {

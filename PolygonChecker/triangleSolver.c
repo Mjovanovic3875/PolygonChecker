@@ -1,3 +1,5 @@
+#define _USE_MATH_DEFINES
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <math.h>
@@ -145,13 +147,22 @@ const char* analyze_triangle(int sideOne, int sideTwo, int sideThree) {
 	exit(1);
 }
 
+
+double radians_to_degrees(double radians)
+{
+	return radians * ((double)180 / M_PI);
+}
+
 // Revision history
 // - Emil created
 double find_angle(int a, int b, int c)
 {
 	double numerator = pow(b, (double)2) + pow(c, (double)2) - pow(a, (double)2);
 	double denominator = (double)2 * (double)b * (double)c; // explicit cast upwards to avoid  overflow (hopefully)
-	return acos(numerator / denominator);
+	double angleInRadians = acos(numerator / denominator);
+
+
+	return radians_to_degrees(angleInRadians);
 }
 
 // Revision history

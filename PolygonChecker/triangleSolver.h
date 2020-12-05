@@ -6,17 +6,7 @@
 #define IS_SCALENE "Scalene triangle"
 
 
-
-typedef struct triangle
-{
-	double sideA;
-	double sideB;
-	double sideC;
-	bool isTriangle;
-	char* typeOfTriangle;
-	double* insideAnglesRadians;
-	double* insideAnglesDegrees;
-}TRIANGLE;
+typedef struct triangle TRIANGLE;
 
 TRIANGLE* create_triangle(double sideA, double sideB, double sideC);
 TRIANGLE* triangle_wizard();

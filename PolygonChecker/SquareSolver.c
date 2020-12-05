@@ -65,3 +65,5 @@ bool isRectangle(EQUILATERAL* points) { // says i need to generate 4 lines but 2
 
 	return false;
 }
+
+is

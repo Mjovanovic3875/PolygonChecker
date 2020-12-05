@@ -13,6 +13,7 @@ EQUILATERAL getSquareSides(EQUILATERAL points) { // retrieve user input for the 
 			printf_s("Enter the y coordinate of the %d coordinate of the square: ", (i + 1));
 			scanf_s("%lf", &points.y[i]);
 		}
+		write_Sides(points);
 		return points;
 	
 }
@@ -64,10 +65,10 @@ void write_Sides(EQUILATERAL points) {
 			bottom_Left = counter;
 		}
 	}
-	points.top_line = 0;
-	points.bottom_line = 0;
-	points.left_line = 0;
-	points.right_line = 0;
+	points.top_line = sqrt(pow(abs(points.x[top_Right] - points.x[top_Left]),2) + pow(abs(points.y[top_Right] - points.y[top_Left]),2)); // sqrt( (x2 - x1)^2 + (y2 - y1)^2 )
+	points.bottom_line = sqrt(pow(abs(points.x[Bottom_Right] - points.x[bottom_Left]), 2) + pow(abs(points.y[Bottom_Right] - points.y[bottom_Left]), 2)); // abs allows x2 x1 to be interchangable in the above formula
+	points.left_line = sqrt(pow(abs(points.x[top_Left] - points.x[bottom_Left]), 2) + pow(abs(points.y[top_Left] - points.y[bottom_Left]), 2));
+	points.right_line = sqrt(pow(abs(points.x[top_Right] - points.x[Bottom_Right]), 2) + pow(abs(points.y[top_Right] - points.y[Bottom_Right]), 2));
 
-
+	printf_s("top_left(%lf,%lf) top right(%lf,%lf) bottomleft(%lf,%lf) bottomright (%lf,%lf) Top: %lf, bottom : %lf, Left : %lf, Right : %lf		", points.x[top_Left], points.y[top_Left], points.x[top_Right], points.y[top_Right], points.x[bottom_Left], points.y[bottom_Left], points.x[Bottom_Right], points.y[Bottom_Right], points.top_line, points.bottom_line, points.left_line, points.right_line);
 }

@@ -25,8 +25,14 @@ double getArea(double x, double y) { // returns the area of two lines
 }
 bool isRectangle(EQUILATERAL* points) { // says i need to generate 4 lines but 2 lines are identical for x and y axis so shouldnt I only need 2?
 
-
-	return true; // everything passed
+	if (points->top_line == points->bottom_line && points->left_line == points->right_line) { // top and bottom lines are equal and left right lines are equal 
+		if (points->diag1 == points->diag2) { // diagionals are equal
+			return true; // all requirements passed
+		}
+	}
+	else {
+		return false; // not a rect
+	}
 }
 void write_Sides(EQUILATERAL points) {
 	int topy_1 = 0;
@@ -70,5 +76,9 @@ void write_Sides(EQUILATERAL points) {
 	points.left_line = sqrt(pow(abs(points.x[top_Left] - points.x[bottom_Left]), 2) + pow(abs(points.y[top_Left] - points.y[bottom_Left]), 2));
 	points.right_line = sqrt(pow(abs(points.x[top_Right] - points.x[Bottom_Right]), 2) + pow(abs(points.y[top_Right] - points.y[Bottom_Right]), 2));
 
-	printf_s("top_left(%lf,%lf) top right(%lf,%lf) bottomleft(%lf,%lf) bottomright (%lf,%lf) Top: %lf, bottom : %lf, Left : %lf, Right : %lf		", points.x[top_Left], points.y[top_Left], points.x[top_Right], points.y[top_Right], points.x[bottom_Left], points.y[bottom_Left], points.x[Bottom_Right], points.y[Bottom_Right], points.top_line, points.bottom_line, points.left_line, points.right_line);
+	points.diag1 = sqrt(pow(abs(points.x[top_Left] - points.x[Bottom_Right]), 2) + pow(abs(points.y[top_Left] - points.y[Bottom_Right]), 2));
+	points.diag2 = sqrt(pow(abs(points.x[top_Right] - points.x[bottom_Left]), 2) + pow(abs(points.y[top_Right] - points.y[bottom_Left]), 2));
+
+	// uncomment the line underneath to view values of coordinates and lines
+	// printf_s("top_left(%lf,%lf) top right(%lf,%lf) bottomleft(%lf,%lf) bottomright (%lf,%lf) Top: %lf, bottom : %lf, Left : %lf, Right : %lf		", points.x[top_Left], points.y[top_Left], points.x[top_Right], points.y[top_Right], points.x[bottom_Left], points.y[bottom_Left], points.x[Bottom_Right], points.y[Bottom_Right], points.top_line, points.bottom_line, points.left_line, points.right_line);
 }

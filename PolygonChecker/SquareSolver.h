@@ -9,7 +9,9 @@ typedef struct EQUILATERAL { // this is a coordinate struct it contains x and y 
 	double top_line;
 	double left_line;
 	double bottom_line;
-		double right_line;
+	double right_line;
+	double diag1;
+	double diag2;
 }EQUILATERAL;
 
 

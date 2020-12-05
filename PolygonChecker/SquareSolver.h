@@ -3,14 +3,18 @@
 #include <stdio.h>
 #include "triangleSolver.h"
 
-typedef struct coordinate { // this is a coordinate struct it contains x and y coordinates for up to 4 points and carries 2 side lengths
-	int x[4];
-	int y[5];
-	int side1;
-	int side2;
-}COORDINATE;
+typedef struct EQUILATERAL { // this is a coordinate struct it contains x and y coordinates for up to 4 points and carries 2 side lengths
+	double x[4];
+	double y[4];
+	double top_line;
+	double left_line;
+	double bottom_line;
+		double right_line;
+}EQUILATERAL;
 
-COORDINATE getSquareSides(COORDINATE points); //gets user input and returned them as a coordinate struct
-int getPerimiter(int x, int y); // returns the perimeter of a rectangle based on two lines
-int getArea(int x, int y); //returns the area of two lines
-bool isRectangle(COORDINATE* points); // determines if the given set of coordinates is a rectangle or not
+
+void write_Sides(EQUILATERAL reference);
+EQUILATERAL getSquareSides(EQUILATERAL points); //gets user input and returned them as a coordinate struct
+double getPerimiter(double x, double y); // returns the perimeter of a rectangle based on two lines
+double getArea(double x, double y); //returns the area of two lines
+bool isRectangle(EQUILATERAL* points); // determines if the given set of coordinates is a rectangle or not

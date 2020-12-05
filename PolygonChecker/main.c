@@ -37,14 +37,15 @@ int main() {
 		case 2: // user selects rectangle
 			printf_s("\nSquare selected.\n");
 			
-			COORDINATE SquareSides = { .x = {0,0,0,0},.y = {0,0,0,0}, .side1 = 0,.side2 = 0 };
+			EQUILATERAL SquareSides = { .x = {0,0,0,0},.y = {0,0,0,0}, .top_line = 0,.bottom_line = 0,.left_line =0, .right_line =0};
 			SquareSides = getSquareSides(SquareSides); // get Square coordinates from user
+		
 			if (isRectangle(&SquareSides)) { // if user does enter a valid rectangle
-				int perimeter = 0;
-				printf_s("%d", SquareSides.side1);
-				perimeter = getPerimiter(SquareSides.side1,SquareSides.side2); // get perimeter
-				int area = 0;
-				area = getArea(SquareSides.side1, SquareSides.side2); // get area
+				double perimeter = 0;
+		
+				perimeter = getPerimiter(SquareSides.top_line,SquareSides.left_line); // get perimeter
+				double area = 0;
+				area = getArea(SquareSides.top_line, SquareSides.left_line); // get area
 				printf_s("The perimeter is %d\nThe Area is : %d\n",perimeter,area); //print data
 			}
 			else {

@@ -15,8 +15,8 @@ typedef struct EQUILATERAL { // this is a coordinate struct it contains x and y 
 }EQUILATERAL;
 
 
-void write_Sides(EQUILATERAL reference);
+EQUILATERAL write_Sides(EQUILATERAL reference);
 EQUILATERAL getSquareSides(EQUILATERAL points); //gets user input and returned them as a coordinate struct
 double getPerimiter(double x, double y); // returns the perimeter of a rectangle based on two lines
 double getArea(double x, double y); //returns the area of two lines
-bool isRectangle(EQUILATERAL* points); // determines if the given set of coordinates is a rectangle or not
+bool isRectangle(EQUILATERAL points); // determines if the given set of coordinates is a rectangle or not

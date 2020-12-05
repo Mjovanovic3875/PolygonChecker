@@ -39,14 +39,15 @@ int main() {
 			
 			EQUILATERAL SquareSides = { .x = {0,0,0,0},.y = {0,0,0,0}, .top_line = 0,.bottom_line = 0,.left_line =0, .right_line =0};
 			SquareSides = getSquareSides(SquareSides); // get Square coordinates from user
-		
-			if (isRectangle(&SquareSides)) { // if user does enter a valid rectangle
+			SquareSides = write_Sides(SquareSides);
+
+			if (isRectangle(SquareSides) == true) { // if user does enter a valid rectangle
 				double perimeter = 0;
 		
 				perimeter = getPerimiter(SquareSides.top_line,SquareSides.left_line); // get perimeter
 				double area = 0;
 				area = getArea(SquareSides.top_line, SquareSides.left_line); // get area
-				printf_s("The perimeter is %d\nThe Area is : %d\n",perimeter,area); //print data
+				printf_s("The perimeter is %lf\nThe Area is : %lf\n",perimeter,area); //print data
 			}
 			else {
 				printf_s("\nThis is not a rectangle..."); // was not a rectangle

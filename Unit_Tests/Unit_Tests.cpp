@@ -8,6 +8,8 @@ extern "C" {
 }
 using namespace Microsoft::VisualStudio::CppUnitTestFramework;
 
+#define ANGLETOLERANCE 0.05
+
 namespace UnitTests
 {
 	TEST_CLASS(UnitTests)
@@ -127,7 +129,118 @@ namespace UnitTests
 		    Assert::AreEqual(isRectangle(SquareSides),false);
 		}
 
+		TEST_METHOD(radians_to_degrees_OneDecimalZeroFourSevenTwo_Sixty)
+		{
+			//arrange
+			double radians = 1.0472;
+			double expected = 60;
+			
+			//act
+			double answer = radians_to_degrees(radians);
+		
 
+			//assert
+
+			Assert::AreEqual(answer, expected, ANGLETOLERANCE);
+
+		}
+
+		TEST_METHOD(radians_to_degrees_TwoDecimalZeroNineFourFour_OneHundredTwenty)
+		{
+			//arrange
+			double radians = 2.0944;
+			double expected = 120;
+
+			//act
+			double answer = radians_to_degrees(radians);
+
+
+			//assert
+
+			Assert::AreEqual(answer, expected, ANGLETOLERANCE);
+
+		}
+
+		TEST_METHOD(radians_to_degrees_ZeroDecimalZeroOneSevenFour_One)
+		{
+			//arrange
+			double radians = 0.0174;
+			double expected = 1;
+
+			//act
+			double answer = radians_to_degrees(radians);
+
+
+			//assert
+
+			Assert::AreEqual(answer, expected, ANGLETOLERANCE);
+
+		}
+
+		TEST_METHOD(radians_to_degrees_ThreeDecimalOneZeroSixSix_178)
+		{
+			//arrange
+			double radians = 3.1066;
+			double expected = 178;
+
+			//act
+			double answer = radians_to_degrees(radians);
+
+
+			//assert
+
+			Assert::AreEqual(answer, expected, ANGLETOLERANCE);
+
+		}
+
+
+		TEST_METHOD(radians_to_degrees_OneDecimalTwoTwoOneSeven_Seventy)
+		{
+			//arrange
+			double radians = 1.2217;
+			double expected = 70;
+
+			//act
+			double answer = radians_to_degrees(radians);
+
+
+			//assert
+
+			Assert::AreEqual(answer, expected, ANGLETOLERANCE);
+
+		}
+
+		TEST_METHOD(radians_to_degrees_ZeroDecimalSixNineEightOne_forty)
+		{
+			//arrange
+			double radians = 0.6981;
+			double expected = 40;
+
+			//act
+			double answer = radians_to_degrees(radians);
+
+
+			//assert
+
+			Assert::AreEqual(answer, expected, ANGLETOLERANCE);
+
+		}
+
+		TEST_METHOD(radians_to_degrees_ZeroDecimalSevenEightFiveFour_fortyfive)
+		{
+			//arrange
+			double radians = 0.7854;
+			double expected = 45;
+
+			//act
+			double answer = radians_to_degrees(radians);
+
+
+			//assert
+
+			Assert::AreEqual(answer, expected, ANGLETOLERANCE);
+
+		}
 
 		TEST_METHOD(analyzeTriangle_negOneallsides_NotATriangle)
 		{

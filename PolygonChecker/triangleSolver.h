@@ -1,4 +1,4 @@
-#pragma once
+  #pragma once
 
 #define NOT_A_TRIANGLE "Not a triangle"
 #define IS_EQUILATERAL "Equilateral triangle"

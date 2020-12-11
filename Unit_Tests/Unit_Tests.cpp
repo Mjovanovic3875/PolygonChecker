@@ -242,6 +242,110 @@ namespace UnitTests
 
 		}
 
+		TEST_METHOD(find_angle_OneOneOne_1decimal0472)
+		{
+			//arrange
+			double sideOne = 1;
+			double sideTwo = 1;
+			double sideThree = 1;
+
+			double expected = 1.0472;
+
+			//act
+			double answer = find_angle(sideOne, sideTwo, sideThree);
+			
+			//assert
+			Assert::AreEqual(answer,expected, ANGLETOLERANCE );
+
+		}
+
+		TEST_METHOD(find_angle_TweleveTweleveSixteen_0decimal8410)
+		{
+			//arrange
+			double sideOne = 12;
+			double sideTwo = 12;
+			double sideThree = 16;
+
+			double expected = 0.8410;
+
+			//act
+			double answer = find_angle(sideOne, sideTwo, sideThree);
+
+			//assert
+			Assert::AreEqual(answer, expected, ANGLETOLERANCE);
+
+		}
+
+		TEST_METHOD(find_angle_SixteenTweleveTweleve_1decimal459)
+		{
+			//arrange
+			double sideOne = 16;
+			double sideTwo = 12;
+			double sideThree = 12;
+
+			double expected = 1.459;
+
+			//act
+			double answer = find_angle(sideOne, sideTwo, sideThree);
+
+			//assert
+			Assert::AreEqual(answer, expected, ANGLETOLERANCE);
+
+		}
+
+		TEST_METHOD(find_angle_SevenTwelveFifteen_1decimal7620)
+		{
+			//arrange
+			double sideOne = 7;
+			double sideTwo = 12;
+			double sideThree = 15;
+
+			double expected = 0.4760;
+
+			//act
+			double answer = find_angle(sideOne, sideTwo, sideThree);
+
+			//assert
+			Assert::AreEqual(answer, expected, ANGLETOLERANCE);
+
+		}
+
+		TEST_METHOD(find_angle_TwelveSevenFifteen_0decimal9030)
+		{
+			//arrange
+			double sideOne = 12;
+			double sideTwo = 7;
+			double sideThree = 15;
+
+			double expected = 0.9030;
+
+			//act
+			double answer = find_angle(sideOne, sideTwo, sideThree);
+
+			//assert
+			Assert::AreEqual(answer, expected, ANGLETOLERANCE);
+
+		}
+
+		TEST_METHOD(find_angle_FifteenSevenTwelve_1decimal7620)
+		{
+			//arrange
+			double sideOne = 15;
+			double sideTwo = 7;
+			double sideThree = 12;
+
+			double expected = 1.7620;
+
+			//act
+			double answer = find_angle(sideOne, sideTwo, sideThree);
+
+			//assert
+			Assert::AreEqual(answer, expected, ANGLETOLERANCE);
+
+		}
+
+
+
 		TEST_METHOD(analyzeTriangle_negOneallsides_NotATriangle)
 		{
 			//arrange
@@ -498,20 +602,7 @@ namespace UnitTests
 			//assert
 			Assert::AreEqual(answer, "Not a triangle");
 		}
-		TEST_METHOD(analyzeTriangle_CharCharChar_NotATriangle)
-		{
-			//arrange
-			char side1 = 'a';
-			char side2 = 'z';
-			char side3 = 'c';
-
-			//act
-			const char* answer = analyze_triangle(side1, side2, side3);
-
-			//assert
-			Assert::AreEqual(answer, "Not a triangle");
-		}
-
+		
 		TEST_METHOD(analyzeTriangle_TwoTwoThree_IsoscelesTriangle) 
 		{
 			//arrange

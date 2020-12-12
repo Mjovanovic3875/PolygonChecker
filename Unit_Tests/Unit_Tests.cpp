@@ -1,3 +1,4 @@
+#include <string.h>
 #include "pch.h"
 #include "CppUnitTest.h"
 
@@ -5,6 +6,7 @@ extern "C" {
 #include "main.h"
 #include "TriangleSolver.h"
 #include "SquareSolver.h"
+
 }
 using namespace Microsoft::VisualStudio::CppUnitTestFramework;
 
@@ -344,7 +346,167 @@ namespace UnitTests
 
 		}
 
+		TEST_METHOD(inside_angles_radians_OneOneOne_1decimal0472)
+		{
+			//arrange
+			double sideOne = 1;
+			double sideTwo = 1;
+			double sideThree = 1;
 
+			double* expected = (double*)malloc(sizeof(double) * 3);
+
+			if (expected == NULL)
+			{
+				return;
+			}
+			expected[0] = 1.0472; //angle oppiiste to side one
+			expected[1] = 1.0472; //angle oppiiste to side two
+			expected[2] = 1.0472; //angle oppiiste to side three
+
+			//act
+			double* answer = inside_angles_radians(sideOne, sideTwo, sideThree);
+
+			//assert
+			
+			Assert::AreEqual(expected[0],answer[0],ANGLETOLERANCE);
+			Assert::AreEqual(expected[1], answer[1], ANGLETOLERANCE);
+			Assert::AreEqual(expected[2], answer[2], ANGLETOLERANCE);
+		}
+
+		TEST_METHOD(inside_angles_radians_TwelveTwelveSixteen_0Decimal84107_0Decimal84107_1Decimal45946)
+		{
+			//arrange
+			double sideOne = 12; 
+			double sideTwo = 12;
+			double sideThree = 16; 
+
+			double* expected = (double*)malloc(sizeof(double) * 3);
+
+			if (expected == NULL)
+			{
+				return;
+			}
+			expected[0] = 0.84107; //angle oppiiste to side one
+			expected[1] = 0.84107; //angle oppiiste to side two
+			expected[2] = 1.45946; //angle oppiiste to side three
+
+			//act
+			double* answer = inside_angles_radians(sideOne, sideTwo, sideThree);
+
+			//assert
+
+			Assert::AreEqual(expected[0], answer[0], ANGLETOLERANCE);
+			Assert::AreEqual(expected[1], answer[1], ANGLETOLERANCE);
+			Assert::AreEqual(expected[2], answer[2], ANGLETOLERANCE);
+		}
+
+		TEST_METHOD(inside_angles_radians_ThreeFourFive_0Decimal6435_0Decimal9273_1Decimal5708)
+		{
+			//arrange
+			double sideOne = 3; 
+			double sideTwo = 4; 
+			double sideThree = 5; 
+
+			double* expected = (double*)malloc(sizeof(double) * 3);
+
+			if (expected == NULL)
+			{
+				return;
+			}
+			expected[0] = 0.6435; //angle oppiiste to side one
+			expected[1] = 0.9273; //angle oppiiste to side two
+			expected[2] = 1.5708; //angle oppiiste to side three
+
+			//act
+			double* answer = inside_angles_radians(sideOne, sideTwo, sideThree);
+
+			//assert
+
+			Assert::AreEqual(expected[0], answer[0], ANGLETOLERANCE);
+			Assert::AreEqual(expected[1], answer[1], ANGLETOLERANCE);
+			Assert::AreEqual(expected[2], answer[2], ANGLETOLERANCE);
+		}
+
+		TEST_METHOD(inside_angles_radians_OneOneOne_60)
+		{
+			//arrange
+			double sideOne = 1;
+			double sideTwo = 1;
+			double sideThree = 1;
+
+			double* expected = (double*)malloc(sizeof(double) * 3);
+
+			if (expected == NULL)
+			{
+				return;
+			}
+			expected[0] = 60; //angle oppiiste to side one
+			expected[1] = 60; //angle oppiiste to side two
+			expected[2] = 60; //angle oppiiste to side three
+
+			//act
+			double* answer = inside_angles_degrees(sideOne, sideTwo, sideThree);
+
+			//assert
+
+			Assert::AreEqual(expected[0], answer[0], ANGLETOLERANCE);
+			Assert::AreEqual(expected[1], answer[1], ANGLETOLERANCE);
+			Assert::AreEqual(expected[2], answer[2], ANGLETOLERANCE);
+		}
+
+		TEST_METHOD(inside_angles_radians_TwelveTwelveSixteen_48Decimal19_48Decimal19_83Decimal6)
+		{
+			//arrange
+			double sideOne = 12;
+			double sideTwo = 12;
+			double sideThree = 16;
+
+			double* expected = (double*)malloc(sizeof(double) * 3);
+
+			if (expected == NULL)
+			{
+				return;
+			}
+			expected[0] = 48.19; //angle oppiiste to side one
+			expected[1] = 48.19; //angle oppiiste to side two
+			expected[2] = 83.6; //angle oppiiste to side three
+
+			//act
+			double* answer = inside_angles_degrees(sideOne, sideTwo, sideThree);
+
+			//assert
+
+			Assert::AreEqual(expected[0], answer[0], ANGLETOLERANCE);
+			Assert::AreEqual(expected[1], answer[1], ANGLETOLERANCE);
+			Assert::AreEqual(expected[2], answer[2], ANGLETOLERANCE);
+		}
+
+		TEST_METHOD(inside_angles_radians_ThreeFourFive_36Decimal87_52Decimal13_90)
+		{
+			//arrange
+			double sideOne = 3;
+			double sideTwo = 4;
+			double sideThree = 5;
+
+			double* expected = (double*)malloc(sizeof(double) * 3);
+
+			if (expected == NULL)
+			{
+				return;
+			}
+			expected[0] = 36.87; //angle oppiiste to side one
+			expected[1] = 53.13; //angle oppiiste to side two
+			expected[2] = 90; //angle oppiiste to side three
+
+			//act
+			double* answer = inside_angles_degrees(sideOne, sideTwo, sideThree);
+
+			//assert
+
+			Assert::AreEqual(expected[0], answer[0], ANGLETOLERANCE);
+			Assert::AreEqual(expected[1], answer[1], ANGLETOLERANCE);
+			Assert::AreEqual(expected[2], answer[2], ANGLETOLERANCE);
+		}
 
 		TEST_METHOD(analyzeTriangle_negOneallsides_NotATriangle)
 		{

@@ -20,41 +20,108 @@ namespace UnitTests
 	
 		TEST_METHOD(get_Area_Valid)
 		{
-			
+			//arrange
+
+
+
+			//act
+
+
+
+			//assert
+
+
 		}
 		TEST_METHOD(get_Area_One_Negitive)
 		{
-			
+			//arrange
+
+
+
+			//act
+
+
+
+			//assert
 		}
 
 		TEST_METHOD(get_Area_All_Negitive)
 		{
-			
+			//arrange
+
+
+
+			//act
+
+
+
+			//assert
 		}
 		TEST_METHOD(get_Area_char_Input)
 		{
-		
+			//arrange
+
+
+
+				//act
+
+
+
+				//assert
 		}
 
 		TEST_METHOD(get_Perimiter_Valid)
 		{
+			//arrange
 
+
+
+			//act
+
+
+
+			//assert
 		}
 		TEST_METHOD(get_Perimiter_One_Negitive)
 		{
+			//arrange
 
+
+
+			//act
+
+
+
+			//assert
 		}
 
 		TEST_METHOD(get_Perimiter_All_Negitive)
 		{
-			
+			//arrange
+
+
+
+			//act
+
+
+
+			//assert
 		}
 		TEST_METHOD(get_Perimiter_char_Input)
 		{
-			
+			//arrange
+
+
+
+			//act
+
+
+
+			//assert
 		}
-		TEST_METHOD(is_Rectangle_Invalid)
+		TEST_METHOD(is_Rectangle_InvalidRectangle_False)
 		{
+			//arrange 
 			EQUILATERAL SquareSides;
 			SquareSides.x[0] = 3;
 			SquareSides.x[1] = 1;
@@ -64,10 +131,16 @@ namespace UnitTests
 			SquareSides.y[1] = 2;
 			SquareSides.y[2] = 1;
 			SquareSides.y[3] = 2;
-			Assert::AreEqual(isRectangle(SquareSides), false);
+
+			//act 
+			bool answer = isRectangle(SquareSides);
+			
+			//assert
+			Assert::AreEqual(answer, false);
 		}
-		TEST_METHOD(is_Rectangle_Pass)
+		TEST_METHOD(is_Rectangle_VaildRectange_True)
 		{
+			//arrange
 			EQUILATERAL SquareSides;
 			SquareSides.x[0] = 0;
 			SquareSides.x[1] = 1;
@@ -77,11 +150,17 @@ namespace UnitTests
 			SquareSides.y[1] = 2;
 			SquareSides.y[2] = 1;
 			SquareSides.y[3] = 2;
-			Assert::AreEqual(isRectangle(SquareSides), true);
+
+			//act 
+			bool answer = isRectangle(SquareSides);
+
+			//assert
+			Assert::AreEqual(answer, true);
 		}
 
-		TEST_METHOD(Is_Rectangle_char_input)
+		TEST_METHOD(Is_Rectangle_CharInput_false)
 		{
+			//arrange
 			EQUILATERAL SquareSides;
 			SquareSides.x[0] = 'a';
 			SquareSides.x[1] = 2;
@@ -91,10 +170,16 @@ namespace UnitTests
 			SquareSides.y[1] = 2;
 			SquareSides.y[2] = 1;
 			SquareSides.y[3] = 2;
-			Assert::AreEqual(isRectangle(SquareSides), false);
+
+			//act 
+			bool answer = isRectangle(SquareSides);
+
+			//assert
+			Assert::AreEqual(answer, false);
 		}
-		TEST_METHOD(is_Rectangle_Single_Negitive_Invalid)
+		TEST_METHOD(is_Rectangle_SingleNegativeRectangle_False)
 		{
+			//arrange
 			EQUILATERAL SquareSides;
 			SquareSides.x[0] = -1;
 			SquareSides.x[1] = 2;
@@ -104,10 +189,16 @@ namespace UnitTests
 			SquareSides.y[1] = 2;
 			SquareSides.y[2] = 1;
 			SquareSides.y[3] = 2;
-			Assert::AreEqual(isRectangle(SquareSides), false);
+
+			//act 
+			bool answer = isRectangle(SquareSides);
+
+			//assert
+			Assert::AreEqual(answer, false);
 		}
-		TEST_METHOD(is_Rectangle_All_Negitive_Valid)
+		TEST_METHOD(is_Rectangle_AllNegitiveRectangle_True)
 		{
+			//arrange
 			EQUILATERAL SquareSides;
 			SquareSides.x[0] = -1;
 			SquareSides.x[1] = -2;
@@ -117,10 +208,16 @@ namespace UnitTests
 			SquareSides.y[1] = -2;
 			SquareSides.y[2] = -1;
 			SquareSides.y[3] = -2;
-			Assert::AreEqual(isRectangle(SquareSides), true);
+		
+			//act
+			bool answer = isRectangle(SquareSides);
+
+			//assert
+			Assert::AreEqual(answer, true);
 		}
-		TEST_METHOD(is_Rectangle_Too_Few_Points)
+		TEST_METHOD(is_Rectangle_Too_Few_Points_False)
 		{
+			//arrange
 			EQUILATERAL SquareSides;
 			SquareSides.x[0] = 3;
 			SquareSides.x[1] = 4;
@@ -128,7 +225,12 @@ namespace UnitTests
 			SquareSides.y[0] = 3;
 			SquareSides.y[1] = 4;
 			SquareSides.y[2] = 1;
-		    Assert::AreEqual(isRectangle(SquareSides),false);
+
+			//act
+			bool answer = isRectangle(SquareSides);
+
+			//assert
+		    Assert::AreEqual(answer,false);
 		}
 
 		TEST_METHOD(radians_to_degrees_OneDecimalZeroFourSevenTwo_Sixty)

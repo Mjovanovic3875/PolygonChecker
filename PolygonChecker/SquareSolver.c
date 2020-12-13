@@ -150,6 +150,8 @@ QUADRILATERAL quarilateral_wizard(void)
 	qsort(&(pointsTemp), 2, sizeof(POINT), compare_point_x); // Order first two points (left most, then right most)
 	qsort(&(pointsTemp[2]), 2, sizeof(POINT), compare_point_x); // Order last two points
 
+
+	// The array works, but isn't readable. Let the struct have separate variables for different points
 	result.topLeftPoint = pointsTemp[0];
 	result.topRightPoint = pointsTemp[1];
 	result.bottomLeftPoint = pointsTemp[2];

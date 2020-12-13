@@ -119,40 +119,19 @@ namespace UnitTests
 
 			//assert
 		}
-		TEST_METHOD(is_Rectangle_InvalidRectangle_False)
-		{
-			//arrange 
-			QUADRILATERAL SquareSides;
-			SquareSides.x[0] = 3;
-			SquareSides.x[1] = 1;
-			SquareSides.x[2] = 0;
-			SquareSides.x[3] = 1;
-			SquareSides.y[0] = 1;
-			SquareSides.y[1] = 2;
-			SquareSides.y[2] = 1;
-			SquareSides.y[3] = 2;
 
-			//act 
-			bool answer = is_rectangle(SquareSides);
-			
-			//assert
-			Assert::AreEqual(answer, false);
-		}
 		TEST_METHOD(is_Rectangle_VaildRectange_True)
 		{
 			//arrange
-			QUADRILATERAL SquareSides;
-			SquareSides.x[0] = 0;
-			SquareSides.x[1] = 1;
-			SquareSides.x[2] = 0;
-			SquareSides.x[3] = 1;
-			SquareSides.y[0] = 1;
-			SquareSides.y[1] = 2;
-			SquareSides.y[2] = 1;
-			SquareSides.y[3] = 2;
+			QUADRILATERAL squareSides;
+			squareSides.topLeftPoint = { 0.0, 2.0 };
+			squareSides.topRightPoint = {2.0, 2.0 };
+			squareSides.bottomLeftPoint = { 0.0, 1.0 };
+			squareSides.bottomRightPoint = { 2.0, 1.0 };
+
 
 			//act 
-			bool answer = is_rectangle(SquareSides);
+			bool answer = is_rectangle(squareSides);
 
 			//assert
 			Assert::AreEqual(answer, true);
@@ -161,18 +140,18 @@ namespace UnitTests
 		TEST_METHOD(Is_Rectangle_CharInput_false)
 		{
 			//arrange
-			QUADRILATERAL SquareSides;
-			SquareSides.x[0] = 'a';
-			SquareSides.x[1] = 2;
-			SquareSides.x[2] = 1;
-			SquareSides.x[3] = 2;
-			SquareSides.y[0] = -1;
-			SquareSides.y[1] = 2;
-			SquareSides.y[2] = 1;
-			SquareSides.y[3] = 2;
+			QUADRILATERAL squareSides;
+			squareSides.x[0] = 'a';
+			squareSides.x[1] = 2;
+			squareSides.x[2] = 1;
+			squareSides.x[3] = 2;
+			squareSides.y[0] = -1;
+			squareSides.y[1] = 2;
+			squareSides.y[2] = 1;
+			squareSides.y[3] = 2;
 
 			//act 
-			bool answer = is_rectangle(SquareSides);
+			bool answer = is_rectangle(squareSides);
 
 			//assert
 			Assert::AreEqual(answer, false);

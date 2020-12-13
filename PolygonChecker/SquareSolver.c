@@ -91,23 +91,6 @@ double get_bottom_line(QUADRILATERAL quadrilateral)
 
 
 
-int compare_point_y(POINT *pointOne, POINT *pointTwo)
-{
-	if (pointOne->y > pointTwo->y)
-	{
-		return -1;
-	}
-	else if (pointTwo->y > pointOne->y)
-	{
-		return 1;
-	}
-	else
-	{
-		return 0;
-	}
-}
-
-
 int compare_point_x(POINT* pointOne, POINT* pointTwo)
 {
 	if (pointOne->x < pointTwo->x)
@@ -123,6 +106,27 @@ int compare_point_x(POINT* pointOne, POINT* pointTwo)
 		return 0;
 	}
 }
+
+
+
+int compare_point_y(POINT *pointOne, POINT *pointTwo)
+{
+	if (pointOne->y > pointTwo->y)
+	{
+		return -1;
+	}
+	else if (pointTwo->y > pointOne->y)
+	{
+		return 1;
+	}
+	else
+	{
+		compare_point_x(pointOne, pointTwo);
+	}
+}
+
+
+
 
 
 QUADRILATERAL quarilateral_wizard(void)

@@ -37,6 +37,10 @@ bool is_rectangle(QUADRILATERAL quadrilateral) { // says i need to generate 4 li
 	double bottomRightAngleRad = find_angle(quadrilateral.diag2, quadrilateral.bottom_line, quadrilateral.right_line);
 	double bottomRightAngleDeg = radians_to_degrees(bottomRightAngleRad);
 
+
+	// Doubles have rounding issues. In my initial testing, it seems that the errors are predictable such that
+	//    all angles will end up the same (e.g., a little below 90 or a little above 90). However, this might not be
+	//    completely robust. If not robust, the best solution is likely using some rounding
 	if ((topLeftAngleDeg == topRightAngleDeg) &&
 		(topRightAngleDeg == bottomLeftAngleDeg) &&
 		(bottomLeftAngleDeg == bottomRightAngleDeg))

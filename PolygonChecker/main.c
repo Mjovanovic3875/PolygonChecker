@@ -14,6 +14,9 @@ int main() {
 
 		switch (shapeChoice)
 		{
+		case 0: // user selected exit
+			continueProgram = false;
+			break;
 		case 1: // user selected a triangle
 
 
@@ -31,13 +34,15 @@ int main() {
 			double* angles = inside_angles_radians(triangleSidesPtr[0], triangleSidesPtr[1], triangleSidesPtr[2]); // store angles of given sides
 			printf_s("\n%s\nThe angles are : %f, %f, %f", result, angles[0],angles[1],angles[2]);
 			*/
-
 			break;
 
 		case 2: // user selects rectangle
 			printf_s("\nSquare selected.\n");
-			
-			EQUILATERAL SquareSides = { .x = {0,0,0,0},.y = {0,0,0,0}, .top_line = 0,.bottom_line = 0,.left_line =0, .right_line =0};
+			QUADRILATERAL quadrilateral = quarilateral_wizard();
+
+
+			/*
+			QUADRILATERAL SquareSides = { .x = {0,0,0,0},.y = {0,0,0,0}, .top_line = 0,.bottom_line = 0,.left_line =0, .right_line =0};
 			SquareSides = getSquareSides(SquareSides); // get Square coordinates from user
 			SquareSides = write_Sides(SquareSides);
 
@@ -53,11 +58,7 @@ int main() {
 				printf_s("\nThis is not a rectangle..."); // was not a rectangle
 			}
 			break;
-		
-
-		case 0: // user selected exit
-			continueProgram = false;
-			break;
+			*/
 		default:
 			printf_s("Invalid value entered.\n");
 			break;

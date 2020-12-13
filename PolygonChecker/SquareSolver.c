@@ -1,9 +1,9 @@
 #include "SquareSolver.h"
 
-
+#include <stdlib.h>
 #include <math.h>
 
-EQUILATERAL getSquareSides(EQUILATERAL points) { // retrieve user input for the 4 coordinate points
+QUADRILATERAL getSquareSides(QUADRILATERAL points) { // retrieve user input for the 4 coordinate points
 	
 		printf_s("Enter the first coordinate of the square: \n");
 		for (int i = 0; i < 4; i++)
@@ -23,18 +23,111 @@ double getPerimiter(double x, double y) { // return the total of 4 ints
 double getArea(double x, double y) { // returns the area of two lines
 	return x*y;
 }
-bool isRectangle(EQUILATERAL points) { // says i need to generate 4 lines but 2 lines are identical for x and y axis so shouldnt I only need 2?
-	printf_s("\n\nTop: %lf, bottom : %lf, Left : %lf, Right : %lf diag1 : %lf, diag2 : %lf	",points.top_line, points.bottom_line, points.left_line, points.right_line, points.diag1, points.diag2);
-
-	if (points.top_line == points.bottom_line && points.left_line == points.right_line) { // top and bottom lines are equal and left right lines are equal 
-		if (points.diag1 == points.diag2) { // diagionals are equal
-			return true; // all requirements passed
-		}
+bool is_rectangle(QUADRILATERAL quadrilateral) { // says i need to generate 4 lines but 2 lines are identical for x and y axis so shouldnt I only need 2?
+	if ((quadrilateral.top_line == quadrilateral.bottom_line) && // top and bottom lines are equal
+		(quadrilateral.left_line == quadrilateral.right_line) && //  and left right lines are equal 
+		(quadrilateral.diag1 == quadrilateral.diag2))            //  and diags are equal (else we could have a parallelogram)
+	{
+		return true;
 	}
-
-	return false;
+	else
+	{
+		return false;
+	}
 }
-EQUILATERAL write_Sides(EQUILATERAL points) {
+
+
+double find_line_length(POINT pointOne, POINT pointTwo)
+{
+	// distance between two points is the square root of the 
+	//    differences of the x points squared plus
+	//    the differences of the y points squared
+	double xDifferences = pointOne.x - pointTwo.x;
+	double yDifferences = pointOne.y - pointTwo.y;
+
+	double xDiffSquared = pow(xDifferences, 2);
+	double yDiffSquared = pow(yDifferences, 2);
+
+	double result = sqrt(xDiffSquared + yDiffSquared);
+
+	return result;
+}
+
+
+
+int compare_point_y(POINT *pointOne, POINT *pointTwo)
+{
+	if (pointOne->y > pointTwo->y)
+	{
+		return -1;
+	}
+	else if (pointTwo->y > pointOne->y)
+	{
+		return 1;
+	}
+	else
+	{
+		return 0;
+	}
+}
+
+
+int compare_point_x(POINT* pointOne, POINT* pointTwo)
+{
+	if (pointOne->x < pointTwo->x)
+	{
+		return -1;
+	}
+	else if (pointTwo->x < pointOne->x)
+	{
+		return 1;
+	}
+	else
+	{
+		return 0;
+	}
+}
+
+
+QUADRILATERAL quarilateral_wizard(void)
+{
+	QUADRILATERAL result;
+
+
+	for (int i = 0; i < 4; i++)
+	{
+		printf("Please enter the x value for point %d: ", i + 1);
+		scanf_s("%lf", &(result.points[i].x));
+		printf("Please enter the y value for point %d: ", i + 1);
+		scanf_s("%lf", &(result.points[i].y));
+	}
+	
+
+	// Order the points to be top left, top right, bottom left, bottom right
+	//    We can do so with 3 sorts
+
+	// First, sort all y values in terms of their y values.
+	//   points will contain [top point, top point, bottom point, bottom point]
+	qsort(&(result.points), 4, sizeof(POINT), compare_point_y);
+
+	// Now, sort the top 2 and bottom 2 points individually
+	qsort(&(result.points), 2, sizeof(POINT), compare_point_x); // Order first two points (left most, then right most)
+	qsort(&(result.points[2]), 2, sizeof(POINT), compare_point_x); // Order last two points
+
+	// Find line lengths
+	result.top_line = find_line_length(result.points[0], result.points[1]);
+	result.bottom_line = find_line_length(result.points[2], result.points[3]);
+	result.left_line = find_line_length(result.points[0], result.points[2]);
+	result.right_line = find_line_length(result.points[1], result.points[3]);
+
+	result.diag1 = find_line_length(result.points[0], result.points[3]);
+	result.diag2 = find_line_length(result.points[1], result.points[2]);
+
+	return result;
+}
+
+
+QUADRILATERAL write_Sides(QUADRILATERAL quadrilateral) {
 	int topy_1 = 0;
 	int topy_2 = 0;
 	int top_x = 0;
@@ -42,17 +135,24 @@ EQUILATERAL write_Sides(EQUILATERAL points) {
 	int top_Left = 0;
 	int bottom_Left = 0;
 	int Bottom_Right = 0;
+
+
+
+
+
+
+	/*
 	for (int counter = 0; counter < 4; counter++) { // get top two points
-		if (points.y[counter] > points.y[topy_1]) {
+		if (quadrilateral.y[counter] > quadrilateral.y[topy_1]) {
 			topy_1= counter;
 		}
 	}
 	for (int counter = 0; counter < 4; counter++) { // get top two points
-		if (points.y[counter] > points.y[topy_2] && counter != topy_1) {
+		if (quadrilateral.y[counter] > quadrilateral.y[topy_2] && counter != topy_1) {
 			topy_2 = counter;
 		}
 	}
-	if (points.x[topy_1] > points.x[topy_2]) { // decide left right points
+	if (quadrilateral.x[topy_1] > quadrilateral.x[topy_2]) { // decide left right points
 		top_Right = topy_1;
 		top_Left = topy_2;
 }
@@ -61,7 +161,7 @@ EQUILATERAL write_Sides(EQUILATERAL points) {
 		top_Left = topy_1;
 	}
 	for (int counter = 0; counter < 4; counter++) { // find farthest right point of the lower coordinates
-		if (points.x[counter] > points.x[top_x] && counter != topy_1 && counter != topy_2) {
+		if (quadrilateral.x[counter] > quadrilateral.x[top_x] && counter != topy_1 && counter != topy_2) {
 			top_x = counter;
 		}
 	}
@@ -71,14 +171,17 @@ EQUILATERAL write_Sides(EQUILATERAL points) {
 			bottom_Left = counter;
 		}
 	}
-	points.top_line = sqrt(pow(abs(points.x[top_Right] - points.x[top_Left]),2) + pow(abs(points.y[top_Right] - points.y[top_Left]),2)); // sqrt( (x2 - x1)^2 + (y2 - y1)^2 )
-	points.bottom_line = sqrt(pow(abs(points.x[Bottom_Right] - points.x[bottom_Left]), 2) + pow(abs(points.y[Bottom_Right] - points.y[bottom_Left]), 2)); // abs allows x2 x1 to be interchangable in the above formula
-	points.left_line = sqrt(pow(abs(points.x[top_Left] - points.x[bottom_Left]), 2) + pow(abs(points.y[top_Left] - points.y[bottom_Left]), 2));
-	points.right_line = sqrt(pow(abs(points.x[top_Right] - points.x[Bottom_Right]), 2) + pow(abs(points.y[top_Right] - points.y[Bottom_Right]), 2));
 
-	points.diag1 = sqrt(pow(abs(points.x[Bottom_Right] - points.x[top_Left]), 2) + pow(abs(points.y[top_Left] - points.y[Bottom_Right]), 2));
-	points.diag2 = sqrt(pow(abs(points.x[top_Right] - points.x[bottom_Left]), 2) + pow(abs(points.y[top_Right] - points.y[bottom_Left]), 2));
-	return points;
+	
+	quadrilateral.top_line = sqrt(pow(abs(quadrilateral.x[top_Right] - quadrilateral.x[top_Left]),2) + pow(abs(quadrilateral.y[top_Right] - quadrilateral.y[top_Left]),2)); // sqrt( (x2 - x1)^2 + (y2 - y1)^2 )
+	quadrilateral.bottom_line = sqrt(pow(abs(quadrilateral.x[Bottom_Right] - quadrilateral.x[bottom_Left]), 2) + pow(abs(quadrilateral.y[Bottom_Right] - quadrilateral.y[bottom_Left]), 2)); // abs allows x2 x1 to be interchangable in the above formula
+	quadrilateral.left_line = sqrt(pow(abs(quadrilateral.x[top_Left] - quadrilateral.x[bottom_Left]), 2) + pow(abs(quadrilateral.y[top_Left] - quadrilateral.y[bottom_Left]), 2));
+	quadrilateral.right_line = sqrt(pow(abs(quadrilateral.x[top_Right] - quadrilateral.x[Bottom_Right]), 2) + pow(abs(quadrilateral.y[top_Right] - quadrilateral.y[Bottom_Right]), 2));
+
+	quadrilateral.diag1 = sqrt(pow(abs(quadrilateral.x[Bottom_Right] - quadrilateral.x[top_Left]), 2) + pow(abs(quadrilateral.y[top_Left] - quadrilateral.y[Bottom_Right]), 2));
+	quadrilateral.diag2 = sqrt(pow(abs(quadrilateral.x[top_Right] - quadrilateral.x[bottom_Left]), 2) + pow(abs(quadrilateral.y[top_Right] - quadrilateral.y[bottom_Left]), 2));
+	return quadrilateral;
 	// uncomment the line underneath to view values of coordinates and lines
-	printf_s("top_left(%lf,%lf) top right(%lf,%lf) bottomleft(%lf,%lf) bottomright (%lf,%lf) Top: %lf, bottom : %lf, Left : %lf, Right : %lf diag1 : %lf, diag2 : %lf	", points.x[top_Left], points.y[top_Left], points.x[top_Right], points.y[top_Right], points.x[bottom_Left], points.y[bottom_Left], points.x[Bottom_Right], points.y[Bottom_Right], points.top_line, points.bottom_line, points.left_line, points.right_line,points.diag1,points.diag2);
+	printf_s("top_left(%lf,%lf) top right(%lf,%lf) bottomleft(%lf,%lf) bottomright (%lf,%lf) Top: %lf, bottom : %lf, Left : %lf, Right : %lf diag1 : %lf, diag2 : %lf	", quadrilateral.x[top_Left], quadrilateral.y[top_Left], quadrilateral.x[top_Right], quadrilateral.y[top_Right], quadrilateral.x[bottom_Left], quadrilateral.y[bottom_Left], quadrilateral.x[Bottom_Right], quadrilateral.y[Bottom_Right], quadrilateral.top_line, quadrilateral.bottom_line, quadrilateral.left_line, quadrilateral.right_line,quadrilateral.diag1,quadrilateral.diag2);
+	*/
 }

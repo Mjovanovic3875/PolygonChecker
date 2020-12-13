@@ -17,6 +17,6 @@ const char* analyze_triangle(double side1, double side2, double side3);
 double radians_to_degrees(double radians);
 double* inside_angles_radians(double one, double two, double three);
 double* inside_angles_degrees(double sideOne, double sideTwo, double sideThree);
-double find_angle(double one, double two, double three);
+double find_angle(double a, double b, double c);
 bool is_triangle(double sideOne, double sideTwo, double sideThree);
 bool is_sum_greater(int one, int two, int three);

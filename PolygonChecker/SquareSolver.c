@@ -1,5 +1,5 @@
 #include "SquareSolver.h"
-
+#include "triangleSolver.h"
 #include <stdlib.h>
 #include <math.h>
 
@@ -17,6 +17,7 @@ QUADRILATERAL getSquareSides(QUADRILATERAL points) { // retrieve user input for 
 		return points;
 	
 }
+
 double get_perimeter(double x, double y) { // return the total of 4 ints
 	return  (2*x + 2*y);
 }
@@ -24,9 +25,21 @@ double get_area(double x, double y) { // returns the area of two lines
 	return x*y;
 }
 bool is_rectangle(QUADRILATERAL quadrilateral) { // says i need to generate 4 lines but 2 lines are identical for x and y axis so shouldnt I only need 2?
-	if ((quadrilateral.top_line == quadrilateral.bottom_line) && // top and bottom lines are equal
-		(quadrilateral.left_line == quadrilateral.right_line) && //  and left right lines are equal 
-		(quadrilateral.diag1 == quadrilateral.diag2))            //  and diags are equal (else we could have a parallelogram)
+	double topLeftAngleRad = find_angle(quadrilateral.diag2, quadrilateral.top_line, quadrilateral.left_line);
+	double topLeftAngleDeg = radians_to_degrees(topLeftAngleRad);
+
+	double topRightAngleRad = find_angle(quadrilateral.diag1, quadrilateral.top_line, quadrilateral.right_line);
+	double topRightAngleDeg = radians_to_degrees(topRightAngleRad);
+
+	double bottomLeftAngleRad = find_angle(quadrilateral.diag1, quadrilateral.bottom_line, quadrilateral.left_line);
+	double bottomLeftAngleDeg = radians_to_degrees(bottomLeftAngleRad);
+
+	double bottomRightAngleRad = find_angle(quadrilateral.diag2, quadrilateral.bottom_line, quadrilateral.right_line);
+	double bottomRightAngleDeg = radians_to_degrees(bottomRightAngleRad);
+
+	if ((topLeftAngleDeg == topRightAngleDeg) &&
+		(topRightAngleDeg == bottomLeftAngleDeg) &&
+		(bottomLeftAngleDeg == bottomRightAngleDeg))
 	{
 		return true;
 	}
@@ -51,6 +64,25 @@ double find_line_length(POINT pointOne, POINT pointTwo)
 	double result = sqrt(xDiffSquared + yDiffSquared);
 
 	return result;
+}
+
+
+
+double get_left_line(QUADRILATERAL quadrilateral)
+{
+	return quadrilateral.left_line;
+}
+double get_top_line(QUADRILATERAL quadrilateral)
+{
+	return quadrilateral.top_line;
+}
+double get_right_line(QUADRILATERAL quadrilateral)
+{
+	return quadrilateral.right_line;
+}
+double get_bottom_line(QUADRILATERAL quadrilateral)
+{
+	return quadrilateral.bottom_line;
 }
 
 
@@ -92,14 +124,14 @@ int compare_point_x(POINT* pointOne, POINT* pointTwo)
 QUADRILATERAL quarilateral_wizard(void)
 {
 	QUADRILATERAL result;
-
+	POINT pointsTemp[4];
 
 	for (int i = 0; i < 4; i++)
 	{
 		printf("Please enter the x value for point %d: ", i + 1);
-		scanf_s("%lf", &(result.points[i].x));
+		scanf_s("%lf", &(pointsTemp[i].x));
 		printf("Please enter the y value for point %d: ", i + 1);
-		scanf_s("%lf", &(result.points[i].y));
+		scanf_s("%lf", &(pointsTemp[i].y));
 	}
 	
 
@@ -108,20 +140,25 @@ QUADRILATERAL quarilateral_wizard(void)
 
 	// First, sort all y values in terms of their y values.
 	//   points will contain [top point, top point, bottom point, bottom point]
-	qsort(&(result.points), 4, sizeof(POINT), compare_point_y);
+	qsort(&(pointsTemp), 4, sizeof(POINT), compare_point_y);
 
 	// Now, sort the top 2 and bottom 2 points individually
-	qsort(&(result.points), 2, sizeof(POINT), compare_point_x); // Order first two points (left most, then right most)
-	qsort(&(result.points[2]), 2, sizeof(POINT), compare_point_x); // Order last two points
+	qsort(&(pointsTemp), 2, sizeof(POINT), compare_point_x); // Order first two points (left most, then right most)
+	qsort(&(pointsTemp[2]), 2, sizeof(POINT), compare_point_x); // Order last two points
+
+	result.topLeftPoint = pointsTemp[0];
+	result.topRightPoint = pointsTemp[1];
+	result.bottomLeftPoint = pointsTemp[2];
+	result.bottomRightPoint = pointsTemp[3];
 
 	// Find line lengths
-	result.top_line = find_line_length(result.points[0], result.points[1]);
-	result.bottom_line = find_line_length(result.points[2], result.points[3]);
-	result.left_line = find_line_length(result.points[0], result.points[2]);
-	result.right_line = find_line_length(result.points[1], result.points[3]);
+	result.top_line = find_line_length(result.topLeftPoint, result.topRightPoint);
+	result.bottom_line = find_line_length(result.bottomLeftPoint, result.bottomRightPoint);
+	result.left_line = find_line_length(result.topLeftPoint, result.bottomLeftPoint);
+	result.right_line = find_line_length(result.topRightPoint, result.bottomRightPoint);
 
-	result.diag1 = find_line_length(result.points[0], result.points[3]);
-	result.diag2 = find_line_length(result.points[1], result.points[2]);
+	result.diag1 = find_line_length(result.topLeftPoint, result.bottomRightPoint);
+	result.diag2 = find_line_length(result.topRightPoint, result.bottomLeftPoint);
 
 	return result;
 }

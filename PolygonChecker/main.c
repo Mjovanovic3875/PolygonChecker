@@ -39,7 +39,24 @@ int main() {
 		case 2: // user selects rectangle
 			printf_s("\nSquare selected.\n");
 			QUADRILATERAL quadrilateral = quarilateral_wizard();
+			bool isRectangle = is_rectangle(quadrilateral);
 
+			if (isRectangle)
+			{
+				double left_line = get_left_line(quadrilateral);
+				double top_line = get_top_line(quadrilateral);
+				double perimeter = get_perimeter(left_line, top_line);
+				double area = get_area(left_line, top_line);
+
+				printf("This is a rectangle.\n");
+				printf("Its perimeter is %lf\n", perimeter);
+				printf("Its area is %lf\n", area);
+			}
+			else
+			{
+				printf_s("This is not a rectangle..."); // was not a rectangle
+			}
+			break;
 
 			/*
 			QUADRILATERAL SquareSides = { .x = {0,0,0,0},.y = {0,0,0,0}, .top_line = 0,.bottom_line = 0,.left_line =0, .right_line =0};

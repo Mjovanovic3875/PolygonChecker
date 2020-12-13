@@ -26,6 +26,6 @@ typedef struct quadrilateral { // this is a coordinate struct it contains x and 
 QUADRILATERAL quarilateral_wizard(void);
 QUADRILATERAL write_Sides(QUADRILATERAL reference);
 QUADRILATERAL getSquareSides(QUADRILATERAL points); //gets user input and returned them as a coordinate struct
-double getPerimiter(double x, double y); // returns the perimeter of a rectangle based on two lines
-double getArea(double x, double y); //returns the area of two lines
+double get_perimeter(double x, double y); // returns the perimeter of a rectangle based on two lines
+double get_area(double x, double y); //returns the area of two lines
 bool is_rectangle(QUADRILATERAL points); // determines if the given set of coordinates is a rectangle or not

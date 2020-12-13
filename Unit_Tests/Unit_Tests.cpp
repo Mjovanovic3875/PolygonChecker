@@ -18,109 +18,74 @@ namespace UnitTests
 	{
 	public:
 	
-		TEST_METHOD(get_Area_Valid)
+		TEST_METHOD(get_Area_FiveFive_25)
 		{
 			//arrange
+			double x = 5;
+			double y = 5;
 
-
-
+			double expected = 25;
+			
 			//act
-
+			double answer = get_area(x, y);
 
 
 			//assert
-
+			Assert::AreEqual(answer, expected);
 
 		}
-		TEST_METHOD(get_Area_One_Negitive)
+	
+		TEST_METHOD(get_Area_OneHundredOneHundred_TenThousand)
 		{
 			//arrange
+			double x = 100;
+			double y = 100;
 
-
+			double expected = 10000;
 
 			//act
-
+			double answer = get_area(x, y);
 
 
 			//assert
+			Assert::AreEqual(answer, expected);
+
 		}
+		
 
-		TEST_METHOD(get_Area_All_Negitive)
+
+		TEST_METHOD(get_Perimiter_FiveFive_Twenty)
 		{
-			//arrange
+			double x = 5;
+			double y = 5;
 
-
+			double expected = 20;
 
 			//act
-
+			double answer = get_perimeter(x, y);
 
 
 			//assert
+			Assert::AreEqual(answer, expected);
 		}
-		TEST_METHOD(get_Area_char_Input)
+		
+		TEST_METHOD(get_area_OneHundredOneHundred_FourHundred)
 		{
-			//arrange
+			double x = 100;
+			double y = 100;
 
-
-
-				//act
-
-
-
-				//assert
-		}
-
-		TEST_METHOD(get_Perimiter_Valid)
-		{
-			//arrange
-
-
+			double expected = 400;
 
 			//act
-
+			double answer = get_perimeter(x, y);
 
 
 			//assert
+			Assert::AreEqual(answer, expected);
 		}
-		TEST_METHOD(get_Perimiter_One_Negitive)
-		{
-			//arrange
+		
 
-
-
-			//act
-
-
-
-			//assert
-		}
-
-		TEST_METHOD(get_Perimiter_All_Negitive)
-		{
-			//arrange
-
-
-
-			//act
-
-
-
-			//assert
-		}
-		TEST_METHOD(get_Perimiter_char_Input)
-		{
-			//arrange
-
-
-
-			//act
-
-
-
-			//assert
-		}
-
-		TEST_METHOD(is_Rectangle_VaildRectange_True)
+		TEST_METHOD(is_Rectangle_PositiveRectange_True)
 		{
 			//arrange
 			QUADRILATERAL squareSides;
@@ -137,18 +102,31 @@ namespace UnitTests
 			Assert::AreEqual(answer, true);
 		}
 
-		TEST_METHOD(Is_Rectangle_CharInput_false)
+		
+		TEST_METHOD(is_Rectangle_NegativeRectangle_True)
 		{
 			//arrange
 			QUADRILATERAL squareSides;
-			squareSides.x[0] = 'a';
-			squareSides.x[1] = 2;
-			squareSides.x[2] = 1;
-			squareSides.x[3] = 2;
-			squareSides.y[0] = -1;
-			squareSides.y[1] = 2;
-			squareSides.y[2] = 1;
-			squareSides.y[3] = 2;
+			squareSides.topLeftPoint = { -2.0, -2.0 };
+			squareSides.topRightPoint = { 2.0, -2.0 };
+			squareSides.bottomLeftPoint = {-2.0, -4.0 };
+			squareSides.bottomRightPoint = { 2.0, -4.0};
+
+			//act 
+			bool answer = is_rectangle(squareSides);
+
+			//assert
+			Assert::AreEqual(answer, true);
+		}
+
+		TEST_METHOD(is_Rectangle_PositiveRectange_false)
+		{
+			//arrange
+			QUADRILATERAL squareSides;
+			squareSides.topLeftPoint = { 0, 2.0 };
+			squareSides.topRightPoint = { 10, 2.0 };
+			squareSides.bottomLeftPoint = { 0.0, 1.0 };
+			squareSides.bottomRightPoint = { 2.0, 1.0 };
 
 			//act 
 			bool answer = is_rectangle(squareSides);
@@ -156,25 +134,9 @@ namespace UnitTests
 			//assert
 			Assert::AreEqual(answer, false);
 		}
-		TEST_METHOD(is_Rectangle_SingleNegativeRectangle_False)
-		{
-			//arrange
-			QUADRILATERAL SquareSides;
-			SquareSides.x[0] = -1;
-			SquareSides.x[1] = 2;
-			SquareSides.x[2] = 1;
-			SquareSides.x[3] = 2;
-			SquareSides.y[0] = -1;
-			SquareSides.y[1] = 2;
-			SquareSides.y[2] = 1;
-			SquareSides.y[3] = 2;
 
-			//act 
-			bool answer = is_rectangle(SquareSides);
 
-			//assert
-			Assert::AreEqual(answer, false);
-		}
+
 		TEST_METHOD(is_Rectangle_AllNegitiveRectangle_True)
 		{
 			//arrange
@@ -194,23 +156,241 @@ namespace UnitTests
 			//assert
 			Assert::AreEqual(answer, true);
 		}
-		TEST_METHOD(is_Rectangle_Too_Few_Points_False)
-		{
-			//arrange
-			QUADRILATERAL SquareSides;
-			SquareSides.x[0] = 3;
-			SquareSides.x[1] = 4;
-			SquareSides.x[2] = 1;
-			SquareSides.y[0] = 3;
-			SquareSides.y[1] = 4;
-			SquareSides.y[2] = 1;
+		
+		//TEST_METHOD(is_Rectangle_NegativeRectangle_False)
+		//{
+		//	//arrange
+		//	QUADRILATERAL squareSides;
+		//	squareSides.topLeftPoint = { -2.0, -2.0 };
+		//	squareSides.topRightPoint = { 2.0, -2.0 };
+		//	squareSides.bottomLeftPoint = { -2.0, -4.0 };
+		//	squareSides.bottomRightPoint = { 2.0, -4.0 };
 
-			//act
-			bool answer = is_rectangle(SquareSides);
+		//	//act 
+		//	bool answer = is_rectangle(squareSides);
 
-			//assert
-		    Assert::AreEqual(answer,false);
-		}
+		//	//assert
+		//	Assert::AreEqual(answer, true);
+		//}
+
+		//TEST_METHOD(is_Rectangle_PositveRectangleDiagonal_True)
+		//{
+		//	//arrange
+		//	QUADRILATERAL squareSides;
+		//	squareSides.topLeftPoint = { -2.0, -2.0 };
+		//	squareSides.topRightPoint = { 2.0, -2.0 };
+		//	squareSides.bottomLeftPoint = { -2.0, -4.0 };
+		//	squareSides.bottomRightPoint = { 2.0, -4.0 };
+
+		//	//act 
+		//	bool answer = is_rectangle(squareSides);
+
+		//	//assert
+		//	Assert::AreEqual(answer, true);
+		//}
+
+		//TEST_METHOD(is_Rectangle_NegativeRectangleDiagonal_True)
+		//{
+		//	//arrange
+		//	QUADRILATERAL squareSides;
+		//	squareSides.topLeftPoint = { -2.0, -2.0 };
+		//	squareSides.topRightPoint = { 2.0, -2.0 };
+		//	squareSides.bottomLeftPoint = { -2.0, -4.0 };
+		//	squareSides.bottomRightPoint = { 2.0, -4.0 };
+
+		//	//act 
+		//	bool answer = is_rectangle(squareSides);
+
+		//	//assert
+		//	Assert::AreEqual(answer, true);
+		//}
+
+		//TEST_METHOD(is_Rectangle_PositveRectangleDiagonal_False)
+		//{
+		//	//arrange
+		//	QUADRILATERAL squareSides;
+		//	squareSides.topLeftPoint = { -2.0, -2.0 };
+		//	squareSides.topRightPoint = { 2.0, -2.0 };
+		//	squareSides.bottomLeftPoint = { -2.0, -4.0 };
+		//	squareSides.bottomRightPoint = { 2.0, -4.0 };
+
+		//	//act 
+		//	bool answer = is_rectangle(squareSides);
+
+		//	//assert
+		//	Assert::AreEqual(answer, true);
+		//}
+
+		//TEST_METHOD(is_Rectangle_NegativeRectangleDiagonal_False)
+		//{
+		//	//arrange
+		//	QUADRILATERAL squareSides;
+		//	squareSides.topLeftPoint = { -2.0, -2.0 };
+		//	squareSides.topRightPoint = { 2.0, -2.0 };
+		//	squareSides.bottomLeftPoint = { -2.0, -4.0 };
+		//	squareSides.bottomRightPoint = { 2.0, -4.0 };
+
+		//	//act 
+		//	bool answer = is_rectangle(squareSides);
+
+		//	//assert
+		//	Assert::AreEqual(answer, true);
+		//}
+
+		//TEST_METHOD(is_Rectangle_PositiveSquare_True)
+		//{
+		//	//arrange
+		//	QUADRILATERAL squareSides;
+		//	squareSides.topLeftPoint = { 0.0, 2.0 };
+		//	squareSides.topRightPoint = { 2.0, 2.0 };
+		//	squareSides.bottomLeftPoint = { 0.0, 1.0 };
+		//	squareSides.bottomRightPoint = { 2.0, 1.0 };
+
+
+		//	//act 
+		//	bool answer = is_rectangle(squareSides);
+
+		//	//assert
+		//	Assert::AreEqual(answer, true);
+		//}
+
+
+		//TEST_METHOD(is_Rectangle_NegativeSquare_True)
+		//{
+		//	//arrange
+		//	QUADRILATERAL squareSides;
+		//	squareSides.topLeftPoint = { -2.0, -2.0 };
+		//	squareSides.topRightPoint = { 2.0, -2.0 };
+		//	squareSides.bottomLeftPoint = { -2.0, -4.0 };
+		//	squareSides.bottomRightPoint = { 2.0, -4.0 };
+
+		//	//act 
+		//	bool answer = is_rectangle(squareSides);
+
+		//	//assert
+		//	Assert::AreEqual(answer, true);
+		//}
+
+		//TEST_METHOD(is_Rectangle_PositiveSquare_false)
+		//{
+		//	//arrange
+		//	QUADRILATERAL squareSides;
+		//	squareSides.topLeftPoint = { 0, 2.0 };
+		//	squareSides.topRightPoint = { 10, 2.0 };
+		//	squareSides.bottomLeftPoint = { 0.0, 1.0 };
+		//	squareSides.bottomRightPoint = { 2.0, 1.0 };
+
+		//	//act 
+		//	bool answer = is_rectangle(squareSides);
+
+		//	//assert
+		//	Assert::AreEqual(answer, false);
+		//}
+
+
+
+		//TEST_METHOD(is_Rectangle_AllNegitiveSquare_True)
+		//{
+		//	//arrange
+		//	QUADRILATERAL SquareSides;
+		//	SquareSides.x[0] = -1;
+		//	SquareSides.x[1] = -2;
+		//	SquareSides.x[2] = -1;
+		//	SquareSides.x[3] = -2;
+		//	SquareSides.y[0] = -1;
+		//	SquareSides.y[1] = -2;
+		//	SquareSides.y[2] = -1;
+		//	SquareSides.y[3] = -2;
+
+		//	//act
+		//	bool answer = is_rectangle(SquareSides);
+
+		//	//assert
+		//	Assert::AreEqual(answer, true);
+		//}
+
+		//TEST_METHOD(is_Rectangle_NegativeSquare_False)
+		//{
+		//	//arrange
+		//	QUADRILATERAL squareSides;
+		//	squareSides.topLeftPoint = { -2.0, -2.0 };
+		//	squareSides.topRightPoint = { 2.0, -2.0 };
+		//	squareSides.bottomLeftPoint = { -2.0, -4.0 };
+		//	squareSides.bottomRightPoint = { 2.0, -4.0 };
+
+		//	//act 
+		//	bool answer = is_rectangle(squareSides);
+
+		//	//assert
+		//	Assert::AreEqual(answer, true);
+		//}
+
+		//TEST_METHOD(is_Rectangle_PositveSquareDiagonal_True)
+		//{
+		//	//arrange
+		//	QUADRILATERAL squareSides;
+		//	squareSides.topLeftPoint = { -2.0, -2.0 };
+		//	squareSides.topRightPoint = { 2.0, -2.0 };
+		//	squareSides.bottomLeftPoint = { -2.0, -4.0 };
+		//	squareSides.bottomRightPoint = { 2.0, -4.0 };
+
+		//	//act 
+		//	bool answer = is_rectangle(squareSides);
+
+		//	//assert
+		//	Assert::AreEqual(answer, true);
+		//}
+
+		//TEST_METHOD(is_Rectangle_NegativeSquareDiagonal_True)
+		//{
+		//	//arrange
+		//	QUADRILATERAL squareSides;
+		//	squareSides.topLeftPoint = { -2.0, -2.0 };
+		//	squareSides.topRightPoint = { 2.0, -2.0 };
+		//	squareSides.bottomLeftPoint = { -2.0, -4.0 };
+		//	squareSides.bottomRightPoint = { 2.0, -4.0 };
+
+		//	//act 
+		//	bool answer = is_rectangle(squareSides);
+
+		//	//assert
+		//	Assert::AreEqual(answer, true);
+		//}
+
+		//TEST_METHOD(is_Rectangle_PositveSquareDiagonal_False)
+		//{
+		//	//arrange
+		//	QUADRILATERAL squareSides;
+		//	squareSides.topLeftPoint = { -2.0, -2.0 };
+		//	squareSides.topRightPoint = { 2.0, -2.0 };
+		//	squareSides.bottomLeftPoint = { -2.0, -4.0 };
+		//	squareSides.bottomRightPoint = { 2.0, -4.0 };
+
+		//	//act 
+		//	bool answer = is_rectangle(squareSides);
+
+		//	//assert
+		//	Assert::AreEqual(answer, true);
+		//}
+
+		//TEST_METHOD(is_Rectangle_NegativeSquareDiagonal_False)
+		//{
+		//	//arrange
+		//	QUADRILATERAL squareSides;
+		//	squareSides.topLeftPoint = { -2.0, -2.0 };
+		//	squareSides.topRightPoint = { 2.0, -2.0 };
+		//	squareSides.bottomLeftPoint = { -2.0, -4.0 };
+		//	squareSides.bottomRightPoint = { 2.0, -4.0 };
+
+		//	//act 
+		//	bool answer = is_rectangle(squareSides);
+
+		//	//assert
+		//	Assert::AreEqual(answer, true);
+		//}
+
+
+
 
 		TEST_METHOD(radians_to_degrees_OneDecimalZeroFourSevenTwo_Sixty)
 		{

@@ -17,7 +17,7 @@ namespace UnitTests
 	TEST_CLASS(UnitTests)
 	{
 	public:
-	
+
 		TEST_METHOD(get_Area_FiveFive_25)
 		{
 			//arrange
@@ -25,7 +25,7 @@ namespace UnitTests
 			double y = 5;
 
 			double expected = 25;
-			
+
 			//act
 			double answer = get_area(x, y);
 
@@ -34,7 +34,7 @@ namespace UnitTests
 			Assert::AreEqual(answer, expected);
 
 		}
-	
+
 		TEST_METHOD(get_Area_OneHundredOneHundred_TenThousand)
 		{
 			//arrange
@@ -51,8 +51,6 @@ namespace UnitTests
 			Assert::AreEqual(answer, expected);
 
 		}
-		
-
 
 		TEST_METHOD(get_Perimiter_FiveFive_Twenty)
 		{
@@ -68,7 +66,7 @@ namespace UnitTests
 			//assert
 			Assert::AreEqual(answer, expected);
 		}
-		
+
 		TEST_METHOD(get_area_OneHundredOneHundred_FourHundred)
 		{
 			double x = 100;
@@ -83,314 +81,264 @@ namespace UnitTests
 			//assert
 			Assert::AreEqual(answer, expected);
 		}
-		
 
 		TEST_METHOD(is_Rectangle_PositiveRectange_True)
 		{
 			//arrange
-			QUADRILATERAL squareSides;
-			squareSides.topLeftPoint = { 0.0, 2.0 };
-			squareSides.topRightPoint = {2.0, 2.0 };
-			squareSides.bottomLeftPoint = { 0.0, 1.0 };
-			squareSides.bottomRightPoint = { 2.0, 1.0 };
+			POINT pointOne = { 0.0, 2.0 };
+			POINT pointTwo = {2.0, 2.0};
+			POINT pointThree = {0.0, 1.0};
+			POINT pointFour = {2.0, 1.0};
 
-
+			QUADRILATERAL quadrilateral = create_quadrilateral(pointOne, pointTwo, pointThree, pointFour);
 			//act 
-			bool answer = is_rectangle(squareSides);
+			bool answer = is_rectangle(quadrilateral);
 
 			//assert
 			Assert::AreEqual(answer, true);
 		}
 
-		
 		TEST_METHOD(is_Rectangle_NegativeRectangle_True)
 		{
 			//arrange
-			QUADRILATERAL squareSides;
-			squareSides.topLeftPoint = { -2.0, -2.0 };
-			squareSides.topRightPoint = { 2.0, -2.0 };
-			squareSides.bottomLeftPoint = {-2.0, -4.0 };
-			squareSides.bottomRightPoint = { 2.0, -4.0};
+			POINT pointOne = { -2.0, -2.0 };
+			POINT pointTwo = { 2.0, -2.0 };
+			POINT pointThree = { -2.0, -4.0 };
+			POINT pointFour = { 2.0, -4.0 };
 
+			QUADRILATERAL quadrilateral = create_quadrilateral(pointOne, pointTwo, pointThree, pointFour);
 			//act 
-			bool answer = is_rectangle(squareSides);
+			bool answer = is_rectangle(quadrilateral);
 
 			//assert
 			Assert::AreEqual(answer, true);
+
 		}
 
 		TEST_METHOD(is_Rectangle_PositiveRectange_false)
 		{
 			//arrange
-			QUADRILATERAL squareSides;
-			squareSides.topLeftPoint = { 0, 2.0 };
-			squareSides.topRightPoint = { 10, 2.0 };
-			squareSides.bottomLeftPoint = { 0.0, 1.0 };
-			squareSides.bottomRightPoint = { 2.0, 1.0 };
+			POINT pointOne = { 0, 2.0 };
+			POINT pointTwo = { 10, 2.0 };
+			POINT pointThree = { 0.0, 1.0 };
+			POINT pointFour = { 2.0, 1.0 };
 
+			QUADRILATERAL quadrilateral = create_quadrilateral(pointOne, pointTwo, pointThree, pointFour);
 			//act 
-			bool answer = is_rectangle(squareSides);
+			bool answer = is_rectangle(quadrilateral);
+
+			//assert
+			Assert::AreEqual(answer, false);
+
+		}
+		
+		TEST_METHOD(is_Rectangle_NegativeRectangle_False)
+		{
+			//arrange
+			POINT pointOne = { -2.0, -2.0 };
+			POINT pointTwo = { -10, -2.0 };
+			POINT pointThree = { -2.0, -4.0 };
+			POINT pointFour = { 2.0, -4.0 };
+
+			QUADRILATERAL quadrilateral = create_quadrilateral(pointOne, pointTwo, pointThree, pointFour);
+			//act 
+			bool answer = is_rectangle(quadrilateral);
 
 			//assert
 			Assert::AreEqual(answer, false);
 		}
 
-
-
-		TEST_METHOD(is_Rectangle_AllNegitiveRectangle_True)
+		TEST_METHOD(is_Rectangle_PositveRectangleDiagonal_True)
 		{
 			//arrange
-			QUADRILATERAL SquareSides;
-			SquareSides.x[0] = -1;
-			SquareSides.x[1] = -2;
-			SquareSides.x[2] = -1;
-			SquareSides.x[3] = -2;
-			SquareSides.y[0] = -1;
-			SquareSides.y[1] = -2;
-			SquareSides.y[2] = -1;
-			SquareSides.y[3] = -2;
-		
-			//act
-			bool answer = is_rectangle(SquareSides);
+			POINT pointOne = { 1, 4 };
+			POINT pointTwo = { 2.5, 2.5 };
+			POINT pointThree = { 0,3 };
+			POINT pointFour = { 1.5, 1.5 };
+
+			QUADRILATERAL quadrilateral = create_quadrilateral(pointOne, pointTwo, pointThree, pointFour);
+			
+			//act 
+			bool answer = is_rectangle(quadrilateral);
 
 			//assert
 			Assert::AreEqual(answer, true);
 		}
-		
-		//TEST_METHOD(is_Rectangle_NegativeRectangle_False)
-		//{
-		//	//arrange
-		//	QUADRILATERAL squareSides;
-		//	squareSides.topLeftPoint = { -2.0, -2.0 };
-		//	squareSides.topRightPoint = { 2.0, -2.0 };
-		//	squareSides.bottomLeftPoint = { -2.0, -4.0 };
-		//	squareSides.bottomRightPoint = { 2.0, -4.0 };
 
-		//	//act 
-		//	bool answer = is_rectangle(squareSides);
+		TEST_METHOD(is_Rectangle_NegativeRectangleDiagonal_True)
+		{
+			//arrange
+			POINT pointOne = { -1.5, -1.5 };
+			POINT pointTwo = {0, -3};
+			POINT pointThree = { -2.5,-2.5 };
+			POINT pointFour = { -1, -4 };
 
-		//	//assert
-		//	Assert::AreEqual(answer, true);
-		//}
+			QUADRILATERAL quadrilateral = create_quadrilateral(pointOne, pointTwo, pointThree, pointFour);
 
-		//TEST_METHOD(is_Rectangle_PositveRectangleDiagonal_True)
-		//{
-		//	//arrange
-		//	QUADRILATERAL squareSides;
-		//	squareSides.topLeftPoint = { -2.0, -2.0 };
-		//	squareSides.topRightPoint = { 2.0, -2.0 };
-		//	squareSides.bottomLeftPoint = { -2.0, -4.0 };
-		//	squareSides.bottomRightPoint = { 2.0, -4.0 };
+			//act 
+			bool answer = is_rectangle(quadrilateral);
 
-		//	//act 
-		//	bool answer = is_rectangle(squareSides);
+			//assert
+			Assert::AreEqual(answer, true);
+		}
 
-		//	//assert
-		//	Assert::AreEqual(answer, true);
-		//}
+		TEST_METHOD(is_Rectangle_PositveRectangleDiagonal_False)
+		{
+			//arrange
+			POINT pointOne = { 10, 4 };
+			POINT pointTwo = { 2.5, 2.5 };
+			POINT pointThree = { 0,3 };
+			POINT pointFour = { 1.5, 1.5 };
 
-		//TEST_METHOD(is_Rectangle_NegativeRectangleDiagonal_True)
-		//{
-		//	//arrange
-		//	QUADRILATERAL squareSides;
-		//	squareSides.topLeftPoint = { -2.0, -2.0 };
-		//	squareSides.topRightPoint = { 2.0, -2.0 };
-		//	squareSides.bottomLeftPoint = { -2.0, -4.0 };
-		//	squareSides.bottomRightPoint = { 2.0, -4.0 };
+			QUADRILATERAL quadrilateral = create_quadrilateral(pointOne, pointTwo, pointThree, pointFour);
 
-		//	//act 
-		//	bool answer = is_rectangle(squareSides);
+			//act 
+			bool answer = is_rectangle(quadrilateral);
 
-		//	//assert
-		//	Assert::AreEqual(answer, true);
-		//}
+			//assert
+			Assert::AreEqual(answer, false);
+		}
 
-		//TEST_METHOD(is_Rectangle_PositveRectangleDiagonal_False)
-		//{
-		//	//arrange
-		//	QUADRILATERAL squareSides;
-		//	squareSides.topLeftPoint = { -2.0, -2.0 };
-		//	squareSides.topRightPoint = { 2.0, -2.0 };
-		//	squareSides.bottomLeftPoint = { -2.0, -4.0 };
-		//	squareSides.bottomRightPoint = { 2.0, -4.0 };
+		TEST_METHOD(is_Rectangle_NegativeRectangleDiagonal_False)
+		{
+			//arrange
+			POINT pointOne = { 10, -1.5 };
+			POINT pointTwo = { 0, -3 };
+			POINT pointThree = { -2.5,-2.5 };
+			POINT pointFour = { -1, -4 };
 
-		//	//act 
-		//	bool answer = is_rectangle(squareSides);
+			QUADRILATERAL quadrilateral = create_quadrilateral(pointOne, pointTwo, pointThree, pointFour);
 
-		//	//assert
-		//	Assert::AreEqual(answer, true);
-		//}
+			//act 
+			bool answer = is_rectangle(quadrilateral);
 
-		//TEST_METHOD(is_Rectangle_NegativeRectangleDiagonal_False)
-		//{
-		//	//arrange
-		//	QUADRILATERAL squareSides;
-		//	squareSides.topLeftPoint = { -2.0, -2.0 };
-		//	squareSides.topRightPoint = { 2.0, -2.0 };
-		//	squareSides.bottomLeftPoint = { -2.0, -4.0 };
-		//	squareSides.bottomRightPoint = { 2.0, -4.0 };
+			//assert
+			Assert::AreEqual(answer, false);
+		}
 
-		//	//act 
-		//	bool answer = is_rectangle(squareSides);
+		TEST_METHOD(is_Rectangle_PositiveSquare_True)
+		{
+			//arrange
+			POINT pointOne = { 1, 2 };
+			POINT pointTwo = { 2, 2 };
+			POINT pointThree = { 1, 1 };
+			POINT pointFour = { 2, 1 };
 
-		//	//assert
-		//	Assert::AreEqual(answer, true);
-		//}
+			QUADRILATERAL quadrilateral = create_quadrilateral(pointOne, pointTwo, pointThree, pointFour);
+			//act 
+			bool answer = is_rectangle(quadrilateral);
 
-		//TEST_METHOD(is_Rectangle_PositiveSquare_True)
-		//{
-		//	//arrange
-		//	QUADRILATERAL squareSides;
-		//	squareSides.topLeftPoint = { 0.0, 2.0 };
-		//	squareSides.topRightPoint = { 2.0, 2.0 };
-		//	squareSides.bottomLeftPoint = { 0.0, 1.0 };
-		//	squareSides.bottomRightPoint = { 2.0, 1.0 };
+			//assert
+			Assert::AreEqual(answer, true);
+		}
 
+		TEST_METHOD(is_Rectangle_NegativeSquare_True)
+		{
+			//arrange
+			POINT pointOne = { -1, -2 };
+			POINT pointTwo = { -2, -2 };
+			POINT pointThree = { -1, -1 };
+			POINT pointFour = { -2, -1 };
 
-		//	//act 
-		//	bool answer = is_rectangle(squareSides);
+			QUADRILATERAL quadrilateral = create_quadrilateral(pointOne, pointTwo, pointThree, pointFour);
+			//act 
+			bool answer = is_rectangle(quadrilateral);
 
-		//	//assert
-		//	Assert::AreEqual(answer, true);
-		//}
+			//assert
+			Assert::AreEqual(answer, true);
+		}
 
+		TEST_METHOD(is_Rectangle_PositiveSquare_false)
+		{
+			//arrange
+			POINT pointOne = { 10, 2 };
+			POINT pointTwo = { 2, 2 };
+			POINT pointThree = { 1, 1 };
+			POINT pointFour = { 2, 1 };
 
-		//TEST_METHOD(is_Rectangle_NegativeSquare_True)
-		//{
-		//	//arrange
-		//	QUADRILATERAL squareSides;
-		//	squareSides.topLeftPoint = { -2.0, -2.0 };
-		//	squareSides.topRightPoint = { 2.0, -2.0 };
-		//	squareSides.bottomLeftPoint = { -2.0, -4.0 };
-		//	squareSides.bottomRightPoint = { 2.0, -4.0 };
+			QUADRILATERAL quadrilateral = create_quadrilateral(pointOne, pointTwo, pointThree, pointFour);
+			//act 
+			bool answer = is_rectangle(quadrilateral);
 
-		//	//act 
-		//	bool answer = is_rectangle(squareSides);
+			//assert
+			Assert::AreEqual(answer, false);
+		}
 
-		//	//assert
-		//	Assert::AreEqual(answer, true);
-		//}
+		TEST_METHOD(is_Rectangle_NegativeSquare_False)
+		{
+			//arrange
+			POINT pointOne = { -10, -2 };
+			POINT pointTwo = { -2, -2 };
+			POINT pointThree = { -1, -1 };
+			POINT pointFour = { -2, -1 };
 
-		//TEST_METHOD(is_Rectangle_PositiveSquare_false)
-		//{
-		//	//arrange
-		//	QUADRILATERAL squareSides;
-		//	squareSides.topLeftPoint = { 0, 2.0 };
-		//	squareSides.topRightPoint = { 10, 2.0 };
-		//	squareSides.bottomLeftPoint = { 0.0, 1.0 };
-		//	squareSides.bottomRightPoint = { 2.0, 1.0 };
+			QUADRILATERAL quadrilateral = create_quadrilateral(pointOne, pointTwo, pointThree, pointFour);
+			//act 
+			bool answer = is_rectangle(quadrilateral);
 
-		//	//act 
-		//	bool answer = is_rectangle(squareSides);
+			//assert
+			Assert::AreEqual(answer, false);
+		}
 
-		//	//assert
-		//	Assert::AreEqual(answer, false);
-		//}
+		TEST_METHOD(is_Rectangle_PositveSquareDiagonal_True)
+		{
+			POINT pointOne = { 2, 3 };
+			POINT pointTwo = { 3, 2 };
+			POINT pointThree = { 1, 2 };
+			POINT pointFour = { 2, 1 };
 
+			QUADRILATERAL quadrilateral = create_quadrilateral(pointOne, pointTwo, pointThree, pointFour);
+			//act 
+			bool answer = is_rectangle(quadrilateral);
 
+			//assert
+			Assert::AreEqual(answer, true);
+		}
 
-		//TEST_METHOD(is_Rectangle_AllNegitiveSquare_True)
-		//{
-		//	//arrange
-		//	QUADRILATERAL SquareSides;
-		//	SquareSides.x[0] = -1;
-		//	SquareSides.x[1] = -2;
-		//	SquareSides.x[2] = -1;
-		//	SquareSides.x[3] = -2;
-		//	SquareSides.y[0] = -1;
-		//	SquareSides.y[1] = -2;
-		//	SquareSides.y[2] = -1;
-		//	SquareSides.y[3] = -2;
+		TEST_METHOD(is_Rectangle_NegativeSquareDiagonal_True)
+		{
+			POINT pointOne = { -2, -3 };
+			POINT pointTwo = { -3, -2 };
+			POINT pointThree = { -1, -2 };
+			POINT pointFour = { -2, -1 };
 
-		//	//act
-		//	bool answer = is_rectangle(SquareSides);
+			QUADRILATERAL quadrilateral = create_quadrilateral(pointOne, pointTwo, pointThree, pointFour);
+			//act 
+			bool answer = is_rectangle(quadrilateral);
 
-		//	//assert
-		//	Assert::AreEqual(answer, true);
-		//}
+			//assert
+			Assert::AreEqual(answer, true);
+		}
 
-		//TEST_METHOD(is_Rectangle_NegativeSquare_False)
-		//{
-		//	//arrange
-		//	QUADRILATERAL squareSides;
-		//	squareSides.topLeftPoint = { -2.0, -2.0 };
-		//	squareSides.topRightPoint = { 2.0, -2.0 };
-		//	squareSides.bottomLeftPoint = { -2.0, -4.0 };
-		//	squareSides.bottomRightPoint = { 2.0, -4.0 };
+		TEST_METHOD(is_Rectangle_PositveSquareDiagonal_False)
+		{
+			POINT pointOne = { 10, 3 };
+			POINT pointTwo = { 3, 2 };
+			POINT pointThree = { 1, 2 };
+			POINT pointFour = { 2, 1 };
 
-		//	//act 
-		//	bool answer = is_rectangle(squareSides);
+			QUADRILATERAL quadrilateral = create_quadrilateral(pointOne, pointTwo, pointThree, pointFour);
+			//act 
+			bool answer = is_rectangle(quadrilateral);
 
-		//	//assert
-		//	Assert::AreEqual(answer, true);
-		//}
+			//assert
+			Assert::AreEqual(answer, false);
+		}
 
-		//TEST_METHOD(is_Rectangle_PositveSquareDiagonal_True)
-		//{
-		//	//arrange
-		//	QUADRILATERAL squareSides;
-		//	squareSides.topLeftPoint = { -2.0, -2.0 };
-		//	squareSides.topRightPoint = { 2.0, -2.0 };
-		//	squareSides.bottomLeftPoint = { -2.0, -4.0 };
-		//	squareSides.bottomRightPoint = { 2.0, -4.0 };
+		TEST_METHOD(is_Rectangle_NegativeSquareDiagonal_False)
+		{
+			POINT pointOne = { -10, -3 };
+			POINT pointTwo = { -3, -2 };
+			POINT pointThree = { -1, -2 };
+			POINT pointFour = { -2, -1 };
 
-		//	//act 
-		//	bool answer = is_rectangle(squareSides);
+			QUADRILATERAL quadrilateral = create_quadrilateral(pointOne, pointTwo, pointThree, pointFour);
+			//act 
+			bool answer = is_rectangle(quadrilateral);
 
-		//	//assert
-		//	Assert::AreEqual(answer, true);
-		//}
-
-		//TEST_METHOD(is_Rectangle_NegativeSquareDiagonal_True)
-		//{
-		//	//arrange
-		//	QUADRILATERAL squareSides;
-		//	squareSides.topLeftPoint = { -2.0, -2.0 };
-		//	squareSides.topRightPoint = { 2.0, -2.0 };
-		//	squareSides.bottomLeftPoint = { -2.0, -4.0 };
-		//	squareSides.bottomRightPoint = { 2.0, -4.0 };
-
-		//	//act 
-		//	bool answer = is_rectangle(squareSides);
-
-		//	//assert
-		//	Assert::AreEqual(answer, true);
-		//}
-
-		//TEST_METHOD(is_Rectangle_PositveSquareDiagonal_False)
-		//{
-		//	//arrange
-		//	QUADRILATERAL squareSides;
-		//	squareSides.topLeftPoint = { -2.0, -2.0 };
-		//	squareSides.topRightPoint = { 2.0, -2.0 };
-		//	squareSides.bottomLeftPoint = { -2.0, -4.0 };
-		//	squareSides.bottomRightPoint = { 2.0, -4.0 };
-
-		//	//act 
-		//	bool answer = is_rectangle(squareSides);
-
-		//	//assert
-		//	Assert::AreEqual(answer, true);
-		//}
-
-		//TEST_METHOD(is_Rectangle_NegativeSquareDiagonal_False)
-		//{
-		//	//arrange
-		//	QUADRILATERAL squareSides;
-		//	squareSides.topLeftPoint = { -2.0, -2.0 };
-		//	squareSides.topRightPoint = { 2.0, -2.0 };
-		//	squareSides.bottomLeftPoint = { -2.0, -4.0 };
-		//	squareSides.bottomRightPoint = { 2.0, -4.0 };
-
-		//	//act 
-		//	bool answer = is_rectangle(squareSides);
-
-		//	//assert
-		//	Assert::AreEqual(answer, true);
-		//}
-
-
-
+			//assert
+			Assert::AreEqual(answer, false);
+		}
 
 		TEST_METHOD(radians_to_degrees_OneDecimalZeroFourSevenTwo_Sixty)
 		{
@@ -455,7 +403,6 @@ namespace UnitTests
 			Assert::AreEqual(answer, expected, ANGLETOLERANCE);
 
 		}
-
 
 		TEST_METHOD(radians_to_degrees_OneDecimalTwoTwoOneSeven_Seventy)
 		{
@@ -798,6 +745,7 @@ namespace UnitTests
 
 			Assert::AreEqual(answer, "Not a triangle");
 		}
+		
 		TEST_METHOD(analyzeTriangle_OneZeroOne_NotATriangle)
 		{
 			//arrange
@@ -811,6 +759,7 @@ namespace UnitTests
 			//assert
 			Assert::AreEqual(answer, "Not a triangle");
 		}
+		
 		TEST_METHOD(analyzeTriangle_OneOneZero_NotATriangle)
 		{
 			//arrange
@@ -851,6 +800,7 @@ namespace UnitTests
 			//assert
 			Assert::AreEqual(answer, "Not a triangle");
 		}
+	
 		TEST_METHOD(analyzeTriangle_OneZeroZero_NotATriangle)
 		{
 			//arrange
@@ -864,6 +814,7 @@ namespace UnitTests
 			//assert
 			Assert::AreEqual(answer, "Not a triangle");
 		}
+	
 		TEST_METHOD(analyzeTriangle_ZeroZeroZero_NotATriangle)
 		{
 			//arrange
@@ -891,6 +842,7 @@ namespace UnitTests
 			//assert
 			Assert::AreEqual(answer, "Not a triangle");
 		}
+	
 		TEST_METHOD(analyzeTriangle_OneNegOneOne_NotATriangle)
 		{
 			//arrange
@@ -904,6 +856,7 @@ namespace UnitTests
 			//assert
 			Assert::AreEqual(answer, "Not a triangle");
 		}
+	
 		TEST_METHOD(analyzeTriangle_OneOneNegOne_NotATriangle)
 		{
 			//arrange
@@ -917,6 +870,7 @@ namespace UnitTests
 			//assert
 			Assert::AreEqual(answer, "Not a triangle");
 		}
+	
 		TEST_METHOD(analyzeTriangle_NegOneNegOneOne_NotATriangle)
 		{
 			//arrange
@@ -945,6 +899,7 @@ namespace UnitTests
 			Assert::AreEqual(answer, "Not a triangle");
 			
 		}
+	
 		TEST_METHOD(analyzeTriangle_OneNegOneNegOne_NotATriangle)
 		{
 			//arrange
@@ -958,6 +913,7 @@ namespace UnitTests
 			//assert
 			Assert::AreEqual(answer, "Not a triangle");
 		}
+	
 		TEST_METHOD(analyzeTriangle_TwoThreeOne_NotATriangle)
 		{
 			//arrange
@@ -971,6 +927,7 @@ namespace UnitTests
 			//assert
 			Assert::AreEqual(answer, "Not a triangle");
 		}
+		
 		TEST_METHOD(analyzeTriangle_TwoThreeOne_ScaleneTriangle)
 		{
 			//arrange
@@ -999,6 +956,7 @@ namespace UnitTests
 
 			Assert::AreEqual(answer, "Not a triangle");
 		}
+		
 		TEST_METHOD(analyzeTriangle_OneCharOne_NotATriangle) 
 		{
 			//arrange
@@ -1012,6 +970,7 @@ namespace UnitTests
 			//assert
 			Assert::AreEqual(analyze_triangle(1, 'b', 1), "Not a triangle");
 		}
+	
 		TEST_METHOD(analyzeTriangle_OneOneChar_NotATriangle)
 		{
 			//arrange
@@ -1039,6 +998,7 @@ namespace UnitTests
 			//assert
 			Assert::AreEqual(answer, "Isosceles triangle");
 		}
+		
 		TEST_METHOD(analyzeTriangle_TwoThreeTwo_IsoscelesTriangle) 
 		{
 			//arrange
@@ -1052,6 +1012,7 @@ namespace UnitTests
 			//assert
 			Assert::AreEqual(answer, "Isosceles triangle");
 		}
+		
 		TEST_METHOD(analyzeTriangle_ThreeTwoTwo_IsoscelesTriangle)
 		{
 			//arrange
@@ -1066,6 +1027,7 @@ namespace UnitTests
 			Assert::AreEqual(answer, "Isosceles triangle");
 
 		}
+		
 		TEST_METHOD(analyzeTriangle_OnetoTwoHundred_EquilateralTriangle)
 		{
 			//arrange 
@@ -1078,13 +1040,14 @@ namespace UnitTests
 				Assert::AreEqual(analyze_triangle(i, i, i), "Equilateral triangle");
 			}
 		}
+		
 		TEST_METHOD(analyzeTriangle_OnetoTwoHundred_ScaleneTriangle) {
 			
 			//arrange
-			int i = 1;
+			double i = 1;
 
 			//act
-			for (int i = 1; i < 200; i++)
+			for (double i = 1; i < 200; i++)
 			{
 				//assert
 				Assert::AreEqual(analyze_triangle(i+2, i + 3, i + 4), "Scalene triangle");

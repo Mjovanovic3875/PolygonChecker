@@ -27,6 +27,8 @@ typedef struct quadrilateral { // this is a coordinate struct it contains x and 
 	double diag2;
 }QUADRILATERAL;
 
+QUADRILATERAL create_quadrilateral(POINT pointOne, POINT pointTwo, POINT pointThree, POINT pointFour);
+
 QUADRILATERAL quarilateral_wizard(void);
 QUADRILATERAL write_Sides(QUADRILATERAL reference);
 QUADRILATERAL getSquareSides(QUADRILATERAL points); //gets user input and returned them as a coordinate struct

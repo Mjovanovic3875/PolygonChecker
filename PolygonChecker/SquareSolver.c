@@ -128,20 +128,13 @@ int compare_point_y(POINT *pointOne, POINT *pointTwo)
 
 
 
-
-QUADRILATERAL quarilateral_wizard(void)
+QUADRILATERAL create_quadrilateral(POINT pointOne, POINT pointTwo, 
+								   POINT pointThree, POINT pointFour)
 {
 	QUADRILATERAL result;
-	POINT pointsTemp[4];
 
-	for (int i = 0; i < 4; i++)
-	{
-		printf("Please enter the x value for point %d: ", i + 1);
-		scanf_s("%lf", &(pointsTemp[i].x));
-		printf("Please enter the y value for point %d: ", i + 1);
-		scanf_s("%lf", &(pointsTemp[i].y));
-	}
-	
+	POINT pointsTemp[4] = { pointOne, pointTwo, pointThree, pointFour };
+
 
 	// Order the points to be top left, top right, bottom left, bottom right
 	//    We can do so with 3 sorts
@@ -170,7 +163,29 @@ QUADRILATERAL quarilateral_wizard(void)
 	result.diag1 = find_line_length(result.topLeftPoint, result.bottomRightPoint);
 	result.diag2 = find_line_length(result.topRightPoint, result.bottomLeftPoint);
 
+
 	return result;
+}
+
+
+
+
+
+QUADRILATERAL quarilateral_wizard(void)
+{
+	
+	POINT pointsTemp[4];
+
+	for (int i = 0; i < 4; i++)
+	{
+		printf("Please enter the x value for point %d: ", i + 1);
+		scanf_s("%lf", &(pointsTemp[i].x));
+		printf("Please enter the y value for point %d: ", i + 1);
+		scanf_s("%lf", &(pointsTemp[i].y));
+	}
+	
+
+	return create_quadrilateral(pointsTemp[0], pointsTemp[1], pointsTemp[2], pointsTemp[3]);
 }
 
 

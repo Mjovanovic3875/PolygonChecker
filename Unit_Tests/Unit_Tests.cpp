@@ -10,7 +10,7 @@ extern "C" {
 }
 using namespace Microsoft::VisualStudio::CppUnitTestFramework;
 
-#define ANGLETOLERANCE 0.05
+#define ANGLE_TOLERANCE 0.05
 
 namespace UnitTests
 {
@@ -352,7 +352,7 @@ namespace UnitTests
 
 			//assert
 
-			Assert::AreEqual(answer, expected, ANGLETOLERANCE);
+			Assert::AreEqual(answer, expected, ANGLE_TOLERANCE);
 
 		}
 
@@ -368,7 +368,7 @@ namespace UnitTests
 
 			//assert
 
-			Assert::AreEqual(answer, expected, ANGLETOLERANCE);
+			Assert::AreEqual(answer, expected, ANGLE_TOLERANCE);
 
 		}
 
@@ -384,7 +384,7 @@ namespace UnitTests
 
 			//assert
 
-			Assert::AreEqual(answer, expected, ANGLETOLERANCE);
+			Assert::AreEqual(answer, expected, ANGLE_TOLERANCE);
 
 		}
 
@@ -400,7 +400,7 @@ namespace UnitTests
 
 			//assert
 
-			Assert::AreEqual(answer, expected, ANGLETOLERANCE);
+			Assert::AreEqual(answer, expected, ANGLE_TOLERANCE);
 
 		}
 
@@ -416,7 +416,7 @@ namespace UnitTests
 
 			//assert
 
-			Assert::AreEqual(answer, expected, ANGLETOLERANCE);
+			Assert::AreEqual(answer, expected, ANGLE_TOLERANCE);
 
 		}
 
@@ -432,7 +432,7 @@ namespace UnitTests
 
 			//assert
 
-			Assert::AreEqual(answer, expected, ANGLETOLERANCE);
+			Assert::AreEqual(answer, expected, ANGLE_TOLERANCE);
 
 		}
 
@@ -448,7 +448,7 @@ namespace UnitTests
 
 			//assert
 
-			Assert::AreEqual(answer, expected, ANGLETOLERANCE);
+			Assert::AreEqual(answer, expected, ANGLE_TOLERANCE);
 
 		}
 
@@ -465,7 +465,7 @@ namespace UnitTests
 			double answer = find_angle(sideOne, sideTwo, sideThree);
 			
 			//assert
-			Assert::AreEqual(answer,expected, ANGLETOLERANCE );
+			Assert::AreEqual(answer,expected, ANGLE_TOLERANCE );
 
 		}
 
@@ -482,7 +482,7 @@ namespace UnitTests
 			double answer = find_angle(sideOne, sideTwo, sideThree);
 
 			//assert
-			Assert::AreEqual(answer, expected, ANGLETOLERANCE);
+			Assert::AreEqual(answer, expected, ANGLE_TOLERANCE);
 
 		}
 
@@ -499,7 +499,7 @@ namespace UnitTests
 			double answer = find_angle(sideOne, sideTwo, sideThree);
 
 			//assert
-			Assert::AreEqual(answer, expected, ANGLETOLERANCE);
+			Assert::AreEqual(answer, expected, ANGLE_TOLERANCE);
 
 		}
 
@@ -516,7 +516,7 @@ namespace UnitTests
 			double answer = find_angle(sideOne, sideTwo, sideThree);
 
 			//assert
-			Assert::AreEqual(answer, expected, ANGLETOLERANCE);
+			Assert::AreEqual(answer, expected, ANGLE_TOLERANCE);
 
 		}
 
@@ -533,7 +533,7 @@ namespace UnitTests
 			double answer = find_angle(sideOne, sideTwo, sideThree);
 
 			//assert
-			Assert::AreEqual(answer, expected, ANGLETOLERANCE);
+			Assert::AreEqual(answer, expected, ANGLE_TOLERANCE);
 
 		}
 
@@ -550,7 +550,7 @@ namespace UnitTests
 			double answer = find_angle(sideOne, sideTwo, sideThree);
 
 			//assert
-			Assert::AreEqual(answer, expected, ANGLETOLERANCE);
+			Assert::AreEqual(answer, expected, ANGLE_TOLERANCE);
 
 		}
 
@@ -576,9 +576,9 @@ namespace UnitTests
 
 			//assert
 			
-			Assert::AreEqual(expected[0],answer[0],ANGLETOLERANCE);
-			Assert::AreEqual(expected[1], answer[1], ANGLETOLERANCE);
-			Assert::AreEqual(expected[2], answer[2], ANGLETOLERANCE);
+			Assert::AreEqual(expected[0],answer[0],ANGLE_TOLERANCE);
+			Assert::AreEqual(expected[1], answer[1], ANGLE_TOLERANCE);
+			Assert::AreEqual(expected[2], answer[2], ANGLE_TOLERANCE);
 		}
 
 		TEST_METHOD(inside_angles_radians_TwelveTwelveSixteen_0Decimal84107_0Decimal84107_1Decimal45946)
@@ -603,9 +603,9 @@ namespace UnitTests
 
 			//assert
 
-			Assert::AreEqual(expected[0], answer[0], ANGLETOLERANCE);
-			Assert::AreEqual(expected[1], answer[1], ANGLETOLERANCE);
-			Assert::AreEqual(expected[2], answer[2], ANGLETOLERANCE);
+			Assert::AreEqual(expected[0], answer[0], ANGLE_TOLERANCE);
+			Assert::AreEqual(expected[1], answer[1], ANGLE_TOLERANCE);
+			Assert::AreEqual(expected[2], answer[2], ANGLE_TOLERANCE);
 		}
 
 		TEST_METHOD(inside_angles_radians_ThreeFourFive_0Decimal6435_0Decimal9273_1Decimal5708)
@@ -630,9 +630,9 @@ namespace UnitTests
 
 			//assert
 
-			Assert::AreEqual(expected[0], answer[0], ANGLETOLERANCE);
-			Assert::AreEqual(expected[1], answer[1], ANGLETOLERANCE);
-			Assert::AreEqual(expected[2], answer[2], ANGLETOLERANCE);
+			Assert::AreEqual(expected[0], answer[0], ANGLE_TOLERANCE);
+			Assert::AreEqual(expected[1], answer[1], ANGLE_TOLERANCE);
+			Assert::AreEqual(expected[2], answer[2], ANGLE_TOLERANCE);
 		}
 
 		TEST_METHOD(inside_angles_radians_OneOneOne_60)
@@ -657,9 +657,9 @@ namespace UnitTests
 
 			//assert
 
-			Assert::AreEqual(expected[0], answer[0], ANGLETOLERANCE);
-			Assert::AreEqual(expected[1], answer[1], ANGLETOLERANCE);
-			Assert::AreEqual(expected[2], answer[2], ANGLETOLERANCE);
+			Assert::AreEqual(expected[0], answer[0], ANGLE_TOLERANCE);
+			Assert::AreEqual(expected[1], answer[1], ANGLE_TOLERANCE);
+			Assert::AreEqual(expected[2], answer[2], ANGLE_TOLERANCE);
 		}
 
 		TEST_METHOD(inside_angles_radians_TwelveTwelveSixteen_48Decimal19_48Decimal19_83Decimal6)
@@ -684,9 +684,9 @@ namespace UnitTests
 
 			//assert
 
-			Assert::AreEqual(expected[0], answer[0], ANGLETOLERANCE);
-			Assert::AreEqual(expected[1], answer[1], ANGLETOLERANCE);
-			Assert::AreEqual(expected[2], answer[2], ANGLETOLERANCE);
+			Assert::AreEqual(expected[0], answer[0], ANGLE_TOLERANCE);
+			Assert::AreEqual(expected[1], answer[1], ANGLE_TOLERANCE);
+			Assert::AreEqual(expected[2], answer[2], ANGLE_TOLERANCE);
 		}
 
 		TEST_METHOD(inside_angles_radians_ThreeFourFive_36Decimal87_52Decimal13_90)
@@ -711,9 +711,9 @@ namespace UnitTests
 
 			//assert
 
-			Assert::AreEqual(expected[0], answer[0], ANGLETOLERANCE);
-			Assert::AreEqual(expected[1], answer[1], ANGLETOLERANCE);
-			Assert::AreEqual(expected[2], answer[2], ANGLETOLERANCE);
+			Assert::AreEqual(expected[0], answer[0], ANGLE_TOLERANCE);
+			Assert::AreEqual(expected[1], answer[1], ANGLE_TOLERANCE);
+			Assert::AreEqual(expected[2], answer[2], ANGLE_TOLERANCE);
 		}
 
 		TEST_METHOD(analyzeTriangle_negOneallsides_NotATriangle)

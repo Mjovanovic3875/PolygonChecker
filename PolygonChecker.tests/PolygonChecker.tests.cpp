@@ -128,7 +128,7 @@ namespace PolygonCheckertests
 
 		}
 
-		TEST_METHOD(find_angle_OneOneOne_1decimal0472)
+		TEST_METHOD(find_angle_OneAndOneAndOne_1decimal0472)
 		{
 			//arrange
 			double sideOne = 1;
@@ -145,7 +145,7 @@ namespace PolygonCheckertests
 
 		}
 
-		TEST_METHOD(find_angle_TweleveTweleveSixteen_0decimal8410)
+		TEST_METHOD(find_angle_TweleveAndTweleveAndSixteen_0decimal8410)
 		{
 			//arrange
 			double sideOne = 12;
@@ -800,7 +800,7 @@ namespace PolygonCheckertests
 			Assert::AreEqual(answer, expected);
 		}
 
-		TEST_METHOD(is_Rectangle_PositiveRectange_True)
+		TEST_METHOD(is_rectangle_PositiveRectange_True)
 		{
 			//arrange
 			POINT pointOne = { 0.0, 2.0 };
@@ -816,7 +816,7 @@ namespace PolygonCheckertests
 			Assert::AreEqual(answer, true);
 		}
 
-		TEST_METHOD(is_Rectangle_NegativeRectangle_True)
+		TEST_METHOD(is_rectangle_NegativeRectangle_True)
 		{
 			//arrange
 			POINT pointOne = { -2.0, -2.0 };
@@ -833,7 +833,7 @@ namespace PolygonCheckertests
 
 		}
 
-		TEST_METHOD(is_Rectangle_PositiveRectange_false)
+		TEST_METHOD(is_rectangle_PositiveRectange_false)
 		{
 			//arrange
 			POINT pointOne = { 0, 2.0 };
@@ -850,7 +850,7 @@ namespace PolygonCheckertests
 
 		}
 
-		TEST_METHOD(is_Rectangle_NegativeRectangle_False)
+		TEST_METHOD(is_rectangle_NegativeRectangle_False)
 		{
 			//arrange
 			POINT pointOne = { -2.0, -2.0 };
@@ -866,7 +866,7 @@ namespace PolygonCheckertests
 			Assert::AreEqual(answer, false);
 		}
 
-		TEST_METHOD(is_Rectangle_PositveRectangleDiagonal_True)
+		TEST_METHOD(is_rectangle_PositveRectangleDiagonal_True)
 		{
 			//arrange
 			POINT pointOne = { 1, 4 };
@@ -883,7 +883,7 @@ namespace PolygonCheckertests
 			Assert::AreEqual(answer, true);
 		}
 
-		TEST_METHOD(is_Rectangle_NegativeRectangleDiagonal_True)
+		TEST_METHOD(is_rectangle_NegativeRectangleDiagonal_True)
 		{
 			//arrange
 			POINT pointOne = { -1.5, -1.5 };
@@ -900,7 +900,7 @@ namespace PolygonCheckertests
 			Assert::AreEqual(answer, true);
 		}
 
-		TEST_METHOD(is_Rectangle_PositveRectangleDiagonal_False)
+		TEST_METHOD(is_rectangle_PositveRectangleDiagonal_False)
 		{
 			//arrange
 			POINT pointOne = { 10, 4 };
@@ -917,7 +917,7 @@ namespace PolygonCheckertests
 			Assert::AreEqual(answer, false);
 		}
 
-		TEST_METHOD(is_Rectangle_NegativeRectangleDiagonal_False)
+		TEST_METHOD(is_rectangle_NegativeRectangleDiagonal_False)
 		{
 			//arrange
 			POINT pointOne = { 10, -1.5 };
@@ -934,7 +934,7 @@ namespace PolygonCheckertests
 			Assert::AreEqual(answer, false);
 		}
 
-		TEST_METHOD(is_Rectangle_PositiveSquare_True)
+		TEST_METHOD(is_rectangle_PositiveSquare_True)
 		{
 			//arrange
 			POINT pointOne = { 1, 2 };
@@ -950,7 +950,7 @@ namespace PolygonCheckertests
 			Assert::AreEqual(answer, true);
 		}
 
-		TEST_METHOD(is_Rectangle_NegativeSquare_True)
+		TEST_METHOD(is_rectangle_NegativeSquare_True)
 		{
 			//arrange
 			POINT pointOne = { -1, -2 };
@@ -966,7 +966,7 @@ namespace PolygonCheckertests
 			Assert::AreEqual(answer, true);
 		}
 
-		TEST_METHOD(is_Rectangle_PositiveSquare_false)
+		TEST_METHOD(is_rectangle_PositiveSquare_false)
 		{
 			//arrange
 			POINT pointOne = { 10, 2 };
@@ -982,7 +982,7 @@ namespace PolygonCheckertests
 			Assert::AreEqual(answer, false);
 		}
 
-		TEST_METHOD(is_Rectangle_NegativeSquare_False)
+		TEST_METHOD(is_rectangle_NegativeSquare_False)
 		{
 			//arrange
 			POINT pointOne = { -10, -2 };
@@ -998,7 +998,7 @@ namespace PolygonCheckertests
 			Assert::AreEqual(answer, false);
 		}
 
-		TEST_METHOD(is_Rectangle_PositveSquareDiagonal_True)
+		TEST_METHOD(is_rectangle_PositveSquareDiagonal_True)
 		{
 			POINT pointOne = { 2, 3 };
 			POINT pointTwo = { 3, 2 };
@@ -1013,7 +1013,7 @@ namespace PolygonCheckertests
 			Assert::AreEqual(answer, true);
 		}
 
-		TEST_METHOD(is_Rectangle_NegativeSquareDiagonal_True)
+		TEST_METHOD(is_rectangle_NegativeSquareDiagonal_True)
 		{
 			POINT pointOne = { -2, -3 };
 			POINT pointTwo = { -3, -2 };
@@ -1028,7 +1028,7 @@ namespace PolygonCheckertests
 			Assert::AreEqual(answer, true);
 		}
 
-		TEST_METHOD(is_Rectangle_PositveSquareDiagonal_False)
+		TEST_METHOD(is_rectangle_PositveSquareDiagonal_False)
 		{
 			POINT pointOne = { 10, 3 };
 			POINT pointTwo = { 3, 2 };
@@ -1043,7 +1043,7 @@ namespace PolygonCheckertests
 			Assert::AreEqual(answer, false);
 		}
 
-		TEST_METHOD(is_Rectangle_NegativeSquareDiagonal_False)
+		TEST_METHOD(is_rectangle_NegativeSquareDiagonal_False)
 		{
 			POINT pointOne = { -10, -3 };
 			POINT pointTwo = { -3, -2 };

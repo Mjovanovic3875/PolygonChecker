@@ -18,12 +18,15 @@ QUADRILATERAL getSquareSides(QUADRILATERAL points) { // retrieve user input for 
 	
 }
 
+
 double get_perimeter(double x, double y) { // return the total of 4 ints
 	return  (2*x + 2*y);
 }
 double get_area(double x, double y) { // returns the area of two lines
 	return x*y;
 }
+
+
 bool is_rectangle(QUADRILATERAL quadrilateral) { // says i need to generate 4 lines but 2 lines are identical for x and y axis so shouldnt I only need 2?
 	double topLeftAngleRad = find_angle(quadrilateral.diag2, quadrilateral.top_line, quadrilateral.left_line);
 	double topLeftAngleDeg = radians_to_degrees(topLeftAngleRad);

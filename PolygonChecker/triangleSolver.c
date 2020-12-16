@@ -84,6 +84,7 @@ void free_triangle(TRIANGLE* triangle)
 }
 
 
+
 void print_triangle_information(TRIANGLE* triangle)
 {
 	printf_s("Type of trangle: %s\n", triangle->typeOfTriangle);

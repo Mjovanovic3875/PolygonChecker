@@ -7,6 +7,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "PolygonChecker", "PolygonCh
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Unit_Tests", "Unit_Tests\Unit_Tests.vcxproj", "{E86526E5-9F02-4D1B-A296-28D0EA4DE101}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "PolygonChecker.tests", "PolygonChecker.tests\PolygonChecker.tests.vcxproj", "{823F9738-2875-4AA3-9557-4557976F8282}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -31,6 +33,14 @@ Global
 		{E86526E5-9F02-4D1B-A296-28D0EA4DE101}.Release|x64.Build.0 = Release|x64
 		{E86526E5-9F02-4D1B-A296-28D0EA4DE101}.Release|x86.ActiveCfg = Release|Win32
 		{E86526E5-9F02-4D1B-A296-28D0EA4DE101}.Release|x86.Build.0 = Release|Win32
+		{823F9738-2875-4AA3-9557-4557976F8282}.Debug|x64.ActiveCfg = Debug|x64
+		{823F9738-2875-4AA3-9557-4557976F8282}.Debug|x64.Build.0 = Debug|x64
+		{823F9738-2875-4AA3-9557-4557976F8282}.Debug|x86.ActiveCfg = Debug|Win32
+		{823F9738-2875-4AA3-9557-4557976F8282}.Debug|x86.Build.0 = Debug|Win32
+		{823F9738-2875-4AA3-9557-4557976F8282}.Release|x64.ActiveCfg = Release|x64
+		{823F9738-2875-4AA3-9557-4557976F8282}.Release|x64.Build.0 = Release|x64
+		{823F9738-2875-4AA3-9557-4557976F8282}.Release|x86.ActiveCfg = Release|Win32
+		{823F9738-2875-4AA3-9557-4557976F8282}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -1,3 +1,27 @@
+/*
+Week 14 Program 1 Assignment : Polygon Checker Group Assignment
+Danny A. Smith, Emil Harvey, Milan Jovanovic
+PROG71985- Fall 2020
+December 2020
+
+Revision History
+
+1.0	NOVEMBER	 Files Created
+1.1	NOVEMBER	 Triangle solver updated
+1.2	NOVEMBER	 Inside angles functions completed
+1.3	DECEMBER	 Tests written and triangle solver refactored
+1.4	DECEMBER	 Get points from user function completed
+1.5	December	 Get sides from points function completed
+1.6	DECEMBER	 Refactored rectangle Checker
+1.7	DECEMBER	 Refactored function names
+1.8	DECEMBER	 Tests broken down into classes
+
+Program Description :
+	This program is designed to check shapes. It can currently take in triangle lines and determin the type of triangle and angles. It can also
+	take in rectangle coordinates and decide if it is a rectangle or not. Future upgradability extends to checking other polygons.
+*/
+
+
 #include "SquareSolver.h"
 #include "triangleSolver.h"
 #include <stdlib.h>
@@ -75,26 +99,26 @@ double find_line_length(POINT pointOne, POINT pointTwo)
 
 
 
-double get_left_line(QUADRILATERAL quadrilateral)
+double get_left_line(QUADRILATERAL quadrilateral) // returns the left line of a rectangle
 {
 	return quadrilateral.left_line;
 }
-double get_top_line(QUADRILATERAL quadrilateral)
+double get_top_line(QUADRILATERAL quadrilateral) // returns the top line of a rectangle
 {
 	return quadrilateral.top_line;
 }
-double get_right_line(QUADRILATERAL quadrilateral)
+double get_right_line(QUADRILATERAL quadrilateral) // returns the right line of a rectangle
 {
 	return quadrilateral.right_line;
 }
-double get_bottom_line(QUADRILATERAL quadrilateral)
+double get_bottom_line(QUADRILATERAL quadrilateral) // returns the bottom line of a rectangle
 {
 	return quadrilateral.bottom_line;
 }
 
 
 
-int compare_point_x(POINT* pointOne, POINT* pointTwo)
+int compare_point_x(POINT* pointOne, POINT* pointTwo) // returns the bigger of two points as a 1 or -1
 {
 	if (pointOne->x < pointTwo->x)
 	{
@@ -112,7 +136,7 @@ int compare_point_x(POINT* pointOne, POINT* pointTwo)
 
 
 
-int compare_point_y(POINT *pointOne, POINT *pointTwo)
+int compare_point_y(POINT *pointOne, POINT *pointTwo) // returns the bigger of two points as a 1 or -1
 {
 	if (pointOne->y > pointTwo->y)
 	{
@@ -132,7 +156,7 @@ int compare_point_y(POINT *pointOne, POINT *pointTwo)
 
 
 QUADRILATERAL create_quadrilateral(POINT pointOne, POINT pointTwo, 
-								   POINT pointThree, POINT pointFour)
+								   POINT pointThree, POINT pointFour) // returns a quadralateral based on 4 points
 {
 	QUADRILATERAL result;
 
@@ -174,7 +198,7 @@ QUADRILATERAL create_quadrilateral(POINT pointOne, POINT pointTwo,
 
 
 
-QUADRILATERAL quarilateral_wizard(void)
+QUADRILATERAL quadrilateral_wizard(void)
 {
 	
 	POINT pointsTemp[4];

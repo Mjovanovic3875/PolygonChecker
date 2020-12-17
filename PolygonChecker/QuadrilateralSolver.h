@@ -34,14 +34,11 @@ typedef struct point
 } POINT;
 
 
-typedef struct quadrilateral { // this is a coordinate struct it contains x and y coordinates for up to 4 points and carries 2 side lengths
-	POINT points[4];
+typedef struct quadrilateral {
 	POINT topLeftPoint;
 	POINT topRightPoint;
 	POINT bottomLeftPoint;
 	POINT bottomRightPoint;
-	double x[4];
-	double y[4];
 	double top_line;
 	double left_line;
 	double bottom_line;
@@ -53,10 +50,6 @@ typedef struct quadrilateral { // this is a coordinate struct it contains x and 
 QUADRILATERAL create_quadrilateral(POINT pointOne, POINT pointTwo, POINT pointThree, POINT pointFour); // creates a quadrilateral object from the 4 points given
 
 QUADRILATERAL quadrilateral_wizard(void); // used to get 4 points from the user
-
-QUADRILATERAL write_Sides(QUADRILATERAL reference); // returns a quadrilateral with the side lengths inputted from the given quadrilateral
-
-QUADRILATERAL getSquareSides(QUADRILATERAL points); //gets user input and returned them as a coordinate struct
 
 double get_perimeter(double x, double y); // returns the perimeter of a rectangle based on two lines
 

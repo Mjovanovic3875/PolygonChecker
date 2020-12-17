@@ -18,10 +18,10 @@
     <ClCompile Include="main.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="SquareSolver.c">
+    <ClCompile Include="TriangleSolver.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="TriangleSolver.c">
+    <ClCompile Include="QuadrilateralSolver.c">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -29,10 +29,10 @@
     <ClInclude Include="main.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="SquareSolver.h">
+    <ClInclude Include="TriangleSolver.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="TriangleSolver.h">
+    <ClInclude Include="QuadrilateralSolver.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

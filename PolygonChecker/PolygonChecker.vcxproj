@@ -140,12 +140,12 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="main.c" />
-    <ClCompile Include="SquareSolver.c" />
+    <ClCompile Include="QuadrilateralSolver.c" />
     <ClCompile Include="TriangleSolver.c" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="main.h" />
-    <ClInclude Include="SquareSolver.h" />
+    <ClInclude Include="QuadrilateralSolver.h" />
     <ClInclude Include="TriangleSolver.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

@@ -29,7 +29,6 @@ Program Description :
 #include <stdlib.h>
 #include <math.h>
 #include <stdbool.h>
-
 #include "TriangleSolver.h"
 
 

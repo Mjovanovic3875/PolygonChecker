@@ -24,4 +24,3 @@ Program Description :
 #pragma once
 void print_welcome();
 int get_shape_choice();
-int* getTriangleSides(int* triangleSides);

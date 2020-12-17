@@ -41,7 +41,7 @@ namespace UnitTests
 	{
 	public:
 
-		TEST_METHOD(get_Area_FiveFive_25)
+		TEST_METHOD(get_Area_5and5_25)
 		{
 			//arrange
 			double x = 5;
@@ -58,7 +58,7 @@ namespace UnitTests
 
 		}
 
-		TEST_METHOD(get_Area_OneHundredOneHundred_TenThousand)
+		TEST_METHOD(get_Area_100and100_10000)
 		{
 			//arrange
 			double x = 100;
@@ -75,7 +75,7 @@ namespace UnitTests
 
 		}
 
-		TEST_METHOD(get_Perimiter_FiveFive_Twenty)
+		TEST_METHOD(get_Perimiter_5and5_20)
 		{
 			double x = 5;
 			double y = 5;
@@ -90,7 +90,7 @@ namespace UnitTests
 			Assert::AreEqual(answer, expected);
 		}
 
-		TEST_METHOD(get_area_OneHundredOneHundred_FourHundred)
+		TEST_METHOD(get_area_100and100_400)
 		{
 			double x = 100;
 			double y = 100;
@@ -363,7 +363,7 @@ namespace UnitTests
 			Assert::AreEqual(answer, false);
 		}
 
-		TEST_METHOD(radians_to_degrees_OneDecimalZeroFourSevenTwo_Sixty)
+		TEST_METHOD(radians_to_degrees_1Decimal0472_60)
 		{
 			//arrange
 			double radians = 1.0472;
@@ -379,7 +379,7 @@ namespace UnitTests
 
 		}
 
-		TEST_METHOD(radians_to_degrees_TwoDecimalZeroNineFourFour_OneHundredTwenty)
+		TEST_METHOD(radians_to_degrees_2Decimal0944_120)
 		{
 			//arrange
 			double radians = 2.0944;
@@ -395,7 +395,7 @@ namespace UnitTests
 
 		}
 
-		TEST_METHOD(radians_to_degrees_ZeroDecimalZeroOneSevenFour_One)
+		TEST_METHOD(radians_to_degrees_0Decimal0174_1)
 		{
 			//arrange
 			double radians = 0.0174;
@@ -411,7 +411,7 @@ namespace UnitTests
 
 		}
 
-		TEST_METHOD(radians_to_degrees_ThreeDecimalOneZeroSixSix_178)
+		TEST_METHOD(radians_to_degrees_3Decimal1066_178)
 		{
 			//arrange
 			double radians = 3.1066;
@@ -427,7 +427,7 @@ namespace UnitTests
 
 		}
 
-		TEST_METHOD(radians_to_degrees_OneDecimalTwoTwoOneSeven_Seventy)
+		TEST_METHOD(radians_to_degrees_1Decimal2217_70)
 		{
 			//arrange
 			double radians = 1.2217;
@@ -443,7 +443,7 @@ namespace UnitTests
 
 		}
 
-		TEST_METHOD(radians_to_degrees_ZeroDecimalSixNineEightOne_forty)
+		TEST_METHOD(radians_to_degrees_0Decimal6981_40)
 		{
 			//arrange
 			double radians = 0.6981;
@@ -459,7 +459,7 @@ namespace UnitTests
 
 		}
 
-		TEST_METHOD(radians_to_degrees_ZeroDecimalSevenEightFiveFour_fortyfive)
+		TEST_METHOD(radians_to_degrees_0Decimal7854_40)
 		{
 			//arrange
 			double radians = 0.7854;
@@ -475,7 +475,7 @@ namespace UnitTests
 
 		}
 
-		TEST_METHOD(find_angle_OneOneOne_1decimal0472)
+		TEST_METHOD(find_angle_1And1And1_1decimal0472)
 		{
 			//arrange
 			double sideOne = 1;
@@ -492,7 +492,7 @@ namespace UnitTests
 
 		}
 
-		TEST_METHOD(find_angle_TweleveTweleveSixteen_0decimal8410)
+		TEST_METHOD(find_angle_12And12And16_0decimal8410)
 		{
 			//arrange
 			double sideOne = 12;
@@ -509,7 +509,7 @@ namespace UnitTests
 
 		}
 
-		TEST_METHOD(find_angle_SixteenTweleveTweleve_1decimal459)
+		TEST_METHOD(find_angle_16And12And12_1decimal459)
 		{
 			//arrange
 			double sideOne = 16;
@@ -526,7 +526,7 @@ namespace UnitTests
 
 		}
 
-		TEST_METHOD(find_angle_SevenTwelveFifteen_1decimal7620)
+		TEST_METHOD(find_angle_7And12And15_1decimal7620)
 		{
 			//arrange
 			double sideOne = 7;
@@ -543,7 +543,7 @@ namespace UnitTests
 
 		}
 
-		TEST_METHOD(find_angle_TwelveSevenFifteen_0decimal9030)
+		TEST_METHOD(find_angle_12And7And15_0decimal9030)
 		{
 			//arrange
 			double sideOne = 12;
@@ -560,7 +560,7 @@ namespace UnitTests
 
 		}
 
-		TEST_METHOD(find_angle_FifteenSevenTwelve_1decimal7620)
+		TEST_METHOD(find_angle_15And7And12_1decimal7620)
 		{
 			//arrange
 			double sideOne = 15;
@@ -577,7 +577,7 @@ namespace UnitTests
 
 		}
 
-		TEST_METHOD(inside_angles_radians_OneOneOne_1decimal0472)
+		TEST_METHOD(inside_angles_radians_1And1And1_1decimal0472)
 		{
 			//arrange
 			double sideOne = 1;
@@ -604,7 +604,7 @@ namespace UnitTests
 			Assert::AreEqual(expected[2], answer[2], ANGLE_TOLERANCE);
 		}
 
-		TEST_METHOD(inside_angles_radians_TwelveTwelveSixteen_0Decimal84107_0Decimal84107_1Decimal45946)
+		TEST_METHOD(inside_angles_radians_12And12And16_0Decimal84107_0Decimal84107_1Decimal45946)
 		{
 			//arrange
 			double sideOne = 12; 
@@ -631,7 +631,7 @@ namespace UnitTests
 			Assert::AreEqual(expected[2], answer[2], ANGLE_TOLERANCE);
 		}
 
-		TEST_METHOD(inside_angles_radians_ThreeFourFive_0Decimal6435_0Decimal9273_1Decimal5708)
+		TEST_METHOD(inside_angles_radians_3And4And5_0Decimal6435_0Decimal9273_1Decimal5708)
 		{
 			//arrange
 			double sideOne = 3; 
@@ -658,7 +658,7 @@ namespace UnitTests
 			Assert::AreEqual(expected[2], answer[2], ANGLE_TOLERANCE);
 		}
 
-		TEST_METHOD(inside_angles_radians_OneOneOne_60)
+		TEST_METHOD(inside_angles_radians_1And1And1_60)
 		{
 			//arrange
 			double sideOne = 1;
@@ -685,7 +685,7 @@ namespace UnitTests
 			Assert::AreEqual(expected[2], answer[2], ANGLE_TOLERANCE);
 		}
 
-		TEST_METHOD(inside_angles_radians_TwelveTwelveSixteen_48Decimal19_48Decimal19_83Decimal6)
+		TEST_METHOD(inside_angles_radians_12And12And16_48Decimal19_48Decimal19_83Decimal6)
 		{
 			//arrange
 			double sideOne = 12;
@@ -712,7 +712,7 @@ namespace UnitTests
 			Assert::AreEqual(expected[2], answer[2], ANGLE_TOLERANCE);
 		}
 
-		TEST_METHOD(inside_angles_radians_ThreeFourFive_36Decimal87_52Decimal13_90)
+		TEST_METHOD(inside_angles_radians_3And4And5_36Decimal87_52Decimal13_90)
 		{
 			//arrange
 			double sideOne = 3;
@@ -754,7 +754,7 @@ namespace UnitTests
 			Assert::AreEqual(answer, "Not a triangle");
 		}
 
-		TEST_METHOD(analyzeTriangle_zeroOneOne_NotATriangle)
+		TEST_METHOD(analyzeTriangle_0And1And1_NotATriangle)
 		{
 			//arrange
 			int side1 = 0;
@@ -769,7 +769,7 @@ namespace UnitTests
 			Assert::AreEqual(answer, "Not a triangle");
 		}
 		
-		TEST_METHOD(analyzeTriangle_OneZeroOne_NotATriangle)
+		TEST_METHOD(analyzeTriangle_1And0And1_NotATriangle)
 		{
 			//arrange
 			int side1 = 1;
@@ -783,7 +783,7 @@ namespace UnitTests
 			Assert::AreEqual(answer, "Not a triangle");
 		}
 		
-		TEST_METHOD(analyzeTriangle_OneOneZero_NotATriangle)
+		TEST_METHOD(analyzeTriangle_1And1And0_NotATriangle)
 		{
 			//arrange
 			int side1 = 1;
@@ -796,7 +796,7 @@ namespace UnitTests
 			//assert
 			Assert::AreEqual(answer, "Not a triangle");
 		}
-		TEST_METHOD(analyzeTriangle_ZeroZeroOne_NotATriangle)
+		TEST_METHOD(analyzeTriangle_0And0And1_NotATriangle)
 		{
 			//arrange
 			int side1 = 0;
@@ -810,7 +810,7 @@ namespace UnitTests
 			Assert::AreEqual(answer, "Not a triangle");
 		}
 
-		TEST_METHOD(analyzeTriangle_ZeroOneZero_NotATriangle)
+		TEST_METHOD(analyzeTriangle_0And1And0_NotATriangle)
 		{
 			//arrange
 			int side1 = 0;
@@ -824,7 +824,7 @@ namespace UnitTests
 			Assert::AreEqual(answer, "Not a triangle");
 		}
 	
-		TEST_METHOD(analyzeTriangle_OneZeroZero_NotATriangle)
+		TEST_METHOD(analyzeTriangle_1And0And0_NotATriangle)
 		{
 			//arrange
 			int side1 = 1;
@@ -838,7 +838,7 @@ namespace UnitTests
 			Assert::AreEqual(answer, "Not a triangle");
 		}
 	
-		TEST_METHOD(analyzeTriangle_ZeroZeroZero_NotATriangle)
+		TEST_METHOD(analyzeTriangle_0And0And0_NotATriangle)
 		{
 			//arrange
 			int side1 = 0;
@@ -852,7 +852,7 @@ namespace UnitTests
 			Assert::AreEqual(answer, "Not a triangle");
 		}
 
-		TEST_METHOD(analyzeTriangle_negOneOneOne_NotATriangle)
+		TEST_METHOD(analyzeTriangle_neg1And1And_NotATriangle)
 		{
 			//arrange
 			int side1 = -1;
@@ -866,7 +866,7 @@ namespace UnitTests
 			Assert::AreEqual(answer, "Not a triangle");
 		}
 	
-		TEST_METHOD(analyzeTriangle_OneNegOneOne_NotATriangle)
+		TEST_METHOD(analyzeTriangle_1AndNeg1And1_NotATriangle)
 		{
 			//arrange
 			int side1 = 1;
@@ -880,7 +880,7 @@ namespace UnitTests
 			Assert::AreEqual(answer, "Not a triangle");
 		}
 	
-		TEST_METHOD(analyzeTriangle_OneOneNegOne_NotATriangle)
+		TEST_METHOD(analyzeTriangle_1And1AndNeg1_NotATriangle)
 		{
 			//arrange
 			int side1 = 1;
@@ -894,7 +894,7 @@ namespace UnitTests
 			Assert::AreEqual(answer, "Not a triangle");
 		}
 	
-		TEST_METHOD(analyzeTriangle_NegOneNegOneOne_NotATriangle)
+		TEST_METHOD(analyzeTriangle_Neg1AndNeg1And1_NotATriangle)
 		{
 			//arrange
 			int side1 = -1;
@@ -908,7 +908,7 @@ namespace UnitTests
 			Assert::AreEqual(answer, "Not a triangle");
 		}
 
-		TEST_METHOD(analyzeTriangle_NegOneOneNegOne_NotATriangle)
+		TEST_METHOD(analyzeTriangle_Neg1And1Neg1_NotATriangle)
 		{
 			//arrange
 			int side1 = -1;
@@ -923,7 +923,7 @@ namespace UnitTests
 			
 		}
 	
-		TEST_METHOD(analyzeTriangle_OneNegOneNegOne_NotATriangle)
+		TEST_METHOD(analyzeTriangle_1AndNeg1AndNeg1_NotATriangle)
 		{
 			//arrange
 			int side1 = 1;
@@ -937,7 +937,7 @@ namespace UnitTests
 			Assert::AreEqual(answer, "Not a triangle");
 		}
 	
-		TEST_METHOD(analyzeTriangle_TwoThreeOne_NotATriangle)
+		TEST_METHOD(analyzeTriangle_2And3And1_NotATriangle)
 		{
 			//arrange
 			int side1 = 2;
@@ -951,7 +951,7 @@ namespace UnitTests
 			Assert::AreEqual(answer, "Not a triangle");
 		}
 		
-		TEST_METHOD(analyzeTriangle_TwoThreeOne_ScaleneTriangle)
+		TEST_METHOD(analyzeTriangle_3And4And2_ScaleneTriangle)
 		{
 			//arrange
 			int side1 = 3;
@@ -965,7 +965,7 @@ namespace UnitTests
 			Assert::AreEqual(answer, "Scalene triangle");
 		}
 
-		TEST_METHOD(analyzeTriangle_CharThreeOne_NotATriangle) 
+		TEST_METHOD(analyzeTriangle_CharAnd3And1_NotATriangle)
 		{
 			//arrange
 			char side1 = 'c';
@@ -980,7 +980,7 @@ namespace UnitTests
 			Assert::AreEqual(answer, "Not a triangle");
 		}
 		
-		TEST_METHOD(analyzeTriangle_OneCharOne_NotATriangle) 
+		TEST_METHOD(analyzeTriangle_1AndCharAnd1_NotATriangle)
 		{
 			//arrange
 			int side1 = 1;
@@ -994,7 +994,7 @@ namespace UnitTests
 			Assert::AreEqual(analyze_triangle(1, 'b', 1), "Not a triangle");
 		}
 	
-		TEST_METHOD(analyzeTriangle_OneOneChar_NotATriangle)
+		TEST_METHOD(analyzeTriangle_1And1AndChar_NotATriangle)
 		{
 			//arrange
 			int side1 = 1;
@@ -1008,7 +1008,7 @@ namespace UnitTests
 			Assert::AreEqual(answer, "Not a triangle");
 		}
 		
-		TEST_METHOD(analyzeTriangle_TwoTwoThree_IsoscelesTriangle) 
+		TEST_METHOD(analyzeTriangle_2And2And3_IsoscelesTriangle)
 		{
 			//arrange
 			char side1 = 2;
@@ -1022,7 +1022,7 @@ namespace UnitTests
 			Assert::AreEqual(answer, "Isosceles triangle");
 		}
 		
-		TEST_METHOD(analyzeTriangle_TwoThreeTwo_IsoscelesTriangle) 
+		TEST_METHOD(analyzeTriangle_2And3And2_IsoscelesTriangle)
 		{
 			//arrange
 			char side1 = 2;
@@ -1036,7 +1036,7 @@ namespace UnitTests
 			Assert::AreEqual(answer, "Isosceles triangle");
 		}
 		
-		TEST_METHOD(analyzeTriangle_ThreeTwoTwo_IsoscelesTriangle)
+		TEST_METHOD(analyzeTriangle_3And2And2_IsoscelesTriangle)
 		{
 			//arrange
 			char side1 = 3;
@@ -1051,7 +1051,7 @@ namespace UnitTests
 
 		}
 		
-		TEST_METHOD(analyzeTriangle_OnetoTwoHundred_EquilateralTriangle)
+		TEST_METHOD(analyzeTriangle_1To200_EquilateralTriangle)
 		{
 			//arrange 
 			int i = 1;
@@ -1064,7 +1064,7 @@ namespace UnitTests
 			}
 		}
 		
-		TEST_METHOD(analyzeTriangle_OnetoTwoHundred_ScaleneTriangle) {
+		TEST_METHOD(analyzeTriangle_1to200_ScaleneTriangle) {
 			
 			//arrange
 			double i = 1;

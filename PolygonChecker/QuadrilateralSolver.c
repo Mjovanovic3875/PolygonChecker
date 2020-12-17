@@ -22,26 +22,10 @@ Program Description :
 */
 
 
-#include "SquareSolver.h"
+#include "QuadrilateralSolver.h"
 #include "triangleSolver.h"
 #include <stdlib.h>
 #include <math.h>
-
-QUADRILATERAL getSquareSides(QUADRILATERAL points) { // retrieve user input for the 4 coordinate points
-	
-		printf_s("Enter the first coordinate of the square: \n");
-		for (int i = 0; i < 4; i++)
-		{
-			printf_s("\nEnter the x coordinate of the %d coordinate of the square: ", (i + 1));
-			scanf_s("%lf", &points.x[i]); 
-			printf_s("Enter the y coordinate of the %d coordinate of the square: ", (i + 1));
-			scanf_s("%lf", &points.y[i]);
-		}
-	
-		return points;
-	
-}
-
 
 double get_perimeter(double x, double y) { // return the total of 4 ints
 	return  (2*x + 2*y);
@@ -117,7 +101,6 @@ double get_bottom_line(QUADRILATERAL quadrilateral) // returns the bottom line o
 }
 
 
-
 int compare_point_x(POINT* pointOne, POINT* pointTwo) // returns the bigger of two points as a 1 or -1
 {
 	if (pointOne->x < pointTwo->x)
@@ -133,7 +116,6 @@ int compare_point_x(POINT* pointOne, POINT* pointTwo) // returns the bigger of t
 		return 0;
 	}
 }
-
 
 
 int compare_point_y(POINT *pointOne, POINT *pointTwo) // returns the bigger of two points as a 1 or -1
@@ -196,8 +178,6 @@ QUADRILATERAL create_quadrilateral(POINT pointOne, POINT pointTwo,
 
 
 
-
-
 QUADRILATERAL quadrilateral_wizard(void)
 {
 	
@@ -213,64 +193,4 @@ QUADRILATERAL quadrilateral_wizard(void)
 	
 
 	return create_quadrilateral(pointsTemp[0], pointsTemp[1], pointsTemp[2], pointsTemp[3]);
-}
-
-
-QUADRILATERAL write_Sides(QUADRILATERAL quadrilateral) {
-	int topy_1 = 0;
-	int topy_2 = 0;
-	int top_x = 0;
-	int top_Right = 0;
-	int top_Left = 0;
-	int bottom_Left = 0;
-	int Bottom_Right = 0;
-
-
-
-
-
-
-	/*
-	for (int counter = 0; counter < 4; counter++) { // get top two points
-		if (quadrilateral.y[counter] > quadrilateral.y[topy_1]) {
-			topy_1= counter;
-		}
-	}
-	for (int counter = 0; counter < 4; counter++) { // get top two points
-		if (quadrilateral.y[counter] > quadrilateral.y[topy_2] && counter != topy_1) {
-			topy_2 = counter;
-		}
-	}
-	if (quadrilateral.x[topy_1] > quadrilateral.x[topy_2]) { // decide left right points
-		top_Right = topy_1;
-		top_Left = topy_2;
-}
-	else { // decide left right points
-		top_Right = topy_2;
-		top_Left = topy_1;
-	}
-	for (int counter = 0; counter < 4; counter++) { // find farthest right point of the lower coordinates
-		if (quadrilateral.x[counter] > quadrilateral.x[top_x] && counter != topy_1 && counter != topy_2) {
-			top_x = counter;
-		}
-	}
-	Bottom_Right = top_x;
-	for (int counter = 0; counter < 4; counter++) { // the last non assigned coordinate is bottom left
-		if (counter != topy_1 && counter != topy_2 && counter != top_x) {
-			bottom_Left = counter;
-		}
-	}
-
-	
-	quadrilateral.top_line = sqrt(pow(abs(quadrilateral.x[top_Right] - quadrilateral.x[top_Left]),2) + pow(abs(quadrilateral.y[top_Right] - quadrilateral.y[top_Left]),2)); // sqrt( (x2 - x1)^2 + (y2 - y1)^2 )
-	quadrilateral.bottom_line = sqrt(pow(abs(quadrilateral.x[Bottom_Right] - quadrilateral.x[bottom_Left]), 2) + pow(abs(quadrilateral.y[Bottom_Right] - quadrilateral.y[bottom_Left]), 2)); // abs allows x2 x1 to be interchangable in the above formula
-	quadrilateral.left_line = sqrt(pow(abs(quadrilateral.x[top_Left] - quadrilateral.x[bottom_Left]), 2) + pow(abs(quadrilateral.y[top_Left] - quadrilateral.y[bottom_Left]), 2));
-	quadrilateral.right_line = sqrt(pow(abs(quadrilateral.x[top_Right] - quadrilateral.x[Bottom_Right]), 2) + pow(abs(quadrilateral.y[top_Right] - quadrilateral.y[Bottom_Right]), 2));
-
-	quadrilateral.diag1 = sqrt(pow(abs(quadrilateral.x[Bottom_Right] - quadrilateral.x[top_Left]), 2) + pow(abs(quadrilateral.y[top_Left] - quadrilateral.y[Bottom_Right]), 2));
-	quadrilateral.diag2 = sqrt(pow(abs(quadrilateral.x[top_Right] - quadrilateral.x[bottom_Left]), 2) + pow(abs(quadrilateral.y[top_Right] - quadrilateral.y[bottom_Left]), 2));
-	return quadrilateral;
-	// uncomment the line underneath to view values of coordinates and lines
-	printf_s("top_left(%lf,%lf) top right(%lf,%lf) bottomleft(%lf,%lf) bottomright (%lf,%lf) Top: %lf, bottom : %lf, Left : %lf, Right : %lf diag1 : %lf, diag2 : %lf	", quadrilateral.x[top_Left], quadrilateral.y[top_Left], quadrilateral.x[top_Right], quadrilateral.y[top_Right], quadrilateral.x[bottom_Left], quadrilateral.y[bottom_Left], quadrilateral.x[Bottom_Right], quadrilateral.y[Bottom_Right], quadrilateral.top_line, quadrilateral.bottom_line, quadrilateral.left_line, quadrilateral.right_line,quadrilateral.diag1,quadrilateral.diag2);
-	*/
 }

@@ -4,7 +4,7 @@
 extern "C" {
 #include "main.h"
 #include "TriangleSolver.h"
-#include "SquareSolver.h"
+#include "QuadrilateralSolver.h"
 }
 
 using namespace Microsoft::VisualStudio::CppUnitTestFramework;

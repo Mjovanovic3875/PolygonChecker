@@ -71,8 +71,8 @@ QUADRILATERAL create_quadrilateral(POINT pointOne, POINT pointTwo,
 	result.leftLine = find_line_length(result.topLeftPoint, result.bottomLeftPoint);
 	result.rightLine = find_line_length(result.topRightPoint, result.bottomRightPoint);
 
-	result.diag1 = find_line_length(result.topLeftPoint, result.bottomRightPoint);
-	result.diag2 = find_line_length(result.topRightPoint, result.bottomLeftPoint);
+	result.diagOne = find_line_length(result.topLeftPoint, result.bottomRightPoint);
+	result.diagTwo = find_line_length(result.topRightPoint, result.bottomLeftPoint);
 
 
 	return result;
@@ -121,8 +121,8 @@ void print_quadrilateral_information(QUADRILATERAL quadrilateral)
 										 quadrilateral.bottomLine,
 										 quadrilateral.rightLine);
 		printf("This is a rectangle.\n");
-		printf("Its area is %lf", area);
-		printf("Its perimeter is %lf", perimeter);
+		printf("Its area is %lf\n", area);
+		printf("Its perimeter is %lf\n", perimeter);
 	}
 	else
 	{
@@ -131,7 +131,7 @@ void print_quadrilateral_information(QUADRILATERAL quadrilateral)
 										 quadrilateral.bottomLine,
 										 quadrilateral.rightLine);
 		printf("This is NOT a rectangle.\n");
-		printf("Its perimeter is %lf", perimeter);
+		printf("Its perimeter is %lf\n", perimeter);
 	}
 
 	return;
@@ -163,13 +163,13 @@ bool has_duplicates(POINT* points, int n)
 
 
 bool is_rectangle(QUADRILATERAL quadrilateral) { // says i need to generate 4 lines but 2 lines are identical for x and y axis so shouldnt I only need 2?
-	double topLeftAngleRad = find_angle(quadrilateral.diag2, quadrilateral.topLine, quadrilateral.leftLine);
+	double topLeftAngleRad = find_angle(quadrilateral.diagTwo, quadrilateral.topLine, quadrilateral.leftLine);
 	
-	double topRightAngleRad = find_angle(quadrilateral.diag1, quadrilateral.topLine, quadrilateral.rightLine);
+	double topRightAngleRad = find_angle(quadrilateral.diagOne, quadrilateral.topLine, quadrilateral.rightLine);
 
-	double bottomLeftAngleRad = find_angle(quadrilateral.diag1, quadrilateral.bottomLine, quadrilateral.leftLine);
+	double bottomLeftAngleRad = find_angle(quadrilateral.diagOne, quadrilateral.bottomLine, quadrilateral.leftLine);
 
-	double bottomRightAngleRad = find_angle(quadrilateral.diag2, quadrilateral.bottomLine, quadrilateral.rightLine);
+	double bottomRightAngleRad = find_angle(quadrilateral.diagTwo, quadrilateral.bottomLine, quadrilateral.rightLine);
 
 
 	// Doubles have rounding issues. In my initial testing, it seems that the errors are predictable such that

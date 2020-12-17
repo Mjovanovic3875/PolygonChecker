@@ -43,8 +43,8 @@ typedef struct quadrilateral {
 	double leftLine;
 	double bottomLine;
 	double rightLine;
-	double diag1;
-	double diag2;
+	double diagOne;
+	double diagTwo;
 }QUADRILATERAL;
 
 QUADRILATERAL create_quadrilateral(POINT pointOne, POINT pointTwo, POINT pointThree, POINT pointFour); // creates a quadrilateral object from the 4 points given

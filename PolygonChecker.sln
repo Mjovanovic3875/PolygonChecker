@@ -5,8 +5,6 @@ VisualStudioVersion = 16.0.30611.23
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "PolygonChecker", "PolygonChecker\PolygonChecker.vcxproj", "{2328FAE1-A1BF-420F-9F0C-C7CCC7F13314}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Unit_Tests", "Unit_Tests\Unit_Tests.vcxproj", "{E86526E5-9F02-4D1B-A296-28D0EA4DE101}"
-EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "PolygonChecker.tests", "PolygonChecker.tests\PolygonChecker.tests.vcxproj", "{823F9738-2875-4AA3-9557-4557976F8282}"
 EndProject
 Global
@@ -25,14 +23,6 @@ Global
 		{2328FAE1-A1BF-420F-9F0C-C7CCC7F13314}.Release|x64.Build.0 = Release|x64
 		{2328FAE1-A1BF-420F-9F0C-C7CCC7F13314}.Release|x86.ActiveCfg = Release|Win32
 		{2328FAE1-A1BF-420F-9F0C-C7CCC7F13314}.Release|x86.Build.0 = Release|Win32
-		{E86526E5-9F02-4D1B-A296-28D0EA4DE101}.Debug|x64.ActiveCfg = Debug|x64
-		{E86526E5-9F02-4D1B-A296-28D0EA4DE101}.Debug|x64.Build.0 = Debug|x64
-		{E86526E5-9F02-4D1B-A296-28D0EA4DE101}.Debug|x86.ActiveCfg = Debug|Win32
-		{E86526E5-9F02-4D1B-A296-28D0EA4DE101}.Debug|x86.Build.0 = Debug|Win32
-		{E86526E5-9F02-4D1B-A296-28D0EA4DE101}.Release|x64.ActiveCfg = Release|x64
-		{E86526E5-9F02-4D1B-A296-28D0EA4DE101}.Release|x64.Build.0 = Release|x64
-		{E86526E5-9F02-4D1B-A296-28D0EA4DE101}.Release|x86.ActiveCfg = Release|Win32
-		{E86526E5-9F02-4D1B-A296-28D0EA4DE101}.Release|x86.Build.0 = Release|Win32
 		{823F9738-2875-4AA3-9557-4557976F8282}.Debug|x64.ActiveCfg = Debug|x64
 		{823F9738-2875-4AA3-9557-4557976F8282}.Debug|x64.Build.0 = Debug|x64
 		{823F9738-2875-4AA3-9557-4557976F8282}.Debug|x86.ActiveCfg = Debug|Win32

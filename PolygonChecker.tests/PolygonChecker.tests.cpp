@@ -16,7 +16,7 @@ namespace PolygonCheckertests
 	TEST_CLASS(TringleSolverTests)
 	{
 	public:
-		TEST_METHOD(radians_to_degrees_OneDecimalZeroFourSevenTwo_Sixty)
+		TEST_METHOD(radians_to_degrees_1Decimal0472_60)
 		{
 			//arrange
 			double radians = 1.0472;
@@ -25,14 +25,11 @@ namespace PolygonCheckertests
 			//act
 			double answer = radians_to_degrees(radians);
 
-
 			//assert
-
 			Assert::AreEqual(answer, expected, ANGLE_TOLERANCE);
-
 		}
 
-		TEST_METHOD(radians_to_degrees_TwoDecimalZeroNineFourFour_OneHundredTwenty)
+		TEST_METHOD(radians_to_degrees_2Decimal0944_120)
 		{
 			//arrange
 			double radians = 2.0944;
@@ -41,14 +38,11 @@ namespace PolygonCheckertests
 			//act
 			double answer = radians_to_degrees(radians);
 
-
 			//assert
-
 			Assert::AreEqual(answer, expected, ANGLE_TOLERANCE);
-
 		}
 
-		TEST_METHOD(radians_to_degrees_ZeroDecimalZeroOneSevenFour_One)
+		TEST_METHOD(radians_to_degrees_0Decimal0174_1)
 		{
 			//arrange
 			double radians = 0.0174;
@@ -59,12 +53,10 @@ namespace PolygonCheckertests
 
 
 			//assert
-
 			Assert::AreEqual(answer, expected, ANGLE_TOLERANCE);
-
 		}
 
-		TEST_METHOD(radians_to_degrees_ThreeDecimalOneZeroSixSix_178)
+		TEST_METHOD(radians_to_degrees_3Decimal1066_178)
 		{
 			//arrange
 			double radians = 3.1066;
@@ -75,12 +67,10 @@ namespace PolygonCheckertests
 
 
 			//assert
-
 			Assert::AreEqual(answer, expected, ANGLE_TOLERANCE);
-
 		}
 
-		TEST_METHOD(radians_to_degrees_OneDecimalTwoTwoOneSeven_Seventy)
+		TEST_METHOD(radians_to_degrees_1Decimal2217_70)
 		{
 			//arrange
 			double radians = 1.2217;
@@ -91,12 +81,10 @@ namespace PolygonCheckertests
 
 
 			//assert
-
 			Assert::AreEqual(answer, expected, ANGLE_TOLERANCE);
-
 		}
 
-		TEST_METHOD(radians_to_degrees_ZeroDecimalSixNineEightOne_forty)
+		TEST_METHOD(radians_to_degrees_0Decimal6981_40)
 		{
 			//arrange
 			double radians = 0.6981;
@@ -112,7 +100,7 @@ namespace PolygonCheckertests
 
 		}
 
-		TEST_METHOD(radians_to_degrees_ZeroDecimalSevenEightFiveFour_fortyfive)
+		TEST_METHOD(radians_to_degrees_0Decimal7854_45)
 		{
 			//arrange
 			double radians = 0.7854;
@@ -123,12 +111,10 @@ namespace PolygonCheckertests
 
 
 			//assert
-
 			Assert::AreEqual(answer, expected, ANGLE_TOLERANCE);
-
 		}
 
-		TEST_METHOD(find_angle_OneAndOneAndOne_1decimal0472)
+		TEST_METHOD(find_angle_1And1And1_1decimal0472)
 		{
 			//arrange
 			double sideOne = 1;
@@ -145,7 +131,7 @@ namespace PolygonCheckertests
 
 		}
 
-		TEST_METHOD(find_angle_TweleveAndTweleveAndSixteen_0decimal8410)
+		TEST_METHOD(find_angle_12And12And16_0decimal8410)
 		{
 			//arrange
 			double sideOne = 12;
@@ -162,7 +148,7 @@ namespace PolygonCheckertests
 
 		}
 
-		TEST_METHOD(find_angle_SixteenTweleveTweleve_1decimal459)
+		TEST_METHOD(find_angle_16And12And12_1decimal459)
 		{
 			//arrange
 			double sideOne = 16;
@@ -176,10 +162,9 @@ namespace PolygonCheckertests
 
 			//assert
 			Assert::AreEqual(answer, expected, ANGLE_TOLERANCE);
-
 		}
 
-		TEST_METHOD(find_angle_SevenTwelveFifteen_1decimal7620)
+		TEST_METHOD(find_angle_7And12And15_1decimal7620)
 		{
 			//arrange
 			double sideOne = 7;
@@ -193,10 +178,9 @@ namespace PolygonCheckertests
 
 			//assert
 			Assert::AreEqual(answer, expected, ANGLE_TOLERANCE);
-
 		}
 
-		TEST_METHOD(find_angle_TwelveSevenFifteen_0decimal9030)
+		TEST_METHOD(find_angle_12And7And15_0decimal9030)
 		{
 			//arrange
 			double sideOne = 12;
@@ -210,10 +194,9 @@ namespace PolygonCheckertests
 
 			//assert
 			Assert::AreEqual(answer, expected, ANGLE_TOLERANCE);
-
 		}
 
-		TEST_METHOD(find_angle_FifteenSevenTwelve_1decimal7620)
+		TEST_METHOD(find_angle_15And7And12_1decimal7620)
 		{
 			//arrange
 			double sideOne = 15;
@@ -227,177 +210,28 @@ namespace PolygonCheckertests
 
 			//assert
 			Assert::AreEqual(answer, expected, ANGLE_TOLERANCE);
-
 		}
 
-		TEST_METHOD(inside_angles_radians_OneOneOne_1decimal0472)
+		TEST_METHOD(analyzeTriangle_Neg1AndNeg1AndNeg1_NotATriangle)
 		{
 			//arrange
-			double sideOne = 1;
-			double sideTwo = 1;
-			double sideThree = 1;
-
-			double* expected = (double*)malloc(sizeof(double) * 3);
-
-			if (expected == NULL)
-			{
-				return;
-			}
-			expected[0] = 1.0472; //angle oppiiste to side one
-			expected[1] = 1.0472; //angle oppiiste to side two
-			expected[2] = 1.0472; //angle oppiiste to side three
+			double side1 = -1;
+			double side2 = -1;
+			double side3 = -1;
 
 			//act
-			double* answer = inside_angles_radians(sideOne, sideTwo, sideThree);
+			const char* answer = analyze_triangle(side1, side2, side3);
 
 			//assert
-
-			Assert::AreEqual(expected[0], answer[0], ANGLE_TOLERANCE);
-			Assert::AreEqual(expected[1], answer[1], ANGLE_TOLERANCE);
-			Assert::AreEqual(expected[2], answer[2], ANGLE_TOLERANCE);
+			Assert::AreEqual(answer, "Not a triangle");
 		}
 
-		TEST_METHOD(inside_angles_radians_TwelveTwelveSixteen_0Decimal84107_0Decimal84107_1Decimal45946)
+		TEST_METHOD(analyzeTriangle_0And1And1_NotATriangle)
 		{
 			//arrange
-			double sideOne = 12;
-			double sideTwo = 12;
-			double sideThree = 16;
-
-			double* expected = (double*)malloc(sizeof(double) * 3);
-
-			if (expected == NULL)
-			{
-				return;
-			}
-			expected[0] = 0.84107; //angle oppiiste to side one
-			expected[1] = 0.84107; //angle oppiiste to side two
-			expected[2] = 1.45946; //angle oppiiste to side three
-
-			//act
-			double* answer = inside_angles_radians(sideOne, sideTwo, sideThree);
-
-			//assert
-
-			Assert::AreEqual(expected[0], answer[0], ANGLE_TOLERANCE);
-			Assert::AreEqual(expected[1], answer[1], ANGLE_TOLERANCE);
-			Assert::AreEqual(expected[2], answer[2], ANGLE_TOLERANCE);
-		}
-
-		TEST_METHOD(inside_angles_radians_ThreeFourFive_0Decimal6435_0Decimal9273_1Decimal5708)
-		{
-			//arrange
-			double sideOne = 3;
-			double sideTwo = 4;
-			double sideThree = 5;
-
-			double* expected = (double*)malloc(sizeof(double) * 3);
-
-			if (expected == NULL)
-			{
-				return;
-			}
-			expected[0] = 0.6435; //angle oppiiste to side one
-			expected[1] = 0.9273; //angle oppiiste to side two
-			expected[2] = 1.5708; //angle oppiiste to side three
-
-			//act
-			double* answer = inside_angles_radians(sideOne, sideTwo, sideThree);
-
-			//assert
-
-			Assert::AreEqual(expected[0], answer[0], ANGLE_TOLERANCE);
-			Assert::AreEqual(expected[1], answer[1], ANGLE_TOLERANCE);
-			Assert::AreEqual(expected[2], answer[2], ANGLE_TOLERANCE);
-		}
-
-		TEST_METHOD(inside_angles_radians_OneOneOne_60)
-		{
-			//arrange
-			double sideOne = 1;
-			double sideTwo = 1;
-			double sideThree = 1;
-
-			double* expected = (double*)malloc(sizeof(double) * 3);
-
-			if (expected == NULL)
-			{
-				return;
-			}
-			expected[0] = 60; //angle oppiiste to side one
-			expected[1] = 60; //angle oppiiste to side two
-			expected[2] = 60; //angle oppiiste to side three
-
-			//act
-			double* answer = inside_angles_degrees(sideOne, sideTwo, sideThree);
-
-			//assert
-
-			Assert::AreEqual(expected[0], answer[0], ANGLE_TOLERANCE);
-			Assert::AreEqual(expected[1], answer[1], ANGLE_TOLERANCE);
-			Assert::AreEqual(expected[2], answer[2], ANGLE_TOLERANCE);
-		}
-
-		TEST_METHOD(inside_angles_radians_TwelveTwelveSixteen_48Decimal19_48Decimal19_83Decimal6)
-		{
-			//arrange
-			double sideOne = 12;
-			double sideTwo = 12;
-			double sideThree = 16;
-
-			double* expected = (double*)malloc(sizeof(double) * 3);
-
-			if (expected == NULL)
-			{
-				return;
-			}
-			expected[0] = 48.19; //angle oppiiste to side one
-			expected[1] = 48.19; //angle oppiiste to side two
-			expected[2] = 83.6; //angle oppiiste to side three
-
-			//act
-			double* answer = inside_angles_degrees(sideOne, sideTwo, sideThree);
-
-			//assert
-
-			Assert::AreEqual(expected[0], answer[0], ANGLE_TOLERANCE);
-			Assert::AreEqual(expected[1], answer[1], ANGLE_TOLERANCE);
-			Assert::AreEqual(expected[2], answer[2], ANGLE_TOLERANCE);
-		}
-
-		TEST_METHOD(inside_angles_radians_ThreeFourFive_36Decimal87_52Decimal13_90)
-		{
-			//arrange
-			double sideOne = 3;
-			double sideTwo = 4;
-			double sideThree = 5;
-
-			double* expected = (double*)malloc(sizeof(double) * 3);
-
-			if (expected == NULL)
-			{
-				return;
-			}
-			expected[0] = 36.87; //angle oppiiste to side one
-			expected[1] = 53.13; //angle oppiiste to side two
-			expected[2] = 90; //angle oppiiste to side three
-
-			//act
-			double* answer = inside_angles_degrees(sideOne, sideTwo, sideThree);
-
-			//assert
-
-			Assert::AreEqual(expected[0], answer[0], ANGLE_TOLERANCE);
-			Assert::AreEqual(expected[1], answer[1], ANGLE_TOLERANCE);
-			Assert::AreEqual(expected[2], answer[2], ANGLE_TOLERANCE);
-		}
-
-		TEST_METHOD(analyzeTriangle_negOneallsides_NotATriangle)
-		{
-			//arrange
-			int side1 = -1;
-			int side2 = -1;
-			int side3 = -1;
+			double side1 = 0;
+			double side2 = 1;
+			double side3 = 1;
 
 			//act
 			const char* answer = analyze_triangle(side1, side2, side3);
@@ -407,27 +241,12 @@ namespace PolygonCheckertests
 			Assert::AreEqual(answer, "Not a triangle");
 		}
 
-		TEST_METHOD(analyzeTriangle_zeroOneOne_NotATriangle)
+		TEST_METHOD(analyzeTriangle_1And0And1_NotATriangle)
 		{
 			//arrange
-			int side1 = 0;
-			int side2 = 1;
-			int side3 = 1;
-
-			//act
-			const char* answer = analyze_triangle(side1, side2, side3);
-
-			//assert
-
-			Assert::AreEqual(answer, "Not a triangle");
-		}
-
-		TEST_METHOD(analyzeTriangle_OneZeroOne_NotATriangle)
-		{
-			//arrange
-			int side1 = 1;
-			int side2 = 0;
-			int side3 = 1;
+			double side1 = 1;
+			double side2 = 0;
+			double side3 = 1;
 
 			//act
 			const char* answer = analyze_triangle(side1, side2, side3);
@@ -436,25 +255,12 @@ namespace PolygonCheckertests
 			Assert::AreEqual(answer, "Not a triangle");
 		}
 
-		TEST_METHOD(analyzeTriangle_OneOneZero_NotATriangle)
+		TEST_METHOD(analyzeTriangle_1And1And0_NotATriangle)
 		{
 			//arrange
-			int side1 = 1;
-			int side2 = 1;
-			int side3 = 0;
-
-			//act
-			const char* answer = analyze_triangle(side1, side2, side3);
-
-			//assert
-			Assert::AreEqual(answer, "Not a triangle");
-		}
-		TEST_METHOD(analyzeTriangle_ZeroZeroOne_NotATriangle)
-		{
-			//arrange
-			int side1 = 0;
-			int side2 = 0;
-			int side3 = 1;
+			double side1 = 1;
+			double side2 = 1;
+			double side3 = 0;
 
 			//act
 			const char* answer = analyze_triangle(side1, side2, side3);
@@ -463,12 +269,12 @@ namespace PolygonCheckertests
 			Assert::AreEqual(answer, "Not a triangle");
 		}
 
-		TEST_METHOD(analyzeTriangle_ZeroOneZero_NotATriangle)
+		TEST_METHOD(analyzeTriangle_0And0And1_NotATriangle)
 		{
 			//arrange
-			int side1 = 0;
-			int side2 = 1;
-			int side3 = 0;
+			double side1 = 0;
+			double side2 = 0;
+			double side3 = 1;
 
 			//act
 			const char* answer = analyze_triangle(side1, side2, side3);
@@ -477,12 +283,12 @@ namespace PolygonCheckertests
 			Assert::AreEqual(answer, "Not a triangle");
 		}
 
-		TEST_METHOD(analyzeTriangle_OneZeroZero_NotATriangle)
+		TEST_METHOD(analyzeTriangle_0And1And0_NotATriangle)
 		{
 			//arrange
-			int side1 = 1;
-			int side2 = 0;
-			int side3 = 0;
+			double side1 = 0;
+			double side2 = 1;
+			double side3 = 0;
 
 			//act
 			const char* answer = analyze_triangle(side1, side2, side3);
@@ -491,12 +297,12 @@ namespace PolygonCheckertests
 			Assert::AreEqual(answer, "Not a triangle");
 		}
 
-		TEST_METHOD(analyzeTriangle_ZeroZeroZero_NotATriangle)
+		TEST_METHOD(analyzeTriangle_1And0And0_NotATriangle)
 		{
 			//arrange
-			int side1 = 0;
-			int side2 = 0;
-			int side3 = 0;
+			double side1 = 1;
+			double side2 = 0;
+			double side3 = 0;
 
 			//act
 			const char* answer = analyze_triangle(side1, side2, side3);
@@ -505,12 +311,12 @@ namespace PolygonCheckertests
 			Assert::AreEqual(answer, "Not a triangle");
 		}
 
-		TEST_METHOD(analyzeTriangle_negOneOneOne_NotATriangle)
+		TEST_METHOD(analyzeTriangle_0And0And0_NotATriangle)
 		{
 			//arrange
-			int side1 = -1;
-			int side2 = 1;
-			int side3 = 1;
+			double side1 = 0;
+			double side2 = 0;
+			double side3 = 0;
 
 			//act
 			const char* answer = analyze_triangle(side1, side2, side3);
@@ -519,12 +325,12 @@ namespace PolygonCheckertests
 			Assert::AreEqual(answer, "Not a triangle");
 		}
 
-		TEST_METHOD(analyzeTriangle_OneNegOneOne_NotATriangle)
+		TEST_METHOD(analyzeTriangle_Neg1And1And1_NotATriangle)
 		{
 			//arrange
-			int side1 = 1;
-			int side2 = -1;
-			int side3 = 1;
+			double side1 = -1;
+			double side2 = 1;
+			double side3 = 1;
 
 			//act
 			const char* answer = analyze_triangle(side1, side2, side3);
@@ -533,12 +339,12 @@ namespace PolygonCheckertests
 			Assert::AreEqual(answer, "Not a triangle");
 		}
 
-		TEST_METHOD(analyzeTriangle_OneOneNegOne_NotATriangle)
+		TEST_METHOD(analyzeTriangle_1AndNeg1And1_NotATriangle)
 		{
 			//arrange
-			int side1 = 1;
-			int side2 = 1;
-			int side3 = -1;
+			double side1 = 1;
+			double side2 = -1;
+			double side3 = 1;
 
 			//act
 			const char* answer = analyze_triangle(side1, side2, side3);
@@ -547,12 +353,12 @@ namespace PolygonCheckertests
 			Assert::AreEqual(answer, "Not a triangle");
 		}
 
-		TEST_METHOD(analyzeTriangle_NegOneNegOneOne_NotATriangle)
+		TEST_METHOD(analyzeTriangle_1And1AndNeg1_NotATriangle)
 		{
 			//arrange
-			int side1 = -1;
-			int side2 = -1;
-			int side3 = 1;
+			double side1 = 1;
+			double side2 = 1;
+			double side3 = -1;
 
 			//act
 			const char* answer = analyze_triangle(side1, side2, side3);
@@ -561,12 +367,26 @@ namespace PolygonCheckertests
 			Assert::AreEqual(answer, "Not a triangle");
 		}
 
-		TEST_METHOD(analyzeTriangle_NegOneOneNegOne_NotATriangle)
+		TEST_METHOD(analyzeTriangle_Neg1AndNeg1And1_NotATriangle)
 		{
 			//arrange
-			int side1 = -1;
-			int side2 = 1;
-			int side3 = -1;
+			double side1 = -1;
+			double side2 = -1;
+			double side3 = 1;
+
+			//act
+			const char* answer = analyze_triangle(side1, side2, side3);
+
+			//assert
+			Assert::AreEqual(answer, "Not a triangle");
+		}
+
+		TEST_METHOD(analyzeTriangle_Neg1And1AndNeg1_NotATriangle)
+		{
+			//arrange
+			double side1 = -1;
+			double side2 = 1;
+			double side3 = -1;
 
 			//act
 			const char* answer = analyze_triangle(side1, side2, side3);
@@ -576,12 +396,12 @@ namespace PolygonCheckertests
 
 		}
 
-		TEST_METHOD(analyzeTriangle_OneNegOneNegOne_NotATriangle)
+		TEST_METHOD(analyzeTriangle_1AndNeg1AndNeg1_NotATriangle)
 		{
 			//arrange
-			int side1 = 1;
-			int side2 = -1;
-			int side3 = -1;
+			double side1 = 1;
+			double side2 = -1;
+			double side3 = -1;
 
 			//act
 			const char* answer = analyze_triangle(side1, side2, side3);
@@ -590,12 +410,12 @@ namespace PolygonCheckertests
 			Assert::AreEqual(answer, "Not a triangle");
 		}
 
-		TEST_METHOD(analyzeTriangle_TwoThreeOne_NotATriangle)
+		TEST_METHOD(analyzeTriangle_2And3And1_NotATriangle)
 		{
 			//arrange
-			int side1 = 2;
-			int side2 = 3;
-			int side3 = 1;
+			double side1 = 2;
+			double side2 = 3;
+			double side3 = 1;
 
 			//act
 			const char* answer = analyze_triangle(side1, side2, side3);
@@ -604,12 +424,12 @@ namespace PolygonCheckertests
 			Assert::AreEqual(answer, "Not a triangle");
 		}
 
-		TEST_METHOD(analyzeTriangle_TwoThreeOne_ScaleneTriangle)
+		TEST_METHOD(analyzeTriangle_3And4And2_ScaleneTriangle)
 		{
 			//arrange
-			int side1 = 3;
-			int side2 = 4;
-			int side3 = 2;
+			double side1 = 3;
+			double side2 = 4;
+			double side3 = 2;
 
 			//act
 			const char* answer = analyze_triangle(side1, side2, side3);
@@ -618,55 +438,12 @@ namespace PolygonCheckertests
 			Assert::AreEqual(answer, "Scalene triangle");
 		}
 
-		TEST_METHOD(analyzeTriangle_CharThreeOne_NotATriangle)
+		TEST_METHOD(analyzeTriangle_2And2And3_IsoscelesTriangle)
 		{
 			//arrange
-			char side1 = 'c';
-			int side2 = 1;
-			int side3 = 1;
-
-			//act
-			const char* answer = analyze_triangle(side1, side2, side3);
-
-			//assert
-
-			Assert::AreEqual(answer, "Not a triangle");
-		}
-
-		TEST_METHOD(analyzeTriangle_OneCharOne_NotATriangle)
-		{
-			//arrange
-			int side1 = 1;
-			char side2 = 'c';
-			int side3 = 1;
-
-			//act
-			const char* answer = analyze_triangle(side1, side2, side3);
-
-			//assert
-			Assert::AreEqual(analyze_triangle(1, 'b', 1), "Not a triangle");
-		}
-
-		TEST_METHOD(analyzeTriangle_OneOneChar_NotATriangle)
-		{
-			//arrange
-			int side1 = 1;
-			int side2 = 1;
-			char side3 = 'c';
-
-			//act
-			const char* answer = analyze_triangle(side1, side2, side3);
-
-			//assert
-			Assert::AreEqual(answer, "Not a triangle");
-		}
-
-		TEST_METHOD(analyzeTriangle_TwoTwoThree_IsoscelesTriangle)
-		{
-			//arrange
-			char side1 = 2;
-			char side2 = 2;
-			char side3 = 3;
+			double side1 = 2;
+			double side2 = 2;
+			double side3 = 3;
 
 			//act
 			const char* answer = analyze_triangle(side1, side2, side3);
@@ -675,12 +452,12 @@ namespace PolygonCheckertests
 			Assert::AreEqual(answer, "Isosceles triangle");
 		}
 
-		TEST_METHOD(analyzeTriangle_TwoThreeTwo_IsoscelesTriangle)
+		TEST_METHOD(analyzeTriangle_2And3And2_IsoscelesTriangle)
 		{
 			//arrange
-			char side1 = 2;
-			char side2 = 3;
-			char side3 = 2;
+			double side1 = 2;
+			double side2 = 3;
+			double side3 = 2;
 
 			//act
 			const char* answer = analyze_triangle(side1, side2, side3);
@@ -689,54 +466,27 @@ namespace PolygonCheckertests
 			Assert::AreEqual(answer, "Isosceles triangle");
 		}
 
-		TEST_METHOD(analyzeTriangle_ThreeTwoTwo_IsoscelesTriangle)
+		TEST_METHOD(analyzeTriangle_3And2And2_IsoscelesTriangle)
 		{
 			//arrange
-			char side1 = 3;
-			char side2 = 2;
-			char side3 = 2;
+			double side1 = 3;
+			double side2 = 2;
+			double side3 = 2;
 
 			//act
 			const char* answer = analyze_triangle(side1, side2, side3);
 
 			//assert
 			Assert::AreEqual(answer, "Isosceles triangle");
-
-		}
-
-		TEST_METHOD(analyzeTriangle_OnetoTwoHundred_EquilateralTriangle)
-		{
-			//arrange 
-			int i = 1;
-
-			// act
-			for (int i = 1; i < 200; i++)
-			{
-				//assert
-				Assert::AreEqual(analyze_triangle(i, i, i), "Equilateral triangle");
-			}
-		}
-
-		TEST_METHOD(analyzeTriangle_OnetoTwoHundred_ScaleneTriangle) {
-
-			//arrange
-			double i = 1;
-
-			//act
-			for (double i = 1; i < 200; i++)
-			{
-				//assert
-				Assert::AreEqual(analyze_triangle(i + 2, i + 3, i + 4), "Scalene triangle");
-			}
 		}
 	};
 
 
 	//
-	TEST_CLASS(SquareSolverTests)
+	TEST_CLASS(EquilateralSolverTests)
 	{
 	public:
-		TEST_METHOD(get_Area_FiveFive_25)
+		TEST_METHOD(get_area_5And5_25)
 		{
 			//arrange
 			double x = 5;
@@ -747,13 +497,11 @@ namespace PolygonCheckertests
 			//act
 			double answer = get_area(x, y);
 
-
 			//assert
 			Assert::AreEqual(answer, expected);
-
 		}
 
-		TEST_METHOD(get_Area_OneHundredOneHundred_TenThousand)
+		TEST_METHOD(get_area_100And100_10000)
 		{
 			//arrange
 			double x = 100;
@@ -764,43 +512,44 @@ namespace PolygonCheckertests
 			//act
 			double answer = get_area(x, y);
 
-
 			//assert
 			Assert::AreEqual(answer, expected);
-
 		}
 
-		TEST_METHOD(get_Perimiter_FiveFive_Twenty)
+		TEST_METHOD(get_perimeter_5and5and5and5_20)
 		{
-			double x = 5;
-			double y = 5;
+			double sideOne = 5;
+			double sideTwo = 5;
+			double sideThree = 5;
+			double sideFour = 5;
 
 			double expected = 20;
 
 			//act
-			double answer = get_perimeter(x, y);
-
+			double answer = get_perimeter(sideOne, sideTwo, sideThree, sideFour);
 
 			//assert
 			Assert::AreEqual(answer, expected);
 		}
 
-		TEST_METHOD(get_area_OneHundredOneHundred_FourHundred)
+		TEST_METHOD(get_perimeter_100And100And100And100_400)
 		{
-			double x = 100;
-			double y = 100;
+			double sideOne = 100;
+			double sideTwo = 100;
+			double sideThree = 100;
+			double sideFour = 100;
 
 			double expected = 400;
 
 			//act
-			double answer = get_perimeter(x, y);
-
+			double answer = get_perimeter(sideOne, sideTwo,
+										  sideThree, sideFour);
 
 			//assert
 			Assert::AreEqual(answer, expected);
 		}
 
-		TEST_METHOD(is_rectangle_PositiveRectange_True)
+		TEST_METHOD(is_rectangle_TypicalRectangle_True)
 		{
 			//arrange
 			POINT pointOne = { 0.0, 2.0 };
@@ -808,7 +557,8 @@ namespace PolygonCheckertests
 			POINT pointThree = { 0.0, 1.0 };
 			POINT pointFour = { 2.0, 1.0 };
 
-			QUADRILATERAL quadrilateral = create_quadrilateral(pointOne, pointTwo, pointThree, pointFour);
+			QUADRILATERAL quadrilateral = create_quadrilateral(pointOne, pointTwo, 
+														       pointThree, pointFour);
 			//act 
 			bool answer = is_rectangle(quadrilateral);
 
@@ -825,15 +575,15 @@ namespace PolygonCheckertests
 			POINT pointFour = { 2.0, -4.0 };
 
 			QUADRILATERAL quadrilateral = create_quadrilateral(pointOne, pointTwo, pointThree, pointFour);
+			
 			//act 
 			bool answer = is_rectangle(quadrilateral);
 
 			//assert
 			Assert::AreEqual(answer, true);
-
 		}
 
-		TEST_METHOD(is_rectangle_PositiveRectange_false)
+		TEST_METHOD(is_rectangle_NotRectangle_false)
 		{
 			//arrange
 			POINT pointOne = { 0, 2.0 };
@@ -841,16 +591,16 @@ namespace PolygonCheckertests
 			POINT pointThree = { 0.0, 1.0 };
 			POINT pointFour = { 2.0, 1.0 };
 
-			QUADRILATERAL quadrilateral = create_quadrilateral(pointOne, pointTwo, pointThree, pointFour);
+			QUADRILATERAL quadrilateral = create_quadrilateral(pointOne, pointTwo, 
+															   pointThree, pointFour);
 			//act 
 			bool answer = is_rectangle(quadrilateral);
 
 			//assert
 			Assert::AreEqual(answer, false);
-
 		}
 
-		TEST_METHOD(is_rectangle_NegativeRectangle_False)
+		TEST_METHOD(is_rectangle_NegativeNotRectangle_False)
 		{
 			//arrange
 			POINT pointOne = { -2.0, -2.0 };
@@ -858,7 +608,8 @@ namespace PolygonCheckertests
 			POINT pointThree = { -2.0, -4.0 };
 			POINT pointFour = { 2.0, -4.0 };
 
-			QUADRILATERAL quadrilateral = create_quadrilateral(pointOne, pointTwo, pointThree, pointFour);
+			QUADRILATERAL quadrilateral = create_quadrilateral(pointOne, pointTwo, 
+															   pointThree, pointFour);
 			//act 
 			bool answer = is_rectangle(quadrilateral);
 
@@ -866,7 +617,7 @@ namespace PolygonCheckertests
 			Assert::AreEqual(answer, false);
 		}
 
-		TEST_METHOD(is_rectangle_PositveRectangleDiagonal_True)
+		TEST_METHOD(is_rectangle_RotatedRectangle_True)
 		{
 			//arrange
 			POINT pointOne = { 1, 4 };
@@ -874,7 +625,8 @@ namespace PolygonCheckertests
 			POINT pointThree = { 0,3 };
 			POINT pointFour = { 1.5, 1.5 };
 
-			QUADRILATERAL quadrilateral = create_quadrilateral(pointOne, pointTwo, pointThree, pointFour);
+			QUADRILATERAL quadrilateral = create_quadrilateral(pointOne, pointTwo, 
+															   pointThree, pointFour);
 
 			//act 
 			bool answer = is_rectangle(quadrilateral);
@@ -883,7 +635,7 @@ namespace PolygonCheckertests
 			Assert::AreEqual(answer, true);
 		}
 
-		TEST_METHOD(is_rectangle_NegativeRectangleDiagonal_True)
+		TEST_METHOD(is_rectangle_NegativeRotatedRectangle_True)
 		{
 			//arrange
 			POINT pointOne = { -1.5, -1.5 };
@@ -891,7 +643,8 @@ namespace PolygonCheckertests
 			POINT pointThree = { -2.5,-2.5 };
 			POINT pointFour = { -1, -4 };
 
-			QUADRILATERAL quadrilateral = create_quadrilateral(pointOne, pointTwo, pointThree, pointFour);
+			QUADRILATERAL quadrilateral = create_quadrilateral(pointOne, pointTwo, 
+															   pointThree, pointFour);
 
 			//act 
 			bool answer = is_rectangle(quadrilateral);
@@ -900,7 +653,7 @@ namespace PolygonCheckertests
 			Assert::AreEqual(answer, true);
 		}
 
-		TEST_METHOD(is_rectangle_PositveRectangleDiagonal_False)
+		TEST_METHOD(is_rectangle_RotatedNonRectangle_False)
 		{
 			//arrange
 			POINT pointOne = { 10, 4 };
@@ -917,7 +670,7 @@ namespace PolygonCheckertests
 			Assert::AreEqual(answer, false);
 		}
 
-		TEST_METHOD(is_rectangle_NegativeRectangleDiagonal_False)
+		TEST_METHOD(is_rectangle_NegativeRotatedRectangle_False)
 		{
 			//arrange
 			POINT pointOne = { 10, -1.5 };
@@ -966,7 +719,7 @@ namespace PolygonCheckertests
 			Assert::AreEqual(answer, true);
 		}
 
-		TEST_METHOD(is_rectangle_PositiveSquare_false)
+		TEST_METHOD(is_rectangle_SkewedQuadrilateral_false)
 		{
 			//arrange
 			POINT pointOne = { 10, 2 };
@@ -982,7 +735,7 @@ namespace PolygonCheckertests
 			Assert::AreEqual(answer, false);
 		}
 
-		TEST_METHOD(is_rectangle_NegativeSquare_False)
+		TEST_METHOD(is_rectangle_NegativeSkewedQuadrilateral_False)
 		{
 			//arrange
 			POINT pointOne = { -10, -2 };
@@ -998,7 +751,7 @@ namespace PolygonCheckertests
 			Assert::AreEqual(answer, false);
 		}
 
-		TEST_METHOD(is_rectangle_PositveSquareDiagonal_True)
+		TEST_METHOD(is_rectangle_RotatedSquare_True)
 		{
 			POINT pointOne = { 2, 3 };
 			POINT pointTwo = { 3, 2 };
@@ -1013,7 +766,7 @@ namespace PolygonCheckertests
 			Assert::AreEqual(answer, true);
 		}
 
-		TEST_METHOD(is_rectangle_NegativeSquareDiagonal_True)
+		TEST_METHOD(is_rectangle_NegativeRotatedSquare_True)
 		{
 			POINT pointOne = { -2, -3 };
 			POINT pointTwo = { -3, -2 };
@@ -1028,7 +781,7 @@ namespace PolygonCheckertests
 			Assert::AreEqual(answer, true);
 		}
 
-		TEST_METHOD(is_rectangle_PositveSquareDiagonal_False)
+		TEST_METHOD(is_rectangle_RotateNonSquare_False)
 		{
 			POINT pointOne = { 10, 3 };
 			POINT pointTwo = { 3, 2 };
@@ -1043,7 +796,7 @@ namespace PolygonCheckertests
 			Assert::AreEqual(answer, false);
 		}
 
-		TEST_METHOD(is_rectangle_NegativeSquareDiagonal_False)
+		TEST_METHOD(is_rectangle_NegativeRotatedNonSquare_False)
 		{
 			POINT pointOne = { -10, -3 };
 			POINT pointTwo = { -3, -2 };
@@ -1058,6 +811,231 @@ namespace PolygonCheckertests
 			Assert::AreEqual(answer, false);
 		}
 
-		
+		TEST_METHOD(is_rectangle_Diamond_True)
+		{
+			POINT pointOne = { 0, 1 };
+			POINT pointTwo = { 1, 2 };
+			POINT pointThree = { 2, 1 };
+			POINT pointFour = { 1, 0 };
+
+			QUADRILATERAL quadrilateral = create_quadrilateral(pointOne, pointTwo, pointThree, pointFour);
+			//act 
+			bool answer = is_rectangle(quadrilateral);
+
+			//assert
+			Assert::AreEqual(answer, true);
+		}
+
+		TEST_METHOD(is_rectangle_OutOfOrderPoints_True)
+		{
+			POINT pointOne = { 0, 1 };
+			POINT pointTwo = { 1, 2 };
+			POINT pointThree = { 2, 1 };
+			POINT pointFour = { 1, 0 };
+
+			QUADRILATERAL quadrilateral = create_quadrilateral(pointThree, pointOne, 
+															   pointTwo, pointFour);
+			//act 
+			bool answer = is_rectangle(quadrilateral);
+
+			//assert
+			Assert::AreEqual(answer, true);
+		}
+
+		TEST_METHOD(is_rectangle_LargeValidRectangle_True)
+		{
+			POINT pointOne = { 0, 1000 };
+			POINT pointTwo = { 2000, 1000 };
+			POINT pointThree = { 0, 0 };
+			POINT pointFour = { 2000, 0 };
+
+			QUADRILATERAL quadrilateral = create_quadrilateral(pointThree, pointOne,
+				pointTwo, pointFour);
+			//act 
+			bool answer = is_rectangle(quadrilateral);
+
+			//assert
+			Assert::AreEqual(answer, true);
+		}
+
+		TEST_METHOD(find_line_length_0p0And0p1_1)
+		{
+			POINT pointOne = { 0, 0 };
+			POINT pointTwo = { 0, 1 };
+
+			//act 
+			double answer = find_line_length(pointOne, pointTwo);
+
+			//assert
+			Assert::AreEqual(answer, 1.0);
+		}
+
+		TEST_METHOD(find_line_length_0p1And0p0_1)
+		{
+			POINT pointOne = { 0, 1 };
+			POINT pointTwo = { 0, 0 };
+
+			//act 
+			double answer = find_line_length(pointOne, pointTwo);
+
+			//assert
+			Assert::AreEqual(answer, 1.0);
+		}
+
+		TEST_METHOD(has_duplicates_0p0And1p0And2p0And4p3_false)
+		{
+			POINT pointOne = { 0, 0 };
+			POINT pointTwo = { 1, 0 };
+			POINT pointThree = { 2, 0 };
+			POINT pointFour = { 4, 3 };
+			POINT pointArray[] = { pointOne, pointTwo, pointThree, pointFour };
+
+			//act 
+			bool actual = has_duplicates(pointArray, 4);
+
+			//assert
+			Assert::AreEqual(actual, false);
+		}
+
+		TEST_METHOD(has_duplicates_0p0And1p0And2p0And0p0_true)
+		{
+			POINT pointOne = { 0, 0 };
+			POINT pointTwo = { 1, 0 };
+			POINT pointThree = { 2, 0 };
+			POINT pointFour = { 0, 0 };
+			POINT pointArray[] = { pointOne, pointTwo, pointThree, pointFour };
+
+			//act 
+			bool actual = has_duplicates(pointArray, 4);
+
+			//assert
+			Assert::AreEqual(actual, true);
+		}
+
+		TEST_METHOD(has_duplicates_0p0And0p0And2p25And2p3_true)
+		{
+			POINT pointOne = { 0, 0 };
+			POINT pointTwo = { 0, 0 };
+			POINT pointThree = { 2, 25 };
+			POINT pointFour = { 2, 3 };
+			POINT pointArray[] = { pointOne, pointTwo, pointThree, pointFour };
+
+			//act 
+			bool actual = has_duplicates(pointArray, 4);
+
+			//assert
+			Assert::AreEqual(actual, true);
+		}
+
+		TEST_METHOD(has_duplicates_0p0And1p0AndNeg2pNeg25And2p25_false)
+		{
+			POINT pointOne = { 0, 0 };
+			POINT pointTwo = { 1, 0 };
+			POINT pointThree = { -2, -25 };
+			POINT pointFour = { 2, 25 };
+			POINT pointArray[] = { pointOne, pointTwo, pointThree, pointFour };
+
+			//act 
+			bool actual = has_duplicates(pointArray, 4);
+
+			//assert
+			Assert::AreEqual(actual, false);
+		}
+
+		TEST_METHOD(compare_point_x_0p0And0p100_0)
+		{
+			POINT pointOne = { 0, 0 };
+			POINT pointTwo = { 0, 100 };
+			
+			//act 
+			int actual = compare_point_x(&pointOne, &pointTwo);
+
+			//assert
+			Assert::AreEqual(actual, 0);
+		}
+
+		TEST_METHOD(compare_point_x_1p0And0p100_1)
+		{
+			POINT pointOne = { 1, 0 };
+			POINT pointTwo = { 0, 100 };
+
+			//act 
+			int actual = compare_point_x(&pointOne, &pointTwo);
+
+			//assert
+			Assert::AreEqual(actual, 1);
+		}
+
+		TEST_METHOD(compare_point_x_1p0And2p100_Neg1)
+		{
+			POINT pointOne = { 1, 0 };
+			POINT pointTwo = { 2, 100 };
+
+			//act 
+			int actual = compare_point_x(&pointOne, &pointTwo);
+
+			//assert
+			Assert::AreEqual(actual, -1);
+		}
+
+		TEST_METHOD(compare_point_y_2p1And1p0_Neg1)
+		{
+			POINT pointOne = { 2, 1 };
+			POINT pointTwo = { 1, 0 };
+
+			//act 
+			int actual = compare_point_y(&pointOne, &pointTwo);
+
+			//assert
+			Assert::AreEqual(actual, -1);
+		}
+
+		TEST_METHOD(compare_point_y_2p1And1p3_1)
+		{
+			POINT pointOne = { 2, 1 };
+			POINT pointTwo = { 1, 3 };
+
+			//act 
+			int actual = compare_point_y(&pointOne, &pointTwo);
+
+			//assert
+			Assert::AreEqual(actual, 1);
+		}
+
+		TEST_METHOD(compare_point_y_2p1And2p3_1)
+		{
+			POINT pointOne = { 2, 1 };
+			POINT pointTwo = { 2, 3 };
+
+			//act 
+			int actual = compare_point_y(&pointOne, &pointTwo);
+
+			//assert
+			Assert::AreEqual(actual, 1);
+		}
+
+		TEST_METHOD(compare_point_y_2p1And2p3_Neg1)
+		{
+			POINT pointOne = { 2, 1 };
+			POINT pointTwo = { 2, 0 };
+
+			//act 
+			int actual = compare_point_y(&pointOne, &pointTwo);
+
+			//assert
+			Assert::AreEqual(actual, -1);
+		}
+
+		TEST_METHOD(compare_point_y_2p1And2p1_0)
+		{
+			POINT pointOne = { 2, 1 };
+			POINT pointTwo = { 2, 1 };
+
+			//act 
+			int actual = compare_point_y(&pointOne, &pointTwo);
+
+			//assert
+			Assert::AreEqual(actual, 0);
+		}
 	};
 }

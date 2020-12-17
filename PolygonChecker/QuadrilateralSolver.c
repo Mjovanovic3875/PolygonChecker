@@ -25,36 +25,159 @@ Program Description :
 #include "QuadrilateralSolver.h"
 #include "triangleSolver.h"
 #include <stdlib.h>
+#include <string.h>
 #include <math.h>
 
-double get_perimeter(double x, double y) { // return the total of 4 ints
-	return  (2*x + 2*y);
+double get_perimeter(double sideOne, double sideTwo,
+					 double sideThree, double sideFour) 
+{
+	return sideOne + sideTwo + sideThree + sideFour;
 }
-double get_area(double x, double y) { // returns the area of two lines
+double get_area(double x, double y) 
+{ // returns the area of two lines
 	return x*y;
 }
 
 
+QUADRILATERAL create_quadrilateral(POINT pointOne, POINT pointTwo,
+	POINT pointThree, POINT pointFour) // returns a quadralateral based on 4 points
+{
+	QUADRILATERAL result;
+
+	POINT pointsTemp[4] = { pointOne, pointTwo, pointThree, pointFour };
+
+
+	// Order the points to be top left, top right, bottom left, bottom right
+	//    We can do so with 3 sorts
+
+	// First, sort all y values in terms of their y values.
+	//   points will contain [top point, top point, bottom point, bottom point]
+	qsort(&(pointsTemp), 4, sizeof(POINT), compare_point_y);
+
+	// Now, sort the top 2 and bottom 2 points individually
+	qsort(&(pointsTemp), 2, sizeof(POINT), compare_point_x); // Order first two points (left most, then right most)
+	qsort(&(pointsTemp[2]), 2, sizeof(POINT), compare_point_x); // Order last two points
+
+
+	// The array works, but isn't readable. Let the struct have separate variables for different points
+	result.topLeftPoint = pointsTemp[0];
+	result.topRightPoint = pointsTemp[1];
+	result.bottomLeftPoint = pointsTemp[2];
+	result.bottomRightPoint = pointsTemp[3];
+
+	// Find line lengths
+	result.topLine = find_line_length(result.topLeftPoint, result.topRightPoint);
+	result.bottomLine = find_line_length(result.bottomLeftPoint, result.bottomRightPoint);
+	result.leftLine = find_line_length(result.topLeftPoint, result.bottomLeftPoint);
+	result.rightLine = find_line_length(result.topRightPoint, result.bottomRightPoint);
+
+	result.diag1 = find_line_length(result.topLeftPoint, result.bottomRightPoint);
+	result.diag2 = find_line_length(result.topRightPoint, result.bottomLeftPoint);
+
+
+	return result;
+}
+
+
+
+QUADRILATERAL quadrilateral_wizard(void)
+{
+
+	POINT pointsTemp[4];
+
+	bool hasDuplicates;
+	do
+	{
+		for (int i = 0; i < 4; i++)
+		{
+			printf("Please enter the x value for point %d: ", i + 1);
+			scanf_s("%lf", &(pointsTemp[i].x));
+			printf("Please enter the y value for point %d: ", i + 1);
+			scanf_s("%lf", &(pointsTemp[i].y));
+		}
+
+		hasDuplicates = has_duplicates(pointsTemp, 4);
+		if (hasDuplicates)
+		{
+			printf("2 or more of your entered points are duplicates! Please try again.\n");
+		}
+	} while (hasDuplicates);
+
+
+
+	return create_quadrilateral(pointsTemp[0], pointsTemp[1], pointsTemp[2], pointsTemp[3]);
+}
+
+
+void print_quadrilateral_information(QUADRILATERAL quadrilateral)
+{
+	bool isRectangle = is_rectangle(quadrilateral);
+
+	if (isRectangle)
+	{
+		double area = get_area(quadrilateral.topLine, quadrilateral.leftLine);
+		double perimeter = get_perimeter(quadrilateral.topLine,
+										 quadrilateral.leftLine,
+										 quadrilateral.bottomLine,
+										 quadrilateral.rightLine);
+		printf("This is a rectangle.\n");
+		printf("Its area is %lf", area);
+		printf("Its perimeter is %lf", perimeter);
+	}
+	else
+	{
+		double perimeter = get_perimeter(quadrilateral.topLine,
+										 quadrilateral.leftLine,
+										 quadrilateral.bottomLine,
+										 quadrilateral.rightLine);
+		printf("This is NOT a rectangle.\n");
+		printf("Its perimeter is %lf", perimeter);
+	}
+
+	return;
+}
+
+bool has_duplicates(POINT* points, int n)
+{
+
+	// Check every POINT in points to subsequent POINTS in pairs 
+	//    (e.g., points[0]-points[1], points[1]-points[2], etc.)
+	// memcmp each pair. If memcmp returns 0, then a duplicate exists
+	// If for loops terminate, then no duplicates exist
+	for (int i = 0; i < n; i++)
+	{
+		for (int j = i + 1; j < n; j++)
+		{
+			int pointCompareResult = memcmp(&(points[i]), 
+										    &(points[j]), sizeof(POINT));
+
+			if (pointCompareResult == 0)
+			{
+				return true;
+			}
+		}
+	}
+
+	return false;
+}
+
+
 bool is_rectangle(QUADRILATERAL quadrilateral) { // says i need to generate 4 lines but 2 lines are identical for x and y axis so shouldnt I only need 2?
-	double topLeftAngleRad = find_angle(quadrilateral.diag2, quadrilateral.top_line, quadrilateral.left_line);
-	double topLeftAngleDeg = radians_to_degrees(topLeftAngleRad);
+	double topLeftAngleRad = find_angle(quadrilateral.diag2, quadrilateral.topLine, quadrilateral.leftLine);
+	
+	double topRightAngleRad = find_angle(quadrilateral.diag1, quadrilateral.topLine, quadrilateral.rightLine);
 
-	double topRightAngleRad = find_angle(quadrilateral.diag1, quadrilateral.top_line, quadrilateral.right_line);
-	double topRightAngleDeg = radians_to_degrees(topRightAngleRad);
+	double bottomLeftAngleRad = find_angle(quadrilateral.diag1, quadrilateral.bottomLine, quadrilateral.leftLine);
 
-	double bottomLeftAngleRad = find_angle(quadrilateral.diag1, quadrilateral.bottom_line, quadrilateral.left_line);
-	double bottomLeftAngleDeg = radians_to_degrees(bottomLeftAngleRad);
-
-	double bottomRightAngleRad = find_angle(quadrilateral.diag2, quadrilateral.bottom_line, quadrilateral.right_line);
-	double bottomRightAngleDeg = radians_to_degrees(bottomRightAngleRad);
+	double bottomRightAngleRad = find_angle(quadrilateral.diag2, quadrilateral.bottomLine, quadrilateral.rightLine);
 
 
 	// Doubles have rounding issues. In my initial testing, it seems that the errors are predictable such that
-	//    all angles will end up the same (e.g., a little below 90 or a little above 90). However, this might not be
+	//    all angles will end up the same. However, this might not be
 	//    completely robust. If not robust, the best solution is likely using some rounding
-	if ((topLeftAngleDeg == topRightAngleDeg) &&
-		(topRightAngleDeg == bottomLeftAngleDeg) &&
-		(bottomLeftAngleDeg == bottomRightAngleDeg))
+	if ((topLeftAngleRad == topRightAngleRad) &&
+		(topRightAngleRad == bottomLeftAngleRad) &&
+		(bottomLeftAngleRad == bottomRightAngleRad))
 	{
 		return true;
 	}
@@ -85,23 +208,23 @@ double find_line_length(POINT pointOne, POINT pointTwo)
 
 double get_left_line(QUADRILATERAL quadrilateral) // returns the left line of a rectangle
 {
-	return quadrilateral.left_line;
+	return quadrilateral.leftLine;
 }
 double get_top_line(QUADRILATERAL quadrilateral) // returns the top line of a rectangle
 {
-	return quadrilateral.top_line;
+	return quadrilateral.topLine;
 }
 double get_right_line(QUADRILATERAL quadrilateral) // returns the right line of a rectangle
 {
-	return quadrilateral.right_line;
+	return quadrilateral.rightLine;
 }
 double get_bottom_line(QUADRILATERAL quadrilateral) // returns the bottom line of a rectangle
 {
-	return quadrilateral.bottom_line;
+	return quadrilateral.bottomLine;
 }
 
 
-int compare_point_x(POINT* pointOne, POINT* pointTwo) // returns the bigger of two points as a 1 or -1
+int compare_point_x(POINT* pointOne, POINT* pointTwo)
 {
 	if (pointOne->x < pointTwo->x)
 	{
@@ -118,7 +241,7 @@ int compare_point_x(POINT* pointOne, POINT* pointTwo) // returns the bigger of t
 }
 
 
-int compare_point_y(POINT *pointOne, POINT *pointTwo) // returns the bigger of two points as a 1 or -1
+int compare_point_y(POINT *pointOne, POINT *pointTwo)
 {
 	if (pointOne->y > pointTwo->y)
 	{
@@ -137,60 +260,3 @@ int compare_point_y(POINT *pointOne, POINT *pointTwo) // returns the bigger of t
 
 
 
-QUADRILATERAL create_quadrilateral(POINT pointOne, POINT pointTwo, 
-								   POINT pointThree, POINT pointFour) // returns a quadralateral based on 4 points
-{
-	QUADRILATERAL result;
-
-	POINT pointsTemp[4] = { pointOne, pointTwo, pointThree, pointFour };
-
-
-	// Order the points to be top left, top right, bottom left, bottom right
-	//    We can do so with 3 sorts
-
-	// First, sort all y values in terms of their y values.
-	//   points will contain [top point, top point, bottom point, bottom point]
-	qsort(&(pointsTemp), 4, sizeof(POINT), compare_point_y);
-
-	// Now, sort the top 2 and bottom 2 points individually
-	qsort(&(pointsTemp), 2, sizeof(POINT), compare_point_x); // Order first two points (left most, then right most)
-	qsort(&(pointsTemp[2]), 2, sizeof(POINT), compare_point_x); // Order last two points
-
-
-	// The array works, but isn't readable. Let the struct have separate variables for different points
-	result.topLeftPoint = pointsTemp[0];
-	result.topRightPoint = pointsTemp[1];
-	result.bottomLeftPoint = pointsTemp[2];
-	result.bottomRightPoint = pointsTemp[3];
-
-	// Find line lengths
-	result.top_line = find_line_length(result.topLeftPoint, result.topRightPoint);
-	result.bottom_line = find_line_length(result.bottomLeftPoint, result.bottomRightPoint);
-	result.left_line = find_line_length(result.topLeftPoint, result.bottomLeftPoint);
-	result.right_line = find_line_length(result.topRightPoint, result.bottomRightPoint);
-
-	result.diag1 = find_line_length(result.topLeftPoint, result.bottomRightPoint);
-	result.diag2 = find_line_length(result.topRightPoint, result.bottomLeftPoint);
-
-
-	return result;
-}
-
-
-
-QUADRILATERAL quadrilateral_wizard(void)
-{
-	
-	POINT pointsTemp[4];
-
-	for (int i = 0; i < 4; i++)
-	{
-		printf("Please enter the x value for point %d: ", i + 1);
-		scanf_s("%lf", &(pointsTemp[i].x));
-		printf("Please enter the y value for point %d: ", i + 1);
-		scanf_s("%lf", &(pointsTemp[i].y));
-	}
-	
-
-	return create_quadrilateral(pointsTemp[0], pointsTemp[1], pointsTemp[2], pointsTemp[3]);
-}

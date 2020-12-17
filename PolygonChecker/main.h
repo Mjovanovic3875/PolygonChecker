@@ -22,6 +22,6 @@ Program Description :
 */
 
 #pragma once
-void printWelcome();
-int printShapeMenu();
+void print_welcome();
+int get_shape_choice();
 int* getTriangleSides(int* triangleSides);

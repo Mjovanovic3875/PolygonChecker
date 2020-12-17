@@ -32,53 +32,28 @@ Program Description :
 #include "TriangleSolver.h"
 
 
-#define TRIANGLE_NUMBER_OF_SIDES 3
-
-
-struct triangle
+TRIANGLE create_triangle(double sideA, double sideB, double sideC)
 {
-	double sideA;
-	double sideB;
-	double sideC;
-	bool isTriangle;
-	char* typeOfTriangle;
-	double *insideAnglesRadians;
-	double *insideAnglesDegrees;
-};
+	TRIANGLE result;
 
+	result.sideA = sideA;
+	result.sideB = sideB;
+	result.sideC = sideC;
+	result.isTriangle = is_triangle(result.sideA, result.sideB, result.sideC);
+	result.typeOfTriangle = analyze_triangle(result.sideA, result.sideB, result.sideC);
 
-TRIANGLE* create_triangle(double sideA, double sideB, double sideC)
-{
-	TRIANGLE* result = (TRIANGLE*)malloc(sizeof(TRIANGLE));
-
-	if (result == NULL)
+	if (result.isTriangle)
 	{
-		exit(1);
+		result.angleA = find_angle(result.sideA, result.sideB, result.sideC);
+		result.angleB = find_angle(result.sideB, result.sideA, result.sideC);
+		result.angleC = find_angle(result.sideC, result.sideA, result.sideB);
 	}
-
-	result->sideA = sideA;
-	result->sideB = sideB;
-	result->sideC = sideC;
-	result->isTriangle = is_triangle(result->sideA, result->sideB, result->sideC);
-	result->typeOfTriangle = analyze_triangle(result->sideA, result->sideB, result->sideC);
-
-	if (result->isTriangle)
-	{
-		result->insideAnglesRadians = inside_angles_radians(result->sideA, result->sideB, result->sideC);
-		result->insideAnglesDegrees = inside_angles_degrees(result->sideA, result->sideB, result->sideC);
-	}
-	else
-	{
-		result->insideAnglesRadians = NULL;
-		result->insideAnglesDegrees = NULL;
-	}
-	
 
 	return result;
 }
 
 
-TRIANGLE* triangle_wizard()
+TRIANGLE triangle_wizard()
 {
 	printf_s("Enter the three sides of the triangle\n");
 
@@ -100,27 +75,18 @@ TRIANGLE* triangle_wizard()
 }
 
 
-void free_triangle(TRIANGLE* triangle)
+void print_triangle_information(TRIANGLE triangle)
 {
-	free(triangle->insideAnglesDegrees);
-	free(triangle->insideAnglesRadians);
-	free(triangle);
-}
+	printf_s("Type of trangle: %s\n", triangle.typeOfTriangle);
 
-
-
-void print_triangle_information(TRIANGLE* triangle)
-{
-	printf_s("Type of trangle: %s\n", triangle->typeOfTriangle);
-
-	if (triangle->isTriangle)
+	if (triangle.isTriangle)
 	{
-		printf_s("The inside angles are %lf, %lf, and %lf in radians\n", triangle->insideAnglesRadians[0],
-																		 triangle->insideAnglesRadians[1],
-																		 triangle->insideAnglesRadians[2]);
-		printf("or %lf, %lf, and %lf in degrees.\n", triangle->insideAnglesDegrees[0],
-													 triangle->insideAnglesDegrees[1],
-													 triangle->insideAnglesDegrees[2]);
+		printf_s("The inside angles are %lf, %lf, and %lf in radians\n", triangle.angleA,
+																		 triangle.angleB,
+																		 triangle.angleC);
+		printf("or %lf, %lf, and %lf in degrees.\n", radians_to_degrees(triangle.angleA),
+													 radians_to_degrees(triangle.angleB),
+													 radians_to_degrees(triangle.angleC));
 	}
 }
 
@@ -160,7 +126,7 @@ bool is_triangle(double sideOne, double sideTwo, double sideThree)
 	if ((sideOne < 0) || (sideTwo < 0) || (sideThree < 0))
 	{
 		return false;
-	}
+	} // Otherwise, a triangle must have its largest side smaller than the sum of the remainig sides
 	else if (largestSide == 1)
 	{
 		return (sideTwo + sideThree) > sideOne;
@@ -212,29 +178,6 @@ bool is_scalene(double sideOne, double sideTwo, double sideThree)
 }
 
 
-bool is_sum_greater(int one, int two, int three) {
-
-	int largestSide = get_largest_side(one, two, three);
-
-	if (largestSide == 1) {
-		if ((two + three) > one) {
-			return true;
-		}
-	}
-	else if (largestSide == 2) {
-		if ((one + three) > two) {
-			return true;
-		}
-	}
-	else if (largestSide == 3) {
-		if ((two + one) > three) {
-			return true;
-		}
-	}
-	return false;
-}
-
-
 // Revision history
 // - Danny fixed bug
 // - Emil rewrote for readability
@@ -265,7 +208,7 @@ const char* analyze_triangle(double sideOne, double sideTwo, double sideThree) {
 		return IS_SCALENE_RETURN;
 	}
 	// The function should NOT ever go here
-	// TODO: Write a nice error message
+	fprintf(stderr, "Error in conditional in analyze_triangle!\n");
 	exit(1);
 }
 
@@ -274,6 +217,7 @@ double radians_to_degrees(double radians)
 {
 	return radians * ((double)180 / M_PI);
 }
+
 
 // Revision history
 // - Emil created
@@ -287,46 +231,5 @@ double find_angle(double a, double b, double c)
 	//arcos
 	double angleInRadians = acos(numerator / denominator);
 
-
 	return angleInRadians;
-}
-
-// Revision history
-// - Emil created
-double* inside_angles_radians(double sideOne, double sideTwo, double sideThree)
-{
-	// See https://www.calculator.net/triangle-calculator.html#:~:text=The%20interior%20angles%20of%20a,of%20interest%20from%20180%C2%B0.
-	double* result = (double*)malloc(sizeof(double) * TRIANGLE_NUMBER_OF_SIDES);
-
-	if (result == NULL)
-	{
-		fprintf(stderr, "Error allocating memory for insideAngles return!\n");
-		exit(1);
-	}
-
-	result[0] = find_angle(sideOne, sideTwo, sideThree);
-	result[1] = find_angle(sideTwo, sideOne, sideThree);
-	result[2] = find_angle(sideThree, sideOne, sideTwo);
-
-	return result;
-}
-
-
-double* inside_angles_degrees(double sideOne, double sideTwo, double sideThree)
-{
-	double* angles_radians = inside_angles_radians(sideOne, sideTwo, sideThree);
-	double* angles_degrees = (double*)malloc(sizeof(double) * TRIANGLE_NUMBER_OF_SIDES);
-
-	if (angles_degrees == NULL)
-	{
-		exit(1);
-	}
-
-	for (int i = 0; i < TRIANGLE_NUMBER_OF_SIDES; i++)
-	{
-		angles_degrees[i] = radians_to_degrees(angles_radians[i]);
-	}
-	free(angles_radians);
-
-	return angles_degrees;
 }

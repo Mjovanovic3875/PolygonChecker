@@ -39,10 +39,10 @@ typedef struct quadrilateral {
 	POINT topRightPoint;
 	POINT bottomLeftPoint;
 	POINT bottomRightPoint;
-	double top_line;
-	double left_line;
-	double bottom_line;
-	double right_line;
+	double topLine;
+	double leftLine;
+	double bottomLine;
+	double rightLine;
 	double diag1;
 	double diag2;
 }QUADRILATERAL;
@@ -51,16 +51,28 @@ QUADRILATERAL create_quadrilateral(POINT pointOne, POINT pointTwo, POINT pointTh
 
 QUADRILATERAL quadrilateral_wizard(void); // used to get 4 points from the user
 
-double get_perimeter(double x, double y); // returns the perimeter of a rectangle based on two lines
+bool has_duplicates(POINT* points, int n);
+
+// returns the perimeter given four side lengths
+double get_perimeter(double sideOne, double sideTwo, 
+		             double sideThree, double sideFour);
 
 double get_area(double x, double y); //returns the area of two lines
 
 bool is_rectangle(QUADRILATERAL points); // determines if the given set of coordinates is a rectangle or not
 
-double get_left_line(QUADRILATERAL quadrilateral); // returns the left line of the given quadrilateral
+double find_line_length(POINT pointOne, POINT pointTwo);
 
-double get_top_line(QUADRILATERAL quadrilateral);// returns the top line of the given quadrilateral
+void print_quadrilateral_information(QUADRILATERAL quadrilateral); // prints information about the quadrilateral
 
-double get_right_line(QUADRILATERAL quadrilateral);// returns the right line of the given quadrilateral
+// Returns integer values signifying which of the points are left-most
+//    Returns a negative number if pointOne is to the left of pointTwo
+//    Returns a positive number if pointTwo is to the left of pointOne
+//    Returns 0 if both points are the aligned horizontally
+int compare_point_x(POINT* pointOne, POINT* pointTwo);
 
-double get_bottom_line(QUADRILATERAL quadrilateral);// returns the bottom line of the given quadrilateral
+// Returns integer values signifying which of the points are top-most
+//    Returns a negative number if pointOne is above pointTwo
+//    Returns a positive number if pointTwo is above pointOne
+//    Returns compare_point_x (with points supplied) if both points are aligned vertically
+int compare_point_y(POINT* pointOne, POINT* pointTwo);

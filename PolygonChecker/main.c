@@ -31,9 +31,9 @@ Program Description :
 int main() {
 	bool continueProgram = true; // for while loop
 	while (continueProgram) {
-		printWelcome();
+		print_welcome();
 		
-		int shapeChoice = printShapeMenu();
+		int shapeChoice = get_shape_choice();
 
 		switch (shapeChoice)
 		{
@@ -41,34 +41,15 @@ int main() {
 			continueProgram = false;
 			break;
 		case 1: // user selected a triangle
-
-
 			printf_s("Triangle selected.\n");
-			TRIANGLE* triangle = triangle_wizard();
+			TRIANGLE triangle = triangle_wizard();
 			print_triangle_information(triangle);
-			free_triangle(triangle);
 			break;
 
-		case 2: // user selects rectangle
-			printf_s("\nSquare selected.\n");
+		case 2: // user selects quadrilateral
+			printf_s("Quadrilateral selected.\n");
 			QUADRILATERAL quadrilateral = quadrilateral_wizard();
-			bool isRectangle = is_rectangle(quadrilateral);
-
-			if (isRectangle)
-			{
-				double left_line = get_left_line(quadrilateral);
-				double top_line = get_top_line(quadrilateral);
-				double perimeter = get_perimeter(left_line, top_line);
-				double area = get_area(left_line, top_line);
-
-				printf("This is a rectangle.\n");
-				printf("Its perimeter is %lf\n", perimeter);
-				printf("Its area is %lf\n", area);
-			}
-			else
-			{
-				printf_s("This is not a rectangle..."); // was not a rectangle
-			}
+			print_quadrilateral_information(quadrilateral);
 			break;
 
 		default:
@@ -80,8 +61,7 @@ int main() {
 }
 
 
-
-void printWelcome() { // prints welcome to screen
+void print_welcome() { // prints welcome to screen
 	printf_s("\n");
 	printf_s(" **********************\n");
 	printf_s("**     Welcome to     **\n");
@@ -90,10 +70,9 @@ void printWelcome() { // prints welcome to screen
 }
 
 
-
-int printShapeMenu() { // print options to screen returns users choice
+int get_shape_choice() { // print options to screen returns users choice
 	printf_s("1. Triangle\n");
-	printf_s("2. Square\n");
+	printf_s("2. Quadrilateral\n");
 	printf_s("0. Exit\n");
 
 	int shapeChoice;
